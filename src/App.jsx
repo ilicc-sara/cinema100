@@ -7,6 +7,8 @@ function App() {
   const randomNum = (min, max) =>
     Math.floor(Math.random() * (max - min + 1) + min);
 
+  const randomNumber = randomNum(1, 6);
+
   return (
     <>
       <main>
