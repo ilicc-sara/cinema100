@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import Image from "./Image";
 
 function App() {
   const [diceNumber, setDiceNumber] = useState([1, 1]);
@@ -7,14 +8,12 @@ function App() {
   const randomNum = (min, max) =>
     Math.floor(Math.random() * (max - min + 1) + min);
 
-  const randomNumber = randomNum(1, 6);
-
   return (
     <>
       <main>
         <div>
-          <img src={`./dice-${diceNumber[0]}.png `} />
-          <img src={`./dice-${diceNumber[1]}.png`} />
+          <Image number={diceNumber[0]} />
+          <Image number={diceNumber[1]} />
         </div>
         <button
           onClick={() => setDiceNumber([randomNum(1, 6), randomNum(1, 6)])}
