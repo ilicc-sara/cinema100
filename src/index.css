@@ -1,90 +1,9 @@
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-}
+  line-height: 1.5;
+  font-weight: 400;
 
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-html {
-  font-size: 62.5%;
-  overflow-x: hidden;
-}
-
-body {
-  background-color: rgb(40, 40, 40);
-  color: white;
-}
-
-section {
-  display: flex;
-}
-
-aside {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  width: 15%;
-  padding: 20px;
-}
-
-a {
-  text-decoration: none;
-  cursor: pointer;
-  font-size: 18px;
-  text-align: left;
-  display: flex;
-  align-items: center;
-}
-
-ion-icon {
-  margin-right: 20px;
-  width: 20px;
-  height: 20px;
-}
-
-.video-container {
-  padding: 20px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  row-gap: 20px;
-  width: 80%;
-}
-
-.video-article {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 260px;
-  text-align: left;
-  gap: 10px;
-  background-color: rgba(255, 255, 255, 0.15);
-  padding-bottom: 10px;
-  border: 0.5px solid white;
-}
-
-.thumb-nail {
-  width: 100%;
-  height: 220px;
-}
-
-.title {
-  margin-left: 10px;
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.chanel {
-  margin-left: 10px;
-  font-size: 16px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.616);
-}
-
-.time-uploaded {
-  margin-left: 10px;
-  font-size: 12px;
-  font-weight: 500;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
 }
