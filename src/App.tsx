@@ -1,8 +1,11 @@
 import { useState } from "react";
-import "./App.css";
 
-function App() {
-  return <></>;
+function Home() {
+  return (
+    <>
+      <h1 className="text-red-500 font-bold">Cinema 100</h1>
+    </>
+  );
 }
 
-export default App;
+export default Home;
