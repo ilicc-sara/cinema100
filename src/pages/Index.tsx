@@ -7,18 +7,31 @@ function Home() {
         <img className="w-12 h-12" src="logo.png" />
         <h1 className="text-white font-medium text-xl">cinema 100</h1>
       </div>
-      <form className=" w-[fit-content] flex flex-col bg-[#161d2f] !mx-auto items-center">
-        <h1>Log In</h1>
+      <form className="w-104 h-95 !px-14 !py-9 flex flex-col bg-[#161d2f] !mx-auto items-center gap-5 rounded-xl">
+        <h1 className="text-[#e8f0fe] text-3xl self-start">Log In</h1>
         <input
-          className="bg-stone-300 w-[80%] rounded"
+          className="bg-[#e8f0fe] w-full rounded h-11 !pl-3"
           type="text"
           placeholder="email"
         />
         <input
-          className="bg-stone-300 w-[80%] rounded"
+          className="bg-[#e8f0fe] w-full rounded h-11 !pl-3"
           type="password"
           placeholder="password"
         />
+        <button className="bg-[#fc4747] w-full rounded h-9 text-[#e8f0fe]">
+          Log In
+        </button>
+
+        <div className="flex flex-col gap-2">
+          <p className="text-[#e8f0fe]">
+            Don't have an account ?{" "}
+            <span className="text-[#fc4747]">Sign up</span>
+          </p>
+          <p className="text-[#e8f0fe]">
+            Or, <span className="text-[#fc4747]">Log in as guest</span>
+          </p>
+        </div>
       </form>
     </section>
   );
