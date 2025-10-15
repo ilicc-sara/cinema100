@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-}
-
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  background-color: rgb(40, 40, 40);
+  font-family: "Outfit", sans-serif;
+}
+
+body {
+  background-color: #10141e;
 }
