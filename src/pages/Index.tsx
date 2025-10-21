@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { Link } from "react-router";
 
-function Home() {
+function Auth() {
   const [logIn, setLogIn] = useState<boolean>(false);
 
   const [name, setName] = useState<string>("");
@@ -47,9 +48,11 @@ function Home() {
             </p>
             <p className="text-[#e8f0fe]">
               Or,{" "}
-              <span className="text-[#fc4747] cursor-pointer">
-                Log in as guest
-              </span>
+              <Link to="/home">
+                <span className="text-[#fc4747] cursor-pointer">
+                  Log in as guest
+                </span>
+              </Link>
             </p>
           </div>
         </form>
@@ -107,4 +110,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Auth;

@@ -4,12 +4,17 @@ import "./index.css";
 import "./App.css";
 import { Provider } from "react-redux";
 import { store } from "./redux/store.tsx";
-import Home from "./pages/Index.tsx";
+import Auth from "./pages/Index.tsx";
+import Home from "./pages/Home.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <Auth />,
+  },
+  {
+    path: "/home",
     element: <Home />,
   },
 ]);
