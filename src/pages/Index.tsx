@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router";
 
 function Auth() {
-  const [logIn, setLogIn] = useState<boolean>(false);
+  const [logIn, setLogIn] = useState<boolean>(true);
 
   const [name, setName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");

@@ -8,7 +8,7 @@ function Home() {
         <h1 className="text-white font-medium text-xl">cinema 100</h1>
       </div>
 
-      <div className="text-[#e8f0fe] font-medium flex gap-5">
+      <div className="text-[#e8f0fe] text-lg font-medium flex gap-10">
         <p>Welcome back, Guest</p>
 
         <div className="flex gap-2">
