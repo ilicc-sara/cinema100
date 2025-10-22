@@ -1,5 +1,3 @@
-import React from "react";
-
 export type singleMovie = {
   rank: number;
   title: string;
