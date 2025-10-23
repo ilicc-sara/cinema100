@@ -56,25 +56,6 @@ function Home() {
     fetchData();
   }, []);
 
-  // const deleteMovies = async (id: number) => {
-  //   let allIDs = [];
-
-  //   const { error, data } = await supabase.from("moviesData").select("*");
-
-  //   // const { error, data } = await supabase
-  //   //   .from("moviesData")
-  //   //   .delete()
-  //   //   .in("id")
-  //   //   .select();
-
-  //   console.log(data);
-
-  //   if (error) {
-  //     console.error("Error deleting task: ", error.message);
-  //     return;
-  //   }
-  // };
-
   return (
     <>
       <nav className="bg-[#161d2f] flex justify-between items-center !px-20 !py-3">
@@ -106,10 +87,7 @@ function Home() {
         </div>
       </nav>
       <section>
-        <button
-          // onClick={() => deleteMovies()}
-          className="text-[#e8f0fe] border-[2px] border-solid border-[#e8f0fe] !px-2 hover:bg-red-300"
-        >
+        <button className="text-[#e8f0fe] border-[2px] border-solid border-[#e8f0fe] !px-2 hover:bg-red-300">
           delete
         </button>
       </section>
