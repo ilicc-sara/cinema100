@@ -5,23 +5,23 @@ import type { singleMovie } from "../types";
 
 function Home() {
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const { data, error } = await supabase.from("moviesData").select();
+    const deleteData = () => {
+      data.forEach(async (item) => {
+        try {
+          const { error } = await supabase
+            .from("moviesData")
+            .delete()
+            .eq("rank", item.rank);
 
-        console.log(data);
-
-        if (error) {
-          console.error("Error adding task: ", error.message);
+          if (error) {
+            console.error("Error deleting task: ", error.message);
+          }
+        } catch (error: any) {
+          console.error("Error deleting task: ", error.message);
         }
-      } catch (error: any) {
-        console.error("Error adding task: ", error.message);
-      }
+      });
     };
 
-    fetchData();
-  }, []);
-  useEffect(() => {
     const fetchData = () => {
       data.forEach(async (item) => {
         try {
@@ -52,6 +52,7 @@ function Home() {
       });
     };
 
+    deleteData();
     fetchData();
   }, []);
 
