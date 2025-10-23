@@ -2,8 +2,6 @@ import { useEffect } from "react";
 import { data } from "../data[1]";
 import { supabase } from "../supabase-client";
 
-// console.log(data[0]);
-
 function Home() {
   useEffect(() => {
     const fetchData = () => {
@@ -43,35 +41,65 @@ function Home() {
 
     fetchData();
   }, []);
+
+  const deleteMovies = async (id: number) => {
+    let allIDs = [];
+
+    const { error, data } = await supabase.from("moviesData").select("*");
+
+    // const { error, data } = await supabase
+    //   .from("moviesData")
+    //   .delete()
+    //   .in("id")
+    //   .select();
+
+    console.log(data);
+
+    if (error) {
+      console.error("Error deleting task: ", error.message);
+      return;
+    }
+  };
+
   return (
-    <nav className="bg-[#161d2f] flex justify-between items-center !px-20 !py-3">
-      <div className="w-[fit-content] flex justify-center items-center gap-2">
-        <img className="w-10 h-10" src="logo.png" />
-        <h1 className="text-white font-medium text-xl">cinema 100</h1>
-      </div>
-
-      <div className="text-[#e8f0fe] text-lg font-medium flex gap-10">
-        <p>Welcome back, Guest</p>
-
-        <div className="flex gap-2">
-          <p>Log out</p>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="2.0"
-            stroke="currentColor"
-            className="h-6 w-6"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M5.636 5.636a9 9 0 1012.728 0M12 3v9"
-            ></path>
-          </svg>
+    <>
+      <nav className="bg-[#161d2f] flex justify-between items-center !px-20 !py-3">
+        <div className="w-[fit-content] flex justify-center items-center gap-2">
+          <img className="w-10 h-10" src="logo.png" />
+          <h1 className="text-white font-medium text-xl">cinema 100</h1>
         </div>
-      </div>
-    </nav>
+
+        <div className="text-[#e8f0fe] text-lg font-medium flex gap-10">
+          <p>Welcome back, Guest</p>
+
+          <div className="flex gap-2">
+            <p>Log out</p>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="2.0"
+              stroke="currentColor"
+              className="h-6 w-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M5.636 5.636a9 9 0 1012.728 0M12 3v9"
+              ></path>
+            </svg>
+          </div>
+        </div>
+      </nav>
+      <section>
+        <button
+          onClick={() => deleteMovies()}
+          className="text-[#e8f0fe] border-[2px] border-solid border-[#e8f0fe] !px-2 hover:bg-red-300"
+        >
+          delete
+        </button>
+      </section>
+    </>
   );
 }
 
