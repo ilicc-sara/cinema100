@@ -1,6 +1,48 @@
-import React from "react";
+import { useEffect } from "react";
+import { data } from "../data[1]";
+import { supabase } from "../supabase-client";
+
+console.log(data[0]);
 
 function Home() {
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const { error } = await supabase
+          .from("moviesData")
+          .insert({
+            rank: 1,
+            title: "The Shawshank Redemption",
+            thumbnail:
+              "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UY67_CR0,0,45,67_AL_.jpg",
+            rating: "9.3",
+            id: "top1",
+            year: 1994,
+            image:
+              "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg",
+            description:
+              "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+            trailer: "https://www.youtube.com/embed/NmzuHjWmXOc",
+            genre: ["Drama"],
+            director: ["Frank Darabont"],
+            writers: [
+              'Stephen King (based on the short novel "Rita Hayworth and the Shawshank Redemption" by)',
+              "Frank Darabont (screenplay by)",
+            ],
+            imdbid: "tt0111161",
+          })
+          .single();
+
+        if (error) {
+          console.error("Error adding task: ", error.message);
+        }
+      } catch (error: any) {
+        console.error("Error adding task: ", error.message);
+      }
+    };
+
+    fetchData();
+  }, []);
   return (
     <nav className="bg-[#161d2f] flex justify-between items-center !px-20 !py-3">
       <div className="w-[fit-content] flex justify-center items-center gap-2">
