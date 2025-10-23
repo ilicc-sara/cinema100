@@ -1,34 +1,47 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { data } from "../data[1]";
 import { supabase } from "../supabase-client";
+import type { singleMovie } from "../types";
 
 function Home() {
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const { data, error } = await supabase.from("moviesData").select();
+
+        console.log(data);
+
+        if (error) {
+          console.error("Error adding task: ", error.message);
+        }
+      } catch (error: any) {
+        console.error("Error adding task: ", error.message);
+      }
+    };
+
+    fetchData();
+  }, []);
   useEffect(() => {
     const fetchData = () => {
       data.forEach(async (item) => {
         try {
-          const { error } = await supabase
-            .from("moviesData")
-            .insert([
-              {
-                rank: item.rank,
-                title: item.title,
-                thumbnail: item.thumbnail,
-                rating: item.rating,
-                itemID: item.id,
-                year: item.year,
-                image: item.image,
-                description: item.description,
-                trailer: item.trailer,
-                genre: item.genre.join(","),
-                director: item.director.join(","),
-                writers: item.writers.join(";"),
-                imdbid: item.imdbid,
-              },
-            ])
-            .select();
-
-          console.log(data);
+          const { error } = await supabase.from("moviesData").insert([
+            {
+              rank: item.rank,
+              title: item.title,
+              thumbnail: item.thumbnail,
+              rating: item.rating,
+              itemID: item.id,
+              year: item.year,
+              image: item.image,
+              description: item.description,
+              trailer: item.trailer,
+              genre: item.genre.join(","),
+              director: item.director.join(","),
+              writers: item.writers.join(";"),
+              imdbid: item.imdbid,
+            },
+          ]);
 
           if (error) {
             console.error("Error adding task: ", error.message);
@@ -42,24 +55,24 @@ function Home() {
     fetchData();
   }, []);
 
-  const deleteMovies = async (id: number) => {
-    let allIDs = [];
+  // const deleteMovies = async (id: number) => {
+  //   let allIDs = [];
 
-    const { error, data } = await supabase.from("moviesData").select("*");
+  //   const { error, data } = await supabase.from("moviesData").select("*");
 
-    // const { error, data } = await supabase
-    //   .from("moviesData")
-    //   .delete()
-    //   .in("id")
-    //   .select();
+  //   // const { error, data } = await supabase
+  //   //   .from("moviesData")
+  //   //   .delete()
+  //   //   .in("id")
+  //   //   .select();
 
-    console.log(data);
+  //   console.log(data);
 
-    if (error) {
-      console.error("Error deleting task: ", error.message);
-      return;
-    }
-  };
+  //   if (error) {
+  //     console.error("Error deleting task: ", error.message);
+  //     return;
+  //   }
+  // };
 
   return (
     <>
@@ -93,7 +106,7 @@ function Home() {
       </nav>
       <section>
         <button
-          onClick={() => deleteMovies()}
+          // onClick={() => deleteMovies()}
           className="text-[#e8f0fe] border-[2px] border-solid border-[#e8f0fe] !px-2 hover:bg-red-300"
         >
           delete
