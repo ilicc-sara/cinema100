@@ -4,6 +4,7 @@ import { supabase } from "../supabase-client";
 import type { singleMovie } from "../types";
 
 function Home() {
+  const [movies, setMovies] = useState<singleMovie[] | null>(null);
   useEffect(() => {
     const deleteData = () => {
       data.forEach(async (item) => {
@@ -25,23 +26,26 @@ function Home() {
     const fetchData = () => {
       data.forEach(async (item) => {
         try {
-          const { error } = await supabase.from("moviesData").insert([
-            {
-              rank: item.rank,
-              title: item.title,
-              thumbnail: item.thumbnail,
-              rating: item.rating,
-              itemID: item.id,
-              year: item.year,
-              image: item.image,
-              description: item.description,
-              trailer: item.trailer,
-              genre: item.genre.join(","),
-              director: item.director.join(","),
-              writers: item.writers.join(";"),
-              imdbid: item.imdbid,
-            },
-          ]);
+          const { error } = await supabase
+            .from("moviesData")
+            .insert([
+              {
+                rank: item.rank,
+                title: item.title,
+                thumbnail: item.thumbnail,
+                rating: item.rating,
+                itemID: item.id,
+                year: item.year,
+                image: item.image,
+                description: item.description,
+                trailer: item.trailer,
+                genre: item.genre.join(","),
+                director: item.director.join(","),
+                writers: item.writers.join(";"),
+                imdbid: item.imdbid,
+              },
+            ])
+            .single();
 
           if (error) {
             console.error("Error adding task: ", error.message);
@@ -56,6 +60,26 @@ function Home() {
     fetchData();
   }, []);
 
+  const selectData = async () => {
+    try {
+      const { error, data } = await supabase.from("moviesData").select();
+
+      console.log("data from select data: ", data);
+      setMovies(data);
+
+      if (error) {
+        console.error("Error adding task: ", error.message);
+      }
+    } catch (error: any) {
+      console.error("Error adding task: ", error.message);
+    }
+  };
+
+  useEffect(() => {
+    selectData();
+  }, []);
+
+  console.log("movies from movies state", movies);
   return (
     <>
       <nav className="bg-[#161d2f] flex justify-between items-center !px-20 !py-3">
@@ -87,7 +111,10 @@ function Home() {
         </div>
       </nav>
       <section>
-        <button className="text-[#e8f0fe] border-[2px] border-solid border-[#e8f0fe] !px-2 hover:bg-red-300">
+        <button
+          onClick={() => selectData()}
+          className="text-[#e8f0fe] border-[2px] border-solid border-[#e8f0fe] !px-2 hover:bg-red-300"
+        >
           delete
         </button>
       </section>
