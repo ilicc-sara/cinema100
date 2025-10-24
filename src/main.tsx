@@ -4,8 +4,8 @@ import "./index.css";
 import "./App.css";
 import { Provider } from "react-redux";
 import { store } from "./redux/store.tsx";
-import Auth from "./pages/Index.tsx";
-import Home from "./pages/Home.tsx";
+import Auth from "./pages/authPage/Index.tsx";
+import Home from "./pages/homePage/Home.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const router = createBrowserRouter([

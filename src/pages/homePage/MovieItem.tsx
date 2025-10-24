@@ -1,5 +1,5 @@
 import React from "react";
-import type { singleMovie } from "../types";
+import type { singleMovie } from "../../types";
 
 type MovieItemProps = {
   item: singleMovie;

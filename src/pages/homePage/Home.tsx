@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { data } from "../data[1]";
-import { supabase } from "../supabase-client";
-import type { singleMovie } from "../types";
+import { data } from "../../data[1]";
+import { supabase } from "../../supabase-client";
+import type { singleMovie } from "../../types";
 import MovieItem from "./MovieItem";
 
 function Home() {
