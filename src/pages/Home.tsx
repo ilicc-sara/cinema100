@@ -111,24 +111,22 @@ function Home() {
         </div>
       </nav>
       <section>
-        {/* <button
-          onClick={() => selectData()}
-          className="text-[#e8f0fe] border-[2px] border-solid border-[#e8f0fe] !px-2 hover:bg-red-300"
-        >
-          delete
-        </button> */}
-
         <div className=" grid grid-cols-4 w-[80%] !mx-auto gap-5">
           {movies &&
             movies.map((item, index) => (
-              <article className="text-[#e8f0fe]">
+              <article className="text-[#e8f0fe] flex flex-col gap-2">
                 <img className="" key={index} src={item.image} />
                 <p className="text-base text-left font-medium">
                   {" "}
                   {item.title}{" "}
                 </p>
-                <div className="flex">
-                  <i className="bxr  bxs-star"></i>
+                <div className="flex justify-start items-center">
+                  <span> {item.year} </span>
+                  <div className="flex items-center !px-2 gap-1">
+                    <i className="bxr  bxs-star"></i>
+                    <span> {item.rating} </span>
+                  </div>
+                  <span> {item.genre} </span>
                 </div>
               </article>
             ))}
