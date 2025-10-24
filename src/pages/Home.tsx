@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { data } from "../data[1]";
 import { supabase } from "../supabase-client";
 import type { singleMovie } from "../types";
+import MovieItem from "./MovieItem";
 
 function Home() {
   const [movies, setMovies] = useState<singleMovie[] | null>(null);
@@ -111,24 +112,10 @@ function Home() {
         </div>
       </nav>
       <section>
-        <div className=" grid grid-cols-4 w-[80%] !mx-auto gap-5">
+        <div className=" grid grid-cols-4 w-[80%] !mx-auto gap-7">
           {movies &&
             movies.map((item, index) => (
-              <article className="text-[#e8f0fe] flex flex-col gap-2">
-                <img className="" key={index} src={item.image} />
-                <p className="text-base text-left font-medium">
-                  {" "}
-                  {item.title}{" "}
-                </p>
-                <div className="flex justify-start items-center">
-                  <span> {item.year} </span>
-                  <div className="flex items-center !px-2 gap-1">
-                    <i className="bxr  bxs-star"></i>
-                    <span> {item.rating} </span>
-                  </div>
-                  <span> {item.genre} </span>
-                </div>
-              </article>
+              <MovieItem item={item} index={index} />
             ))}
         </div>
       </section>
