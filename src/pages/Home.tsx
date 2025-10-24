@@ -111,12 +111,21 @@ function Home() {
         </div>
       </nav>
       <section>
-        <button
+        {/* <button
           onClick={() => selectData()}
           className="text-[#e8f0fe] border-[2px] border-solid border-[#e8f0fe] !px-2 hover:bg-red-300"
         >
           delete
-        </button>
+        </button> */}
+
+        <div className=" grid grid-cols-4 bg-[#142653] w-[80%] !mx-auto gap-5 ">
+          {movies &&
+            movies.map((item, index) => (
+              <article>
+                <img key={index} src={item.image} />
+              </article>
+            ))}
+        </div>
       </section>
     </>
   );
