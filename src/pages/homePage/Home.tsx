@@ -112,7 +112,15 @@ function Home() {
         </div>
       </nav>
       <section>
-        <div className=" grid grid-cols-4 w-[80%] !mx-auto gap-7">
+        <div className="bg-[#161d2f] w-[80%] !mx-auto rounded !p-5">
+          <div className="!bg-[#bfbfbf] w-50 flex">
+            <input type="text" placeholder="search" />
+            <button className="bg-[#bfbfbf] text-center">
+              <i className="bxr  bx-search"></i>
+            </button>
+          </div>
+        </div>
+        <div className=" grid grid-cols-4 w-[80%] !mx-auto gap-7 !px-5">
           {movies &&
             movies.map((item, index) => (
               <MovieItem item={item} index={index} />

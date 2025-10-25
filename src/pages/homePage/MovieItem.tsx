@@ -1,4 +1,3 @@
-import React from "react";
 import type { singleMovie } from "../../types";
 
 type MovieItemProps = {
@@ -22,7 +21,7 @@ function MovieItem({ item, index }: MovieItemProps) {
             <i className="bxr  bxs-star"></i>
             <span> {item.rating} </span>
           </div>
-          <span> {item.genre} </span>
+          <span className="w-full truncate"> {item.genre} </span>
         </div>
       </div>
     </article>
