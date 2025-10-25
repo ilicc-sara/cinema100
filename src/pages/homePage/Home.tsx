@@ -6,8 +6,11 @@ import MovieItem from "./MovieItem";
 
 function Home() {
   const [movies, setMovies] = useState<singleMovie[] | null>(null);
+  const [activeMovies, setActiveMovies] = useState<singleMovie[] | null>(null);
 
   const [genres, setGenres] = useState<string[]>([]);
+
+  const [search, setSearch] = useState<string>("");
 
   useEffect(() => {
     const deleteData = () => {
@@ -71,6 +74,7 @@ function Home() {
 
       console.log("data from select data: ", data);
       setMovies(data);
+      setActiveMovies(data);
 
       if (data) {
         for (const element of data) {
@@ -93,6 +97,8 @@ function Home() {
 
   console.log("movies from movies state", movies);
   console.log("genres", genres);
+
+  useEffect(() => {}, [search]);
 
   return (
     <>
@@ -128,6 +134,8 @@ function Home() {
         <div className="bg-[#161d2f] w-[80%] !mx-auto rounded-xl !py-3 !px-5 !my-10 flex justify-between items-center">
           <div className="bg-[#bfbfbf] w-[fit-content] flex items-center justify-between !py-1 rounded-lg cursor-pointer active:shadow-[0_0_0_5px_rgb(252,71,71)] ">
             <input
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
               className="!pl-2 focus:outline-none focus:ring-0"
               type="text"
               placeholder="search"
