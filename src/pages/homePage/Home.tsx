@@ -6,6 +6,9 @@ import MovieItem from "./MovieItem";
 
 function Home() {
   const [movies, setMovies] = useState<singleMovie[] | null>(null);
+
+  const [genres, setGenres] = useState<string[]>([]);
+
   useEffect(() => {
     const deleteData = () => {
       data.forEach(async (item) => {
@@ -62,11 +65,16 @@ function Home() {
   }, []);
 
   const selectData = async () => {
+    let genresArr = [];
     try {
       const { error, data } = await supabase.from("moviesData").select();
 
       console.log("data from select data: ", data);
       setMovies(data);
+
+      for (const object of Object.values(movies)) {
+        genresArr.push(object.genre);
+      }
 
       if (error) {
         console.error("Error adding task: ", error.message);
@@ -81,6 +89,7 @@ function Home() {
   }, []);
 
   console.log("movies from movies state", movies);
+
   return (
     <>
       <nav className="bg-[#161d2f] flex justify-between items-center !px-20 !py-3">
@@ -112,12 +121,22 @@ function Home() {
         </div>
       </nav>
       <section>
-        <div className="bg-[#161d2f] w-[80%] !mx-auto rounded !p-5">
-          <div className="!bg-[#bfbfbf] w-50 flex">
-            <input type="text" placeholder="search" />
-            <button className="bg-[#bfbfbf] text-center">
+        <div className="bg-[#161d2f] w-[80%] !mx-auto rounded-xl !py-3 !px-5 !my-10">
+          <div className="bg-[#bfbfbf] w-[fit-content] flex items-center justify-between !py-1 rounded-lg cursor-pointer active:shadow-[0_0_0_5px_rgb(252,71,71)] ">
+            <input
+              className="!pl-2 focus:outline-none focus:ring-0"
+              type="text"
+              placeholder="search"
+            />
+            <button className="bg-[#bfbfbf] text-center !mx-2">
               <i className="bxr  bx-search"></i>
             </button>
+          </div>
+
+          <div>
+            <select>
+              <option>All</option>
+            </select>
           </div>
         </div>
         <div className=" grid grid-cols-4 w-[80%] !mx-auto gap-7 !px-5">
