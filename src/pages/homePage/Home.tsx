@@ -98,7 +98,22 @@ function Home() {
   console.log("movies from movies state", movies);
   console.log("genres", genres);
 
-  useEffect(() => {}, [search]);
+  useEffect(() => {
+    if (!movies) {
+      return;
+    } else {
+      let filteredMoviesTemp = [...movies];
+
+      if (search !== "") {
+        filteredMoviesTemp = filteredMoviesTemp.filter((movie) =>
+          movie.title.toLowerCase().includes(search)
+        );
+        setActiveMovies(filteredMoviesTemp);
+      } else {
+        setActiveMovies(movies);
+      }
+    }
+  }, [search]);
 
   return (
     <>
@@ -165,8 +180,8 @@ function Home() {
           </div>
         </div>
         <div className=" grid grid-cols-4 w-[80%] !mx-auto gap-7 !px-5">
-          {movies &&
-            movies.map((item, index) => (
+          {activeMovies &&
+            activeMovies.map((item, index) => (
               <MovieItem item={item} index={index} />
             ))}
         </div>
