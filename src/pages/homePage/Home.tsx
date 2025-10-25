@@ -11,6 +11,7 @@ function Home() {
   const [genres, setGenres] = useState<string[]>([]);
 
   const [search, setSearch] = useState<string>("");
+  const [activeGenre, setActiveGenre] = useState<string>("all");
 
   useEffect(() => {
     const deleteData = () => {
@@ -95,9 +96,6 @@ function Home() {
     selectData();
   }, []);
 
-  console.log("movies from movies state", movies);
-  console.log("genres", genres);
-
   useEffect(() => {
     if (!movies) {
       return;
@@ -109,11 +107,17 @@ function Home() {
           movie.title.toLowerCase().includes(search)
         );
         setActiveMovies(filteredMoviesTemp);
+      }
+      if (activeGenre !== "all") {
+        filteredMoviesTemp = filteredMoviesTemp.filter((movie) =>
+          movie.genre.includes(activeGenre)
+        );
+        setActiveMovies(filteredMoviesTemp);
       } else {
         setActiveMovies(movies);
       }
     }
-  }, [search]);
+  }, [search, activeGenre]);
 
   return (
     <>
@@ -161,10 +165,18 @@ function Home() {
           </div>
 
           <div className="flex justify-between items-center gap-3">
-            <select className="bg-[#bfbfbf] rounded">
-              <option>All</option>
+            <select
+              onChange={(e) => {
+                setActiveGenre(e.target.value);
+              }}
+              className="bg-[#bfbfbf] rounded"
+            >
+              <option value="all">All</option>
               {genres.map((genre, index) => (
-                <option key={index}> {genre} </option>
+                <option key={index} value={genre}>
+                  {" "}
+                  {genre}{" "}
+                </option>
               ))}
             </select>
             <i className="bxr  bxs-bookmark"></i>
