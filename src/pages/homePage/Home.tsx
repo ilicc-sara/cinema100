@@ -65,15 +65,18 @@ function Home() {
   }, []);
 
   const selectData = async () => {
-    let genresArr = [];
+    let genresArr: string[] = [];
     try {
       const { error, data } = await supabase.from("moviesData").select();
 
       console.log("data from select data: ", data);
       setMovies(data);
 
-      for (const object of Object.values(movies)) {
-        genresArr.push(object.genre);
+      if (data) {
+        for (const element of data) {
+          genresArr.push(...element.genre.split(","));
+        }
+        setGenres([...new Set(genresArr)]);
       }
 
       if (error) {
@@ -89,6 +92,7 @@ function Home() {
   }, []);
 
   console.log("movies from movies state", movies);
+  console.log("genres", genres);
 
   return (
     <>
@@ -136,6 +140,9 @@ function Home() {
           <div>
             <select>
               <option>All</option>
+              {genres.map((genre, index) => (
+                <option key={index}> {genre} </option>
+              ))}
             </select>
           </div>
         </div>
