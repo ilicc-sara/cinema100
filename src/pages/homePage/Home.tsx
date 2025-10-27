@@ -3,6 +3,7 @@ import { data } from "../../data[1]";
 import { supabase } from "../../supabase-client";
 import type { singleMovie } from "../../types";
 import MovieItem from "./MovieItem";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
 
 function Home() {
   const [movies, setMovies] = useState<singleMovie[] | null>(null);
@@ -10,8 +11,15 @@ function Home() {
 
   const [genres, setGenres] = useState<string[]>([]);
 
-  const [search, setSearch] = useState<string>("");
-  const [activeGenre, setActiveGenre] = useState<string>("all");
+  type FIlters = {
+    search: string;
+    activeGenre: string;
+  };
+
+  const [filters, setFilters] = useState<FIlters>({
+    search: "",
+    activeGenre: "all",
+  });
 
   useEffect(() => {
     const deleteData = () => {
@@ -97,27 +105,24 @@ function Home() {
   }, []);
 
   useEffect(() => {
-    if (!movies) {
-      return;
-    } else {
-      let filteredMoviesTemp = [...movies];
+    const { search, activeGenre } = filters;
+    if (!movies) return;
 
-      if (search !== "") {
-        filteredMoviesTemp = filteredMoviesTemp.filter((movie) =>
-          movie.title.toLowerCase().includes(search)
-        );
-        setActiveMovies(filteredMoviesTemp);
-      }
-      if (activeGenre !== "all") {
-        filteredMoviesTemp = filteredMoviesTemp.filter((movie) =>
-          movie.genre.includes(activeGenre)
-        );
-        setActiveMovies(filteredMoviesTemp);
-      } else {
-        setActiveMovies(movies);
-      }
+    let filteredMoviesTemp = [...movies];
+
+    if (search) {
+      filteredMoviesTemp = filteredMoviesTemp.filter((movie) =>
+        movie.title.toLowerCase().includes(search.toLowerCase())
+      );
     }
-  }, [search, activeGenre]);
+    if (activeGenre !== "all") {
+      filteredMoviesTemp = filteredMoviesTemp.filter((movie) =>
+        movie.genre.includes(activeGenre)
+      );
+    }
+
+    setActiveMovies(filteredMoviesTemp);
+  }, [filters]);
 
   return (
     <>
@@ -150,11 +155,21 @@ function Home() {
         </div>
       </nav>
       <section>
+        <div>
+          <h1 className="text-left text-[#e8f0fe] w-[80%] !mx-auto text-2xl font-medium !mb-5">
+            Currently trending
+          </h1>
+          <div></div>
+        </div>
         <div className="bg-[#161d2f] w-[80%] !mx-auto rounded-xl !py-3 !px-5 !my-10 flex justify-between items-center">
           <div className="bg-[#bfbfbf] w-[fit-content] flex items-center justify-between !py-1 rounded-lg cursor-pointer active:shadow-[0_0_0_5px_rgb(252,71,71)] ">
             <input
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              value={filters.search}
+              onChange={(e) =>
+                setFilters((prev) => {
+                  return { ...prev, search: e.target.value };
+                })
+              }
               className="!pl-2 focus:outline-none focus:ring-0"
               type="text"
               placeholder="search"
@@ -166,9 +181,11 @@ function Home() {
 
           <div className="flex justify-between items-center gap-3">
             <select
-              onChange={(e) => {
-                setActiveGenre(e.target.value);
-              }}
+              onChange={(e) =>
+                setFilters((prev) => {
+                  return { ...prev, activeGenre: e.target.value };
+                })
+              }
               className="bg-[#bfbfbf] rounded"
             >
               <option value="all">All</option>
@@ -191,11 +208,30 @@ function Home() {
             </svg>
           </div>
         </div>
-        <div className=" grid grid-cols-4 w-[80%] !mx-auto gap-7 !px-5">
-          {activeMovies &&
+        <h1 className="text-left text-[#e8f0fe] w-[80%] !mx-auto text-2xl font-medium !mb-5">
+          Top 100
+        </h1>
+        <div className=" w-[80%] !mx-auto gap-7 !px-5">
+          {/* {activeMovies &&
             activeMovies.map((item, index) => (
               <MovieItem item={item} index={index} />
-            ))}
+            ))} */}
+
+          <Splide
+            options={{
+              type: "slide",
+              perPage: 1,
+              gap: "1rem",
+              autoplay: false,
+            }}
+          >
+            <SplideSlide>
+              <img src="../Goldfish-2-e1724099193229.webp" />
+            </SplideSlide>
+            <SplideSlide>
+              <img src="../images (1).jpeg" />
+            </SplideSlide>
+          </Splide>
         </div>
       </section>
     </>
