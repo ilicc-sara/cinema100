@@ -1,11 +1,5 @@
-import type { singleMovie } from "../../types";
 import { Link } from "react-router";
-
-type MovieItemProps = {
-  item: singleMovie;
-  index: number;
-  details: boolean;
-};
+import type { MovieItemProps } from "../../../types";
 
 function MovieItem({ item, index, details }: MovieItemProps) {
   return (

@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { data } from "../../data[1]";
 import { supabase } from "../../supabase-client";
 import type { singleMovie } from "../../types";
-import MovieItem from "./MovieItem";
+import MovieItem from "./components/MovieItem";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
-import { Link } from "react-router";
+import type { FIlters } from "../../types";
+import TrendingMovies from "./components/TrendingMovies";
 
 function Home() {
   const [movies, setMovies] = useState<singleMovie[] | null>(null);
@@ -13,19 +14,14 @@ function Home() {
   const [genres, setGenres] = useState<string[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
-  const currentlyTrending = movies?.filter(
-    (movie) => movie.rank >= 55 && movie.rank < 75
-  );
-
-  type FIlters = {
-    search: string;
-    activeGenre: string;
-  };
-
   const [filters, setFilters] = useState<FIlters>({
     search: "",
     activeGenre: "all",
   });
+
+  const currentlyTrending = movies?.filter(
+    (movie) => movie.rank >= 55 && movie.rank < 75
+  );
 
   useEffect(() => {
     const deleteData = () => {
@@ -61,9 +57,9 @@ function Home() {
                 image: item.image,
                 description: item.description,
                 trailer: item.trailer,
-                genre: item.genre.join(","),
-                director: item.director.join(","),
-                writers: item.writers.join(";"),
+                genre: item.genre,
+                director: item.director,
+                writers: item.writers,
                 imdbid: item.imdbid,
               },
             ])
@@ -144,101 +140,7 @@ function Home() {
 
           <div className="w-[80%] !mx-auto relative">
             {loading && <div className="loader"></div>}
-            <Splide
-              className="currently-trending-slider"
-              options={{
-                type: "slide",
-                perPage: 1,
-                gap: "1rem",
-                rewind: true,
-              }}
-            >
-              <SplideSlide>
-                {currentlyTrending && (
-                  <div className="grid grid-cols-4 gap-7 !px-5 ">
-                    {currentlyTrending.map((item, index) => {
-                      if (index <= 3) {
-                        return (
-                          <MovieItem
-                            details={false}
-                            item={item}
-                            index={index}
-                          />
-                        );
-                      }
-                    })}
-                  </div>
-                )}
-              </SplideSlide>
-              <SplideSlide>
-                {currentlyTrending && (
-                  <div className="grid grid-cols-4 gap-7 !px-5 ">
-                    {currentlyTrending.map((item, index) => {
-                      if (index > 3 && index <= 7) {
-                        return (
-                          <MovieItem
-                            details={false}
-                            item={item}
-                            index={index}
-                          />
-                        );
-                      }
-                    })}
-                  </div>
-                )}
-              </SplideSlide>
-              <SplideSlide>
-                {currentlyTrending && (
-                  <div className="grid grid-cols-4 gap-7 !px-5 ">
-                    {currentlyTrending.map((item, index) => {
-                      if (index > 7 && index <= 11) {
-                        return (
-                          <MovieItem
-                            details={false}
-                            item={item}
-                            index={index}
-                          />
-                        );
-                      }
-                    })}
-                  </div>
-                )}
-              </SplideSlide>
-              <SplideSlide>
-                {currentlyTrending && (
-                  <div className="grid grid-cols-4 gap-7 !px-5 ">
-                    {currentlyTrending.map((item, index) => {
-                      if (index > 11 && index <= 15) {
-                        return (
-                          <MovieItem
-                            details={false}
-                            item={item}
-                            index={index}
-                          />
-                        );
-                      }
-                    })}
-                  </div>
-                )}
-              </SplideSlide>
-              <SplideSlide>
-                {currentlyTrending && (
-                  <div className="grid grid-cols-4 gap-7 !px-5 ">
-                    {currentlyTrending.map((item, index) => {
-                      if (index > 15 && index <= 19) {
-                        return (
-                          <MovieItem
-                            details={false}
-                            item={item}
-                            index={index}
-                          />
-                        );
-                      }
-                    })}
-                  </div>
-                )}
-              </SplideSlide>
-            </Splide>
+            <TrendingMovies currentlyTrending={currentlyTrending} />
           </div>
         </div>
         <div className="bg-[#161d2f] w-[80%] !mx-auto rounded-xl !py-3 !px-5 !my-10 flex justify-between items-center">

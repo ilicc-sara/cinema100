@@ -13,3 +13,18 @@ export type singleMovie = {
   writers: string[];
   imdbid: string;
 };
+
+export type FIlters = {
+  search: string;
+  activeGenre: string;
+};
+
+export type MovieItemProps = {
+  item: singleMovie;
+  index: number;
+  details: boolean;
+};
+
+export type TrendingProps = {
+  currentlyTrending: singleMovie[] | undefined;
+};
