@@ -20,3 +20,29 @@ body {
   color: #bfbfbf;
   font-size: 24px;
 }
+
+.splide {
+}
+
+.splide__pagination {
+  counter-reset: pagination-num;
+  position: static !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.splide__pagination__page {
+  width: 30px;
+  height: 30px;
+  border-radius: none;
+}
+
+.splide__pagination__page.is-active {
+  background-color: #fc4747;
+}
+
+.splide__pagination__page:before {
+  counter-increment: pagination-num;
+  content: counter(pagination-num);
+}
