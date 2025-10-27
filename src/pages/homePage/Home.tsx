@@ -11,8 +11,9 @@ function Home() {
   const [activeMovies, setActiveMovies] = useState<singleMovie[] | null>(null);
 
   const [genres, setGenres] = useState<string[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
 
-  const curentlyTrending = movies?.filter(
+  const currentlyTrending = movies?.filter(
     (movie) => movie.rank >= 55 && movie.rank < 75
   );
 
@@ -82,6 +83,7 @@ function Home() {
   }, []);
 
   const selectData = async () => {
+    setLoading(true);
     let genresArr: string[] = [];
     try {
       const { error, data } = await supabase.from("moviesData").select();
@@ -89,6 +91,7 @@ function Home() {
       console.log("data from select data: ", data);
       setMovies(data);
       setActiveMovies(data);
+      setLoading(false);
 
       if (data) {
         for (const element of data) {
@@ -99,9 +102,11 @@ function Home() {
 
       if (error) {
         console.error("Error adding task: ", error.message);
+        setLoading(false);
       }
     } catch (error: any) {
       console.error("Error adding task: ", error.message);
+      setLoading(false);
     }
   };
 
@@ -137,7 +142,8 @@ function Home() {
             Currently trending
           </h1>
 
-          <div className="w-[80%] !mx-auto">
+          <div className="w-[80%] !mx-auto relative">
+            {loading && <div className="loader"></div>}
             <Splide
               className="currently-trending-slider"
               options={{
@@ -148,9 +154,9 @@ function Home() {
               }}
             >
               <SplideSlide>
-                {activeMovies && (
+                {currentlyTrending && (
                   <div className="grid grid-cols-4 gap-7 !px-5 ">
-                    {activeMovies.map((item, index) => {
+                    {currentlyTrending.map((item, index) => {
                       if (index <= 3) {
                         return (
                           <MovieItem
@@ -165,9 +171,9 @@ function Home() {
                 )}
               </SplideSlide>
               <SplideSlide>
-                {activeMovies && (
+                {currentlyTrending && (
                   <div className="grid grid-cols-4 gap-7 !px-5 ">
-                    {activeMovies.map((item, index) => {
+                    {currentlyTrending.map((item, index) => {
                       if (index > 3 && index <= 7) {
                         return (
                           <MovieItem
@@ -182,9 +188,9 @@ function Home() {
                 )}
               </SplideSlide>
               <SplideSlide>
-                {activeMovies && (
+                {currentlyTrending && (
                   <div className="grid grid-cols-4 gap-7 !px-5 ">
-                    {activeMovies.map((item, index) => {
+                    {currentlyTrending.map((item, index) => {
                       if (index > 7 && index <= 11) {
                         return (
                           <MovieItem
@@ -199,9 +205,9 @@ function Home() {
                 )}
               </SplideSlide>
               <SplideSlide>
-                {activeMovies && (
+                {currentlyTrending && (
                   <div className="grid grid-cols-4 gap-7 !px-5 ">
-                    {activeMovies.map((item, index) => {
+                    {currentlyTrending.map((item, index) => {
                       if (index > 11 && index <= 15) {
                         return (
                           <MovieItem
@@ -216,9 +222,9 @@ function Home() {
                 )}
               </SplideSlide>
               <SplideSlide>
-                {activeMovies && (
+                {currentlyTrending && (
                   <div className="grid grid-cols-4 gap-7 !px-5 ">
-                    {activeMovies.map((item, index) => {
+                    {currentlyTrending.map((item, index) => {
                       if (index > 15 && index <= 19) {
                         return (
                           <MovieItem
@@ -285,7 +291,8 @@ function Home() {
         <h1 className="text-left text-[#e8f0fe] w-[80%] !mx-auto text-2xl font-medium !mb-5">
           Top 100
         </h1>
-        <div className="w-[80%] !mx-auto">
+        <div className="w-[80%] !mx-auto relative">
+          {loading && <div className="loader"></div>}
           <Splide
             options={{
               type: "slide",
@@ -386,19 +393,21 @@ function Home() {
                 </div>
               )}
             </SplideSlide>
-            <SplideSlide>
-              {activeMovies && (
-                <div className="grid grid-cols-4 gap-7 !px-5 ">
-                  {activeMovies.map((item, index) => {
-                    if (index > 83 && index <= 95) {
-                      return (
-                        <MovieItem details={true} item={item} index={index} />
-                      );
-                    }
-                  })}
-                </div>
-              )}
-            </SplideSlide>
+            {activeMovies && activeMovies.length > 83 && (
+              <SplideSlide>
+                {activeMovies && (
+                  <div className="grid grid-cols-4 gap-7 !px-5 ">
+                    {activeMovies.map((item, index) => {
+                      if (index > 83 && index <= 95) {
+                        return (
+                          <MovieItem details={true} item={item} index={index} />
+                        );
+                      }
+                    })}
+                  </div>
+                )}
+              </SplideSlide>
+            )}
             {activeMovies && activeMovies.length > 95 && (
               <SplideSlide>
                 {activeMovies && (

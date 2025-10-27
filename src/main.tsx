@@ -8,7 +8,7 @@ import Auth from "./pages/authPage/Index.tsx";
 import Home from "./pages/homePage/Home.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import SharedLayout from "./layouts/SharedLayout.tsx";
-import SingleMovie from "./pages/singleMovie.tsx";
+import SingleMovie from "./pages/singleMovie/singleMovie.tsx";
 
 const router = createBrowserRouter([
   {
