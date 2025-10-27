@@ -22,6 +22,7 @@ body {
 }
 
 .splide {
+  height: fit-content;
 }
 
 .splide__pagination {
@@ -30,6 +31,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 2rem 0;
+  gap: 5px;
 }
 
 .splide__pagination__page {
@@ -46,3 +49,15 @@ body {
   counter-increment: pagination-num;
   content: counter(pagination-num);
 }
+
+/* .splide__arrows splide__arrows--ltr {
+  position: static !important;
+}
+
+.splide__arrow splide__arrow--prev {
+  position: static !important;
+}
+
+.splide__arrow splide__arrow--next {
+  position: static !important;
+} */

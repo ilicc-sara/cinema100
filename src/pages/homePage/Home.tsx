@@ -11,6 +11,10 @@ function Home() {
 
   const [genres, setGenres] = useState<string[]>([]);
 
+  const curentlyTrending = movies?.filter(
+    (movie) => movie.rank >= 55 && movie.rank < 75
+  );
+
   type FIlters = {
     search: string;
     activeGenre: string;
@@ -156,10 +160,106 @@ function Home() {
       </nav>
       <section>
         <div>
-          <h1 className="text-left text-[#e8f0fe] w-[80%] !mx-auto text-2xl font-medium !mb-5">
+          <h1 className="text-left text-[#e8f0fe] w-[80%] !mx-auto text-2xl font-medium !my-5">
             Currently trending
           </h1>
-          <div></div>
+
+          <div className="w-[80%] !mx-auto">
+            <Splide
+              options={{
+                type: "slide",
+                perPage: 1,
+                gap: "1rem",
+                autoplay: false,
+              }}
+            >
+              <SplideSlide>
+                {activeMovies && (
+                  <div className="grid grid-cols-4 gap-7 !px-5 ">
+                    {activeMovies.map((item, index) => {
+                      if (index <= 3) {
+                        return (
+                          <MovieItem
+                            details={false}
+                            item={item}
+                            index={index}
+                          />
+                        );
+                      }
+                    })}
+                  </div>
+                )}
+              </SplideSlide>
+              <SplideSlide>
+                {activeMovies && (
+                  <div className="grid grid-cols-4 gap-7 !px-5 ">
+                    {activeMovies.map((item, index) => {
+                      if (index > 3 && index <= 7) {
+                        return (
+                          <MovieItem
+                            details={false}
+                            item={item}
+                            index={index}
+                          />
+                        );
+                      }
+                    })}
+                  </div>
+                )}
+              </SplideSlide>
+              <SplideSlide>
+                {activeMovies && (
+                  <div className="grid grid-cols-4 gap-7 !px-5 ">
+                    {activeMovies.map((item, index) => {
+                      if (index > 7 && index <= 11) {
+                        return (
+                          <MovieItem
+                            details={false}
+                            item={item}
+                            index={index}
+                          />
+                        );
+                      }
+                    })}
+                  </div>
+                )}
+              </SplideSlide>
+              <SplideSlide>
+                {activeMovies && (
+                  <div className="grid grid-cols-4 gap-7 !px-5 ">
+                    {activeMovies.map((item, index) => {
+                      if (index > 11 && index <= 15) {
+                        return (
+                          <MovieItem
+                            details={false}
+                            item={item}
+                            index={index}
+                          />
+                        );
+                      }
+                    })}
+                  </div>
+                )}
+              </SplideSlide>
+              <SplideSlide>
+                {activeMovies && (
+                  <div className="grid grid-cols-4 gap-7 !px-5 ">
+                    {activeMovies.map((item, index) => {
+                      if (index > 15 && index <= 19) {
+                        return (
+                          <MovieItem
+                            details={false}
+                            item={item}
+                            index={index}
+                          />
+                        );
+                      }
+                    })}
+                  </div>
+                )}
+              </SplideSlide>
+            </Splide>
+          </div>
         </div>
         <div className="bg-[#161d2f] w-[80%] !mx-auto rounded-xl !py-3 !px-5 !my-10 flex justify-between items-center">
           <div className="bg-[#bfbfbf] w-[fit-content] flex items-center justify-between !py-1 rounded-lg cursor-pointer active:shadow-[0_0_0_5px_rgb(252,71,71)] ">
@@ -199,7 +299,7 @@ function Home() {
             <i className="bxr  bxs-bookmark"></i>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              fill="#bfbfbf"
+              fill="#fc4747"
               width="28"
               height="28"
             >
@@ -211,7 +311,7 @@ function Home() {
         <h1 className="text-left text-[#e8f0fe] w-[80%] !mx-auto text-2xl font-medium !mb-5">
           Top 100
         </h1>
-        <div className=" w-[80%]  !mx-auto ">
+        <div className="w-[80%] !mx-auto">
           <Splide
             options={{
               type: "slide",
@@ -225,7 +325,9 @@ function Home() {
                 <div className="grid grid-cols-4 gap-7 !px-5 ">
                   {activeMovies.map((item, index) => {
                     if (index <= 11) {
-                      return <MovieItem item={item} index={index} />;
+                      return (
+                        <MovieItem details={true} item={item} index={index} />
+                      );
                     }
                   })}
                 </div>
@@ -236,7 +338,9 @@ function Home() {
                 <div className="grid grid-cols-4 gap-7 !px-5 ">
                   {activeMovies.map((item, index) => {
                     if (index > 11 && index <= 23) {
-                      return <MovieItem item={item} index={index} />;
+                      return (
+                        <MovieItem details={true} item={item} index={index} />
+                      );
                     }
                   })}
                 </div>
@@ -247,7 +351,9 @@ function Home() {
                 <div className="grid grid-cols-4 gap-7 !px-5 ">
                   {activeMovies.map((item, index) => {
                     if (index > 23 && index <= 35) {
-                      return <MovieItem item={item} index={index} />;
+                      return (
+                        <MovieItem details={true} item={item} index={index} />
+                      );
                     }
                   })}
                 </div>
@@ -258,7 +364,9 @@ function Home() {
                 <div className="grid grid-cols-4 gap-7 !px-5 ">
                   {activeMovies.map((item, index) => {
                     if (index > 35 && index <= 47) {
-                      return <MovieItem item={item} index={index} />;
+                      return (
+                        <MovieItem details={true} item={item} index={index} />
+                      );
                     }
                   })}
                 </div>
@@ -269,7 +377,9 @@ function Home() {
                 <div className="grid grid-cols-4 gap-7 !px-5 ">
                   {activeMovies.map((item, index) => {
                     if (index > 47 && index <= 59) {
-                      return <MovieItem item={item} index={index} />;
+                      return (
+                        <MovieItem details={true} item={item} index={index} />
+                      );
                     }
                   })}
                 </div>
@@ -280,7 +390,9 @@ function Home() {
                 <div className="grid grid-cols-4 gap-7 !px-5 ">
                   {activeMovies.map((item, index) => {
                     if (index > 59 && index <= 71) {
-                      return <MovieItem item={item} index={index} />;
+                      return (
+                        <MovieItem details={true} item={item} index={index} />
+                      );
                     }
                   })}
                 </div>
@@ -291,7 +403,9 @@ function Home() {
                 <div className="grid grid-cols-4 gap-7 !px-5 ">
                   {activeMovies.map((item, index) => {
                     if (index > 71 && index <= 83) {
-                      return <MovieItem item={item} index={index} />;
+                      return (
+                        <MovieItem details={true} item={item} index={index} />
+                      );
                     }
                   })}
                 </div>
@@ -302,7 +416,9 @@ function Home() {
                 <div className="grid grid-cols-4 gap-7 !px-5 ">
                   {activeMovies.map((item, index) => {
                     if (index > 83 && index <= 95) {
-                      return <MovieItem item={item} index={index} />;
+                      return (
+                        <MovieItem details={true} item={item} index={index} />
+                      );
                     }
                   })}
                 </div>
@@ -314,7 +430,9 @@ function Home() {
                   <div className="grid grid-cols-4 gap-7 !px-5">
                     {activeMovies.map((item, index) => {
                       if (index > 95) {
-                        return <MovieItem item={item} index={index} />;
+                        return (
+                          <MovieItem details={true} item={item} index={index} />
+                        );
                       }
                     })}
                   </div>

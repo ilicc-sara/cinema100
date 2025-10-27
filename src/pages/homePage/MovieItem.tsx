@@ -3,14 +3,15 @@ import type { singleMovie } from "../../types";
 type MovieItemProps = {
   item: singleMovie;
   index: number;
+  details: boolean;
 };
 
-function MovieItem({ item, index }: MovieItemProps) {
+function MovieItem({ item, index, details }: MovieItemProps) {
   return (
     <article className="text-[#e8f0fe] flex flex-col gap-2">
       <img className="" key={index} src={item.image} />
 
-      <div className="!mt-auto">
+      <div className={`!mt-auto ${details ? "visible" : "invisible"}`}>
         <p className="text-base text-left font-medium w-full truncate">
           {" "}
           {item.title}{" "}
