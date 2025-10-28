@@ -4,8 +4,6 @@ import YouTube from "react-youtube";
 function SingleMovie() {
   const location = useLocation();
 
-  console.log(location.state);
-
   return (
     <section>
       <div className="w-[70%] !mx-auto flex text-[#e8f0fe] text-left justify-between items-center !my-5">
