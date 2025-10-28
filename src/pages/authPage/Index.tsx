@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router";
+import Button from "../../UI/Button";
 import Input from "../../UI/Input";
 
 function Auth() {
@@ -32,9 +33,8 @@ function Auth() {
             value={password}
             handleOnChange={(e) => setPassword(e.target.value)}
           />
-          <button className="bg-[#fc4747] w-full rounded h-9 text-[#e8f0fe]">
-            Log In
-          </button>
+
+          <Button>Log In</Button>
 
           <div className="flex flex-col gap-2">
             <p className="text-[#e8f0fe]">
@@ -47,7 +47,7 @@ function Auth() {
               </span>
             </p>
             <p className="text-[#e8f0fe]">
-              Or,{" "}
+              Or,
               <Link to="/home">
                 <span className="text-[#fc4747] cursor-pointer">
                   Log in as guest
@@ -87,9 +87,8 @@ function Auth() {
             value={password}
             handleOnChange={(e) => setPassword(e.target.value)}
           />
-          <button className="bg-[#fc4747] w-full rounded h-9 text-[#e8f0fe]">
-            Sign Up
-          </button>
+
+          <Button>Sign Up</Button>
 
           <div className="flex flex-col gap-2">
             <p className="text-[#e8f0fe]">
@@ -98,7 +97,6 @@ function Auth() {
                 onClick={() => setLogIn(true)}
                 className="text-[#fc4747] cursor-pointer"
               >
-                {" "}
                 Log In
               </span>
             </p>
