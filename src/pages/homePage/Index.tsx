@@ -55,9 +55,9 @@ function Home() {
                 image: item.image,
                 description: item.description,
                 trailer: item.trailer,
-                genre: item.genre,
-                director: item.director,
-                writers: item.writers,
+                genre: item.genre.join(","),
+                director: item.director.join(","),
+                writers: item.writers.join(","),
                 imdbid: item.imdbid,
               },
             ])
