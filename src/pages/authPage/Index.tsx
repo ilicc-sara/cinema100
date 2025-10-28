@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router";
+import Input from "../../UI/Input";
 
 function Auth() {
   const [logIn, setLogIn] = useState<boolean>(true);
@@ -18,19 +19,18 @@ function Auth() {
       {logIn && (
         <form className="w-104 h-[fit-content] !px-14 !py-9 flex flex-col bg-[#161d2f] !mx-auto items-center gap-5 rounded-xl !my-5">
           <h1 className="text-[#e8f0fe] text-3xl self-start">Log In</h1>
-          <input
-            className="bg-[#e8f0fe] w-full rounded h-11 !pl-3"
+          <Input
             type="text"
             placeholder="Email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            handleOnChange={(e) => setEmail(e.target.value)}
           />
-          <input
-            className="bg-[#e8f0fe] w-full rounded h-11 !pl-3"
+
+          <Input
             type="password"
             placeholder="Password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            handleOnChange={(e) => setPassword(e.target.value)}
           />
           <button className="bg-[#fc4747] w-full rounded h-9 text-[#e8f0fe]">
             Log In
@@ -60,33 +60,32 @@ function Auth() {
       {!logIn && (
         <form className="w-104 h-[fit-content] !px-14 !py-9 flex flex-col bg-[#161d2f] !mx-auto items-center gap-5 rounded-xl !my-5">
           <h1 className="text-[#e8f0fe] text-3xl self-start">Sign Up</h1>
-          <input
-            className="bg-[#e8f0fe] w-full rounded h-11 !pl-3"
+
+          <Input
             type="text"
             placeholder="Name"
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            handleOnChange={(e) => setName(e.target.value)}
           />
-          <input
-            className="bg-[#e8f0fe] w-full rounded h-11 !pl-3"
+          <Input
             type="text"
             placeholder="Last Name"
             value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
+            handleOnChange={(e) => setLastName(e.target.value)}
           />
-          <input
-            className="bg-[#e8f0fe] w-full rounded h-11 !pl-3"
+
+          <Input
             type="text"
             placeholder="Email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            handleOnChange={(e) => setEmail(e.target.value)}
           />
-          <input
-            className="bg-[#e8f0fe] w-full rounded h-11 !pl-3"
+
+          <Input
             type="password"
             placeholder="Password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            handleOnChange={(e) => setPassword(e.target.value)}
           />
           <button className="bg-[#fc4747] w-full rounded h-9 text-[#e8f0fe]">
             Sign Up
