@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { data } from "../../data[1]";
 import { supabase } from "../../supabase-client";
-import type { FIlters, singleMovie } from "../../types";
+import type { Filters, singleMovie } from "../../types";
 import TrendingMovies from "./components/TrendingMovies";
 import Movies from "./components/Movies";
 
@@ -12,7 +12,7 @@ function Home() {
   const [genres, setGenres] = useState<string[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
-  const [filters, setFilters] = useState<FIlters>({
+  const [filters, setFilters] = useState<Filters>({
     search: "",
     activeGenre: "all",
   });

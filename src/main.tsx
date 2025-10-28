@@ -5,7 +5,7 @@ import "./App.css";
 import { Provider } from "react-redux";
 import { store } from "./redux/store.tsx";
 import Auth from "./pages/authPage/Index.tsx";
-import Home from "./pages/homePage/Home.tsx";
+import Home from "./pages/homePage/Index.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import SharedLayout from "./layouts/SharedLayout.tsx";
 import SingleMovie from "./pages/singleMovie/singleMovie.tsx";

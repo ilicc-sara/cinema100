@@ -14,7 +14,7 @@ export type singleMovie = {
   imdbid: string;
 };
 
-export type FIlters = {
+export type Filters = {
   search: string;
   activeGenre: string;
 };
