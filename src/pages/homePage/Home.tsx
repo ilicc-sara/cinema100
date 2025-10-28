@@ -132,7 +132,7 @@ function Home() {
     <>
       <section>
         <div>
-          <h1 className="text-left text-[#e8f0fe] w-[80%] !mx-auto text-2xl font-medium !my-5">
+          <h1 className="text-left text-[#e8f0fe] w-[70%] !mx-auto text-2xl font-medium !my-5">
             Currently trending
           </h1>
 

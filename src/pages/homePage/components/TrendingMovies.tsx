@@ -15,7 +15,7 @@ function TrendingMovies({ currentlyTrending }: TrendingProps) {
     >
       <SplideSlide>
         {currentlyTrending && (
-          <div className="grid grid-cols-4 gap-7 !px-5 ">
+          <div className="grid grid-cols-4 gap-7 !px-5 w-[90%] !mx-auto">
             {currentlyTrending.map((item, index) => {
               if (index <= 3) {
                 return <MovieItem details={false} item={item} index={index} />;
@@ -26,7 +26,7 @@ function TrendingMovies({ currentlyTrending }: TrendingProps) {
       </SplideSlide>
       <SplideSlide>
         {currentlyTrending && (
-          <div className="grid grid-cols-4 gap-7 !px-5 ">
+          <div className="grid grid-cols-4 gap-7 !px-5 w-[90%] !mx-auto">
             {currentlyTrending.map((item, index) => {
               if (index > 3 && index <= 7) {
                 return <MovieItem details={false} item={item} index={index} />;
@@ -37,7 +37,7 @@ function TrendingMovies({ currentlyTrending }: TrendingProps) {
       </SplideSlide>
       <SplideSlide>
         {currentlyTrending && (
-          <div className="grid grid-cols-4 gap-7 !px-5 ">
+          <div className="grid grid-cols-4 gap-7 !px-5 w-[90%] !mx-auto">
             {currentlyTrending.map((item, index) => {
               if (index > 7 && index <= 11) {
                 return <MovieItem details={false} item={item} index={index} />;
@@ -48,7 +48,7 @@ function TrendingMovies({ currentlyTrending }: TrendingProps) {
       </SplideSlide>
       <SplideSlide>
         {currentlyTrending && (
-          <div className="grid grid-cols-4 gap-7 !px-5 ">
+          <div className="grid grid-cols-4 gap-7 !px-5 w-[90%] !mx-auto">
             {currentlyTrending.map((item, index) => {
               if (index > 11 && index <= 15) {
                 return <MovieItem details={false} item={item} index={index} />;
@@ -59,7 +59,7 @@ function TrendingMovies({ currentlyTrending }: TrendingProps) {
       </SplideSlide>
       <SplideSlide>
         {currentlyTrending && (
-          <div className="grid grid-cols-4 gap-7 !px-5 ">
+          <div className="grid grid-cols-4 gap-7 !px-5 w-[90%] !mx-auto">
             {currentlyTrending.map((item, index) => {
               if (index > 15 && index <= 19) {
                 return <MovieItem details={false} item={item} index={index} />;

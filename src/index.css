@@ -33,6 +33,11 @@ body {
   justify-content: center;
   margin: 2rem 0;
   gap: 3px;
+  /* 
+  color: #14141480;
+  color: #e8f0fe80; */
+
+  /* text-[#141414] bg-[#e8f0fe] */
 }
 
 .currently-trending-slider .splide__pagination__page:before {
