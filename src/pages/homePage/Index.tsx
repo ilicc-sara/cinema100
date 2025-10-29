@@ -21,60 +21,60 @@ function Home() {
     (movie) => movie.rank >= 55 && movie.rank < 75
   );
 
-  useEffect(() => {
-    const deleteData = () => {
-      data.forEach(async (item) => {
-        try {
-          const { error } = await supabase
-            .from("moviesData")
-            .delete()
-            .eq("rank", item.rank);
+  // useEffect(() => {
+  //   const deleteData = () => {
+  //     data.forEach(async (item) => {
+  //       try {
+  //         const { error } = await supabase
+  //           .from("moviesData")
+  //           .delete()
+  //           .eq("rank", item.rank);
 
-          if (error) {
-            console.error("Error deleting task: ", error.message);
-          }
-        } catch (error: any) {
-          console.error("Error deleting task: ", error.message);
-        }
-      });
-    };
+  //         if (error) {
+  //           console.error("Error deleting task: ", error.message);
+  //         }
+  //       } catch (error: any) {
+  //         console.error("Error deleting task: ", error.message);
+  //       }
+  //     });
+  //   };
 
-    const fetchData = () => {
-      data.forEach(async (item) => {
-        try {
-          const { error } = await supabase
-            .from("moviesData")
-            .insert([
-              {
-                rank: item.rank,
-                title: item.title,
-                thumbnail: item.thumbnail,
-                rating: item.rating,
-                itemID: item.id,
-                year: item.year,
-                image: item.image,
-                description: item.description,
-                trailer: item.trailer,
-                genre: item.genre.join(","),
-                director: item.director.join(","),
-                writers: item.writers.join(","),
-                imdbid: item.imdbid,
-              },
-            ])
-            .single();
+  //   const fetchData = () => {
+  //     data.forEach(async (item) => {
+  //       try {
+  //         const { error } = await supabase
+  //           .from("moviesData")
+  //           .insert([
+  //             {
+  //               rank: item.rank,
+  //               title: item.title,
+  //               thumbnail: item.thumbnail,
+  //               rating: item.rating,
+  //               itemID: item.id,
+  //               year: item.year,
+  //               image: item.image,
+  //               description: item.description,
+  //               trailer: item.trailer,
+  //               genre: item.genre.join(","),
+  //               director: item.director.join(","),
+  //               writers: item.writers.join(","),
+  //               imdbid: item.imdbid,
+  //             },
+  //           ])
+  //           .single();
 
-          if (error) {
-            console.error("Error adding task: ", error.message);
-          }
-        } catch (error: any) {
-          console.error("Error adding task: ", error.message);
-        }
-      });
-    };
+  //         if (error) {
+  //           console.error("Error adding task: ", error.message);
+  //         }
+  //       } catch (error: any) {
+  //         console.error("Error adding task: ", error.message);
+  //       }
+  //     });
+  //   };
 
-    deleteData();
-    fetchData();
-  }, []);
+  //   deleteData();
+  //   fetchData();
+  // }, []);
 
   const selectData = async () => {
     setLoading(true);
@@ -128,6 +128,10 @@ function Home() {
     setActiveMovies(filteredMoviesTemp);
   }, [filters]);
 
+  function handleSumbit(e: any) {
+    e.preventDefault();
+  }
+
   return (
     <>
       <section>
@@ -143,17 +147,20 @@ function Home() {
         </div>
         <div className="bg-[#161d2f] w-[80%] !mx-auto rounded-xl !py-3 !px-5 !my-10 flex justify-between items-center">
           <div className="bg-[#bfbfbf] w-[fit-content] flex items-center justify-between !py-1 rounded-lg cursor-pointer active:shadow-[0_0_0_5px_rgb(252,71,71)] ">
-            <input
-              value={filters.search}
-              onChange={(e) =>
-                setFilters((prev) => {
-                  return { ...prev, search: e.target.value };
-                })
-              }
-              className="!pl-2 focus:outline-none focus:ring-0"
-              type="text"
-              placeholder="search"
-            />
+            <form onSubmit={handleSumbit}>
+              <input
+                value={filters.search}
+                onChange={(e) =>
+                  setFilters((prev) => {
+                    return { ...prev, search: e.target.value };
+                  })
+                }
+                className="!pl-2 focus:outline-none focus:ring-0"
+                type="text"
+                placeholder="search"
+              />
+              <button type="submit" className="hidden"></button>
+            </form>
             <button className="bg-[#bfbfbf] text-center !mx-2">
               <i className="bxr  bx-search"></i>
             </button>

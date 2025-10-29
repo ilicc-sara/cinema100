@@ -91,3 +91,16 @@ export default defineConfig([
     //   console.log(data);
     // };
 ```
+
+napraviti tabelu trending movies
+u nju ubaciti 20 filmova
+
+za filmove ispod napraviti paginaciju
+filmovi koji su potrebni za tu str
+
+za prvu stranicu dohvatiti samo od 1. do 10. filma
+za drugu isto tako ...
+
+search- za pretrazivanje samo jedan film iz baze
+
+pogledati kako povezati tabele u postgres ql bazi podataka
