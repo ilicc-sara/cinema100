@@ -98,11 +98,11 @@ function Home() {
       }
 
       if (error) {
-        console.error("Error adding task: ", error.message);
+        console.error("Error selecting data: ", error.message);
         setLoading(false);
       }
     } catch (error: any) {
-      console.error("Error adding task: ", error.message);
+      console.error("Error selecting data: ", error.message);
       setLoading(false);
     }
   };
@@ -135,6 +135,24 @@ function Home() {
     e.preventDefault();
   }
 
+  const findCertainMovie = async () => {
+    try {
+      const { error, data } = await supabase
+        .from("moviesData")
+        .select()
+        .eq("title", "City of God")
+        .single();
+
+      console.log("single movie", data);
+
+      if (error) {
+        console.error("Error finding single movie: ", error.message);
+      }
+    } catch (error: any) {
+      console.error("Error finding single movie: ", error.message);
+    }
+  };
+
   return (
     <>
       <section>
@@ -142,6 +160,13 @@ function Home() {
           <h1 className="text-left text-[#e8f0fe] w-[70%] !mx-auto text-2xl font-medium !my-5">
             Currently trending
           </h1>
+
+          <button
+            onClick={() => findCertainMovie()}
+            className="bg-[#fff] !my-5 cursor-pointer rounded"
+          >
+            Find Single Movie
+          </button>
 
           <div className="w-[80%] !mx-auto relative">
             {loading && <div className="loader"></div>}
