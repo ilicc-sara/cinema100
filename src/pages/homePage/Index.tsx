@@ -22,7 +22,7 @@ function Home() {
     (movie) => movie.rank >= 55 && movie.rank < 75
   );
 
-  const { refreshFn }: any = useBaseData();
+  const refreshFn = useBaseData();
 
   // useEffect(() => {
   //   const deleteData = () => {
@@ -148,6 +148,7 @@ function Home() {
             <TrendingMovies currentlyTrending={currentlyTrending} />
           </div>
         </div>
+        {/* <button onClick={() => refreshFn()}>Refresh</button> */}
         <div className="bg-[#161d2f] w-[80%] !mx-auto rounded-xl !py-3 !px-5 !my-10 flex justify-between items-center">
           <div className="bg-[#bfbfbf] w-[fit-content] flex items-center justify-between !py-1 rounded-lg cursor-pointer active:shadow-[0_0_0_5px_rgb(252,71,71)] ">
             <form onSubmit={handleSumbit}>
