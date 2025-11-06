@@ -12,12 +12,12 @@ function MovieItem({ item, index, details }: MovieItemProps) {
         />
         <div className="absolute inset-0 bg-[rgba(0,0,0,0.4)] opacity-0 hover:opacity-100 transition-opacity duration-300 z-10 flex items-center justify-center">
           <Link to={item.imdbid} relative="path" state={item}>
-            <button className="text-[#141414] bg-[#e8f0fe80] hover:text-[#e8f0fe] hover:bg-[#14141480] transition-all duration-200 flex justify-center items-center gap-1 !px-2 !py-1 rounded-xl">
+            <button className="text-[#141414] bg-[#e8f0fe80] hover:text-[#e8f0fe] hover:bg-[#14141480] transition-all duration-200 flex justify-center items-center gap-1 !px-2 !py-1 rounded-xl cursor-pointer">
               <span>See more</span> <i className="bxr  bx-search"></i>
             </button>
           </Link>
 
-          <button className="absolute top-[10px] right-[10px] z-20 text-[#141414] bg-[#e8f0fe80] hover:text-[#e8f0fe] hover:bg-[#14141480] transition-all duration-200 flex justify-center items-center gap-1 !p-2 rounded-full">
+          <button className="absolute top-[10px] right-[10px] z-20 text-[#141414] bg-[#e8f0fe80] hover:text-[#e8f0fe] hover:bg-[#14141480] transition-all duration-200 flex justify-center items-center gap-1 !p-2 rounded-full cursor-pointer">
             <i className="bxr  bx-bookmark"></i>
           </button>
         </div>
