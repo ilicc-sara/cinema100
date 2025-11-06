@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { data } from "../../data[1]";
 import { supabase } from "../../supabase-client";
+import useBaseData from "./useBaseData";
 import type { Filters, singleMovie } from "../../types";
 import TrendingMovies from "./components/TrendingMovies";
 import Movies from "./components/Movies";
@@ -20,6 +21,8 @@ function Home() {
   const currentlyTrending = movies?.filter(
     (movie) => movie.rank >= 55 && movie.rank < 75
   );
+
+  const { refreshFn }: any = useBaseData();
 
   // useEffect(() => {
   //   const deleteData = () => {

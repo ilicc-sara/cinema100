@@ -24,72 +24,86 @@ function Movies({ activeMovies }: ActiveMoviesProps) {
           </div>
         )}
       </SplideSlide>
-      <SplideSlide>
-        {activeMovies && (
-          <div className="grid grid-cols-4 gap-7 !px-5 ">
-            {activeMovies.map((item, index) => {
-              if (index > 11 && index <= 23) {
-                return <MovieItem details={true} item={item} index={index} />;
-              }
-            })}
-          </div>
-        )}
-      </SplideSlide>
-      <SplideSlide>
-        {activeMovies && (
-          <div className="grid grid-cols-4 gap-7 !px-5 ">
-            {activeMovies.map((item, index) => {
-              if (index > 23 && index <= 35) {
-                return <MovieItem details={true} item={item} index={index} />;
-              }
-            })}
-          </div>
-        )}
-      </SplideSlide>
-      <SplideSlide>
-        {activeMovies && (
-          <div className="grid grid-cols-4 gap-7 !px-5 ">
-            {activeMovies.map((item, index) => {
-              if (index > 35 && index <= 47) {
-                return <MovieItem details={true} item={item} index={index} />;
-              }
-            })}
-          </div>
-        )}
-      </SplideSlide>
-      <SplideSlide>
-        {activeMovies && (
-          <div className="grid grid-cols-4 gap-7 !px-5 ">
-            {activeMovies.map((item, index) => {
-              if (index > 47 && index <= 59) {
-                return <MovieItem details={true} item={item} index={index} />;
-              }
-            })}
-          </div>
-        )}
-      </SplideSlide>
-      <SplideSlide>
-        {activeMovies && (
-          <div className="grid grid-cols-4 gap-7 !px-5 ">
-            {activeMovies.map((item, index) => {
-              if (index > 59 && index <= 71) {
-                return <MovieItem details={true} item={item} index={index} />;
-              }
-            })}
-          </div>
-        )}
-      </SplideSlide>
-      <SplideSlide>
-        {activeMovies && (
-          <div className="grid grid-cols-4 gap-7 !px-5 ">
-            {activeMovies.map((item, index) => {
-              if (index > 71 && index <= 83) {
-                return <MovieItem details={true} item={item} index={index} />;
-              }
-            })}
-          </div>
-        )}
-      </SplideSlide>
+      {activeMovies && activeMovies.length > 11 && (
+        <SplideSlide>
+          {activeMovies && (
+            <div className="grid grid-cols-4 gap-7 !px-5 ">
+              {activeMovies.map((item, index) => {
+                if (index > 11 && index <= 23) {
+                  return <MovieItem details={true} item={item} index={index} />;
+                }
+              })}
+            </div>
+          )}
+        </SplideSlide>
+      )}
+      {activeMovies && activeMovies.length > 23 && (
+        <SplideSlide>
+          {activeMovies && (
+            <div className="grid grid-cols-4 gap-7 !px-5 ">
+              {activeMovies.map((item, index) => {
+                if (index > 23 && index <= 35) {
+                  return <MovieItem details={true} item={item} index={index} />;
+                }
+              })}
+            </div>
+          )}
+        </SplideSlide>
+      )}
+      {activeMovies && activeMovies.length > 35 && (
+        <SplideSlide>
+          {activeMovies && (
+            <div className="grid grid-cols-4 gap-7 !px-5 ">
+              {activeMovies.map((item, index) => {
+                if (index > 35 && index <= 47) {
+                  return <MovieItem details={true} item={item} index={index} />;
+                }
+              })}
+            </div>
+          )}
+        </SplideSlide>
+      )}
+      {activeMovies && activeMovies.length > 47 && (
+        <SplideSlide>
+          {activeMovies && (
+            <div className="grid grid-cols-4 gap-7 !px-5 ">
+              {activeMovies.map((item, index) => {
+                if (index > 47 && index <= 59) {
+                  return <MovieItem details={true} item={item} index={index} />;
+                }
+              })}
+            </div>
+          )}
+        </SplideSlide>
+      )}
+      {activeMovies && activeMovies.length > 59 && (
+        <SplideSlide>
+          {activeMovies && (
+            <div className="grid grid-cols-4 gap-7 !px-5 ">
+              {activeMovies.map((item, index) => {
+                if (index > 59 && index <= 71) {
+                  return <MovieItem details={true} item={item} index={index} />;
+                }
+              })}
+            </div>
+          )}
+        </SplideSlide>
+      )}
+
+      {activeMovies && activeMovies.length > 71 && (
+        <SplideSlide>
+          {activeMovies && (
+            <div className="grid grid-cols-4 gap-7 !px-5 ">
+              {activeMovies.map((item, index) => {
+                if (index > 71 && index <= 83) {
+                  return <MovieItem details={true} item={item} index={index} />;
+                }
+              })}
+            </div>
+          )}
+        </SplideSlide>
+      )}
+
       {activeMovies && activeMovies.length > 83 && (
         <SplideSlide>
           {activeMovies && (
