@@ -140,7 +140,10 @@ function Home() {
       const { error, data } = await supabase
         .from("moviesData")
         .select()
-        .eq("title", "City of God")
+        // .overlaps("title", "City of God")
+        .textSearch("title", `'city'`, {
+          config: "english",
+        })
         .single();
 
       console.log("single movie", data);
