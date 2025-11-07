@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { data } from "../../data[1]";
 import { supabase } from "../../supabase-client";
 import useBaseData from "./useBaseData";
-import type { Filters, singleMovie } from "../../types";
+import type { singleMovie } from "../../types";
 import TrendingMovies from "./components/TrendingMovies";
 import Movies from "./components/Movies";
 import "react-toastify/dist/ReactToastify.css";
@@ -111,26 +110,6 @@ function Home() {
     selectData();
   }, []);
 
-  // useEffect(() => {
-  //   const { search, activeGenre } = filters;
-  //   if (!movies) return;
-
-  //   let filteredMoviesTemp = [...movies];
-
-  //   if (search) {
-  //     filteredMoviesTemp = filteredMoviesTemp.filter((movie) =>
-  //       movie.title.toLowerCase().includes(search.toLowerCase())
-  //     );
-  //   }
-  //   if (activeGenre !== "all") {
-  //     filteredMoviesTemp = filteredMoviesTemp.filter((movie) =>
-  //       movie.genre.includes(activeGenre)
-  //     );
-  //   }
-
-  //   setActiveMovies(filteredMoviesTemp);
-  // }, [filters]);
-
   useEffect(() => {
     if (!movies) return;
 
@@ -166,30 +145,9 @@ function Home() {
         toast.error(error.message);
       }
     } catch (error: any) {
-      console.error("Error finding single movie: ", error.message);
+      toast.error(error.message);
     }
   };
-
-  // const findCertainMovie = async () => {
-  //   try {
-  //     const { error, data } = await supabase
-  //       .from("moviesData")
-  //       .select()
-  //       .ilike("title", "%city%");
-
-  //     console.log("single movie", data);
-
-  //     if (error) {
-  //       console.error("Error finding single movie: ", error.message);
-  //     }
-  //   } catch (error: any) {
-  //     console.error("Error finding single movie: ", error.message);
-  //   }
-  // };
-
-  function showToast() {
-    toast.success("lkdnldkslkdf");
-  }
 
   return (
     <>
@@ -199,13 +157,13 @@ function Home() {
           <h1 className="text-left text-[#e8f0fe] w-[70%] !mx-auto text-2xl font-medium !my-5">
             Currently trending
           </h1>
-
+          {/* 
           <button
             onClick={() => showToast()}
             className="bg-[#fff] !my-5 cursor-pointer rounded"
           >
             Find Single Movie
-          </button>
+          </button> */}
 
           <div className="w-[80%] !mx-auto relative">
             {loading && <div className="loader"></div>}

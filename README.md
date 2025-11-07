@@ -109,3 +109,43 @@ onChange={(e) =>
 setFilters((prev) => {
 return { ...prev, search: e.target.value };
 })
+
+```// const findCertainMovie = async () => {
+  //   try {
+  //     const { error, data } = await supabase
+  //       .from("moviesData")
+  //       .select()
+  //       .ilike("title", "%city%");
+
+  //     console.log("single movie", data);
+
+  //     if (error) {
+  //       console.error("Error finding single movie: ", error.message);
+  //     }
+  //   } catch (error: any) {
+  //     console.error("Error finding single movie: ", error.message);
+  //   }
+  // };
+```
+
+```
+  // useEffect(() => {
+  //   const { search, activeGenre } = filters;
+  //   if (!movies) return;
+
+  //   let filteredMoviesTemp = [...movies];
+
+  //   if (search) {
+  //     filteredMoviesTemp = filteredMoviesTemp.filter((movie) =>
+  //       movie.title.toLowerCase().includes(search.toLowerCase())
+  //     );
+  //   }
+  //   if (activeGenre !== "all") {
+  //     filteredMoviesTemp = filteredMoviesTemp.filter((movie) =>
+  //       movie.genre.includes(activeGenre)
+  //     );
+  //   }
+
+  //   setActiveMovies(filteredMoviesTemp);
+  // }, [filters]);
+```
