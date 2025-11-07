@@ -5,6 +5,8 @@ import useBaseData from "./useBaseData";
 import type { Filters, singleMovie } from "../../types";
 import TrendingMovies from "./components/TrendingMovies";
 import Movies from "./components/Movies";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
 
 function Home() {
   const [movies, setMovies] = useState<singleMovie[] | null>(null);
@@ -154,11 +156,14 @@ function Home() {
       console.log("single movie", data?.length);
 
       if (data?.length === 0) {
-        throw new Error("No movies found");
+        setSearch("");
+        throw new Error(`No movies with this name: ${search}`);
+      } else {
+        setActiveMovies(data);
       }
 
       if (error) {
-        console.error("Error finding single movie: ", error.message);
+        toast.error(error.message);
       }
     } catch (error: any) {
       console.error("Error finding single movie: ", error.message);
@@ -182,20 +187,25 @@ function Home() {
   //   }
   // };
 
+  function showToast() {
+    toast.success("lkdnldkslkdf");
+  }
+
   return (
     <>
       <section>
+        <ToastContainer position="top-center" />
         <div>
           <h1 className="text-left text-[#e8f0fe] w-[70%] !mx-auto text-2xl font-medium !my-5">
             Currently trending
           </h1>
 
-          {/* <button
-            onClick={() => findCertainMovie()}
+          <button
+            onClick={() => showToast()}
             className="bg-[#fff] !my-5 cursor-pointer rounded"
           >
             Find Single Movie
-          </button> */}
+          </button>
 
           <div className="w-[80%] !mx-auto relative">
             {loading && <div className="loader"></div>}
