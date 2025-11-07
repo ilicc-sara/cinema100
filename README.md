@@ -104,3 +104,8 @@ za drugu isto tako ...
 search- za pretrazivanje samo jedan film iz baze
 
 pogledati kako povezati tabele u postgres ql bazi podataka
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+onChange={(e) =>
+setFilters((prev) => {
+return { ...prev, search: e.target.value };
+})

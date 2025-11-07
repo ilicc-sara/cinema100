@@ -13,10 +13,8 @@ function Home() {
   const [genres, setGenres] = useState<string[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
-  const [filters, setFilters] = useState<Filters>({
-    search: "",
-    activeGenre: "all",
-  });
+  const [search, setSearch] = useState<string>("");
+  const [activeGenre, setActiveGenre] = useState<string>("all");
 
   const currentlyTrending = movies?.filter(
     (movie) => movie.rank >= 55 && movie.rank < 75
@@ -111,17 +109,31 @@ function Home() {
     selectData();
   }, []);
 
+  // useEffect(() => {
+  //   const { search, activeGenre } = filters;
+  //   if (!movies) return;
+
+  //   let filteredMoviesTemp = [...movies];
+
+  //   if (search) {
+  //     filteredMoviesTemp = filteredMoviesTemp.filter((movie) =>
+  //       movie.title.toLowerCase().includes(search.toLowerCase())
+  //     );
+  //   }
+  //   if (activeGenre !== "all") {
+  //     filteredMoviesTemp = filteredMoviesTemp.filter((movie) =>
+  //       movie.genre.includes(activeGenre)
+  //     );
+  //   }
+
+  //   setActiveMovies(filteredMoviesTemp);
+  // }, [filters]);
+
   useEffect(() => {
-    const { search, activeGenre } = filters;
     if (!movies) return;
 
     let filteredMoviesTemp = [...movies];
 
-    if (search) {
-      filteredMoviesTemp = filteredMoviesTemp.filter((movie) =>
-        movie.title.toLowerCase().includes(search.toLowerCase())
-      );
-    }
     if (activeGenre !== "all") {
       filteredMoviesTemp = filteredMoviesTemp.filter((movie) =>
         movie.genre.includes(activeGenre)
@@ -129,24 +141,21 @@ function Home() {
     }
 
     setActiveMovies(filteredMoviesTemp);
-  }, [filters]);
+  }, [activeGenre]);
 
-  function handleSumbit(e: any) {
+  const handleSumbit = async (e: any) => {
     e.preventDefault();
-  }
-
-  const findCertainMovie = async () => {
     try {
       const { error, data } = await supabase
         .from("moviesData")
         .select()
-        // .overlaps("title", "City of God")
-        .textSearch("title", `'city'`, {
-          config: "english",
-        })
-        .single();
+        .ilike("title", `%${search}%`);
 
-      console.log("single movie", data);
+      console.log("single movie", data?.length);
+
+      if (data?.length === 0) {
+        throw new Error("No movies found");
+      }
 
       if (error) {
         console.error("Error finding single movie: ", error.message);
@@ -156,6 +165,23 @@ function Home() {
     }
   };
 
+  // const findCertainMovie = async () => {
+  //   try {
+  //     const { error, data } = await supabase
+  //       .from("moviesData")
+  //       .select()
+  //       .ilike("title", "%city%");
+
+  //     console.log("single movie", data);
+
+  //     if (error) {
+  //       console.error("Error finding single movie: ", error.message);
+  //     }
+  //   } catch (error: any) {
+  //     console.error("Error finding single movie: ", error.message);
+  //   }
+  // };
+
   return (
     <>
       <section>
@@ -164,12 +190,12 @@ function Home() {
             Currently trending
           </h1>
 
-          <button
+          {/* <button
             onClick={() => findCertainMovie()}
             className="bg-[#fff] !my-5 cursor-pointer rounded"
           >
             Find Single Movie
-          </button>
+          </button> */}
 
           <div className="w-[80%] !mx-auto relative">
             {loading && <div className="loader"></div>}
@@ -181,12 +207,8 @@ function Home() {
           <div className="bg-[#bfbfbf] w-[fit-content] flex items-center justify-between !py-1 rounded-lg cursor-pointer active:shadow-[0_0_0_5px_rgb(252,71,71)] ">
             <form onSubmit={handleSumbit}>
               <input
-                value={filters.search}
-                onChange={(e) =>
-                  setFilters((prev) => {
-                    return { ...prev, search: e.target.value };
-                  })
-                }
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
                 className="!pl-2 focus:outline-none focus:ring-0"
                 type="text"
                 placeholder="search"
@@ -200,11 +222,7 @@ function Home() {
 
           <div className="flex justify-between items-center gap-3">
             <select
-              onChange={(e) =>
-                setFilters((prev) => {
-                  return { ...prev, activeGenre: e.target.value };
-                })
-              }
+              onChange={(e) => setActiveGenre(e.target.value)}
               className="bg-[#bfbfbf] rounded"
             >
               <option value="all">All</option>
