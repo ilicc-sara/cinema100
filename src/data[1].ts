@@ -934,28 +934,28 @@ export const data: singleMovie[] = [
     writers: ["Charles Chaplin"],
     imdbid: "tt0027977",
   },
-  {
-    rank: 48,
-    title: "Once Upon a Time in the West",
-    thumbnail:
-      "https://m.media-amazon.com/images/M/MV5BODQ3NDExOGYtMzI3Mi00NWRlLTkwNjAtNjc4MDgzZGJiZTA1XkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_UX45_CR0,0,45,67_AL_.jpg",
-    rating: "8.4",
-    id: "top48",
-    year: 1968,
-    image:
-      "https://m.media-amazon.com/images/M/MV5BODQ3NDExOGYtMzI3Mi00NWRlLTkwNjAtNjc4MDgzZGJiZTA1XkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_QL75_UX380_CR0,3,380,562_.jpg",
-    description:
-      "A mysterious stranger with a harmonica joins forces with a notorious desperado to protect a beautiful widow from a ruthless assassin working for the railroad.",
-    trailer: "https://www.youtube.com/embed/c8CJ6L0I6W8",
-    genre: ["Western"],
-    director: ["Sergio Leone"],
-    writers: [
-      "Sergio Donati (screenplay by)",
-      "Sergio Leone (screenplay by)",
-      "Dario Argento (from a story by)",
-    ],
-    imdbid: "tt0064116",
-  },
+  // {
+  //   rank: 48,
+  //   title: "Once Upon a Time in the West",
+  //   thumbnail:
+  //     "https://m.media-amazon.com/images/M/MV5BODQ3NDExOGYtMzI3Mi00NWRlLTkwNjAtNjc4MDgzZGJiZTA1XkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_UX45_CR0,0,45,67_AL_.jpg",
+  //   rating: "8.4",
+  //   id: "top48",
+  //   year: 1968,
+  //   image:
+  //     "https://m.media-amazon.com/images/M/MV5BODQ3NDExOGYtMzI3Mi00NWRlLTkwNjAtNjc4MDgzZGJiZTA1XkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_QL75_UX380_CR0,3,380,562_.jpg",
+  //   description:
+  //     "A mysterious stranger with a harmonica joins forces with a notorious desperado to protect a beautiful widow from a ruthless assassin working for the railroad.",
+  //   trailer: "https://www.youtube.com/embed/c8CJ6L0I6W8",
+  //   genre: ["Western"],
+  //   director: ["Sergio Leone"],
+  //   writers: [
+  //     "Sergio Donati (screenplay by)",
+  //     "Sergio Leone (screenplay by)",
+  //     "Dario Argento (from a story by)",
+  //   ],
+  //   imdbid: "tt0064116",
+  // },
   {
     rank: 49,
     title: "Rear Window",
@@ -1764,28 +1764,28 @@ export const data: singleMovie[] = [
     ],
     imdbid: "tt1187043",
   },
-  {
-    rank: 88,
-    title: "High and Low",
-    thumbnail:
-      "https://m.media-amazon.com/images/M/MV5BZGQ1NWZlYjctNDJmOS00MmU2LTg1ODItNmZiM2ZkNzJhNDI0XkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_UY67_CR1,0,45,67_AL_.jpg",
-    rating: "8.3",
-    id: "top88",
-    year: 1963,
-    image:
-      "https://m.media-amazon.com/images/M/MV5BZGQ1NWZlYjctNDJmOS00MmU2LTg1ODItNmZiM2ZkNzJhNDI0XkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_QL75_UY562_CR9,0,380,562_.jpg",
-    description:
-      "An executive of a Yokohama shoe company becomes a victim of extortion when his chauffeur's son is kidnapped by mistake and held for ransom.",
-    trailer: "https://www.youtube.com/embed/LV3z2Ytxu90",
-    genre: ["Crime", "Drama", "Mystery"],
-    director: ["Akira Kurosawa"],
-    writers: [
-      "Hideo Oguni (screenplay)",
-      "Ryûzô Kikushima (screenplay)",
-      "Eijirô Hisaita (screenplay)",
-    ],
-    imdbid: "tt0057565",
-  },
+  // {
+  //   rank: 88,
+  //   title: "High and Low",
+  //   thumbnail:
+  //     "https://m.media-amazon.com/images/M/MV5BZGQ1NWZlYjctNDJmOS00MmU2LTg1ODItNmZiM2ZkNzJhNDI0XkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_UY67_CR1,0,45,67_AL_.jpg",
+  //   rating: "8.3",
+  //   id: "top88",
+  //   year: 1963,
+  //   image:
+  //     "https://m.media-amazon.com/images/M/MV5BZGQ1NWZlYjctNDJmOS00MmU2LTg1ODItNmZiM2ZkNzJhNDI0XkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_QL75_UY562_CR9,0,380,562_.jpg",
+  //   description:
+  //     "An executive of a Yokohama shoe company becomes a victim of extortion when his chauffeur's son is kidnapped by mistake and held for ransom.",
+  //   trailer: "https://www.youtube.com/embed/LV3z2Ytxu90",
+  //   genre: ["Crime", "Drama", "Mystery"],
+  //   director: ["Akira Kurosawa"],
+  //   writers: [
+  //     "Hideo Oguni (screenplay)",
+  //     "Ryûzô Kikushima (screenplay)",
+  //     "Eijirô Hisaita (screenplay)",
+  //   ],
+  //   imdbid: "tt0057565",
+  // },
   {
     rank: 89,
     title: "Star Wars: Episode VI - Return of the Jedi",
@@ -1973,24 +1973,24 @@ export const data: singleMovie[] = [
     ],
     imdbid: "tt0022100",
   },
-  {
-    rank: 98,
-    title: "Come and See",
-    thumbnail:
-      "https://m.media-amazon.com/images/M/MV5BNzU3OTI1MjItYTJiZC00NDI0LWFlNGYtOTQ1OTVhNDgwM2U3XkEyXkFqcGdeQXVyNTc2MDU0NDE@._V1_UY67_CR0,0,45,67_AL_.jpg",
-    rating: "8.3",
-    id: "top98",
-    year: 1985,
-    image:
-      "https://m.media-amazon.com/images/M/MV5BNzU3OTI1MjItYTJiZC00NDI0LWFlNGYtOTQ1OTVhNDgwM2U3XkEyXkFqcGdeQXVyNTc2MDU0NDE@._V1_QL75_UX380_CR0,0,380,562_.jpg",
-    description:
-      "After finding an old rifle, a young boy joins the Soviet resistance movement against ruthless German forces and experiences the horrors of World War II.",
-    trailer: "https://www.youtube.com/embed/UHaSQU-4wss",
-    genre: ["Drama", "Thriller", "War"],
-    director: ["Elem Klimov"],
-    writers: ["Ales Adamovich (story)", "Elem Klimov (screenplay)"],
-    imdbid: "tt0091251",
-  },
+  // {
+  //   rank: 98,
+  //   title: "Come and See",
+  //   thumbnail:
+  //     "https://m.media-amazon.com/images/M/MV5BNzU3OTI1MjItYTJiZC00NDI0LWFlNGYtOTQ1OTVhNDgwM2U3XkEyXkFqcGdeQXVyNTc2MDU0NDE@._V1_UY67_CR0,0,45,67_AL_.jpg",
+  //   rating: "8.3",
+  //   id: "top98",
+  //   year: 1985,
+  //   image:
+  //     "https://m.media-amazon.com/images/M/MV5BNzU3OTI1MjItYTJiZC00NDI0LWFlNGYtOTQ1OTVhNDgwM2U3XkEyXkFqcGdeQXVyNTc2MDU0NDE@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+  //   description:
+  //     "After finding an old rifle, a young boy joins the Soviet resistance movement against ruthless German forces and experiences the horrors of World War II.",
+  //   trailer: "https://www.youtube.com/embed/UHaSQU-4wss",
+  //   genre: ["Drama", "Thriller", "War"],
+  //   director: ["Elem Klimov"],
+  //   writers: ["Ales Adamovich (story)", "Elem Klimov (screenplay)"],
+  //   imdbid: "tt0091251",
+  // },
   {
     rank: 99,
     title: "North by Northwest",

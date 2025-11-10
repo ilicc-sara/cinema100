@@ -22,64 +22,64 @@ function Home() {
     (movie) => movie.rank >= 55 && movie.rank < 75
   );
 
-  useEffect(() => {
-    const deleteData = () => {
-      data.forEach(async (item) => {
-        if (item.rank >= 55 && item.rank < 75) {
-          try {
-            const { error } = await supabase
-              .from("trendingMovies")
-              .delete()
-              .eq("rank", item.rank);
+  // useEffect(() => {
+  //   const deleteData = () => {
+  //     data.forEach(async (item) => {
+  //       if (item.rank >= 55 && item.rank < 75) {
+  //         try {
+  //           const { error } = await supabase
+  //             .from("trendingMovies")
+  //             .delete()
+  //             .eq("rank", item.rank);
 
-            if (error) {
-              console.error("Error deleting task: ", error.message);
-            }
-          } catch (error: any) {
-            console.error("Error deleting task: ", error.message);
-          }
-        } else return;
-      });
-    };
+  //           if (error) {
+  //             console.error("Error deleting task: ", error.message);
+  //           }
+  //         } catch (error: any) {
+  //           console.error("Error deleting task: ", error.message);
+  //         }
+  //       } else return;
+  //     });
+  //   };
 
-    const fetchData = () => {
-      data.forEach(async (item) => {
-        if (item.rank >= 55 && item.rank < 75) {
-          try {
-            const { error } = await supabase
-              .from("trendingMovies")
-              .insert([
-                {
-                  rank: item.rank,
-                  title: item.title,
-                  thumbnail: item.thumbnail,
-                  rating: item.rating,
-                  itemID: item.id,
-                  year: item.year,
-                  image: item.image,
-                  description: item.description,
-                  trailer: item.trailer,
-                  genre: item.genre.join(","),
-                  director: item.director.join(","),
-                  writers: item.writers.join(","),
-                  imdbid: item.imdbid,
-                },
-              ])
-              .single();
+  //   const fetchData = () => {
+  //     data.forEach(async (item) => {
+  //       if (item.rank >= 55 && item.rank < 75) {
+  //         try {
+  //           const { error } = await supabase
+  //             .from("trendingMovies")
+  //             .insert([
+  //               {
+  //                 rank: item.rank,
+  //                 title: item.title,
+  //                 thumbnail: item.thumbnail,
+  //                 rating: item.rating,
+  //                 itemID: item.id,
+  //                 year: item.year,
+  //                 image: item.image,
+  //                 description: item.description,
+  //                 trailer: item.trailer,
+  //                 genre: item.genre.join(","),
+  //                 director: item.director.join(","),
+  //                 writers: item.writers.join(","),
+  //                 imdbid: item.imdbid,
+  //               },
+  //             ])
+  //             .single();
 
-            if (error) {
-              console.error("Error adding task: ", error.message);
-            }
-          } catch (error: any) {
-            console.error("Error adding task: ", error.message);
-          }
-        } else return;
-      });
-    };
+  //           if (error) {
+  //             console.error("Error adding task: ", error.message);
+  //           }
+  //         } catch (error: any) {
+  //           console.error("Error adding task: ", error.message);
+  //         }
+  //       } else return;
+  //     });
+  //   };
 
-    deleteData();
-    fetchData();
-  }, []);
+  //   deleteData();
+  //   fetchData();
+  // }, []);
 
   const refreshFn = useBaseData();
 
@@ -107,6 +107,26 @@ function Home() {
       }
     } catch (error: any) {
       console.error("Error selecting data: ", error.message);
+      setLoading(false);
+    }
+  };
+
+  const selectTrendingData = async () => {
+    setLoading(true);
+    let genresArr: string[] = [];
+    try {
+      const { error, data } = await supabase.from("trendingMovies").select();
+
+      console.log("data from trending movies: ", data);
+
+      setLoading(false);
+
+      if (error) {
+        console.error("Error selecting trending data: ", error.message);
+        setLoading(false);
+      }
+    } catch (error: any) {
+      console.error("Error selecting trending data: ", error.message);
       setLoading(false);
     }
   };
