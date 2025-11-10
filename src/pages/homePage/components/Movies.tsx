@@ -1,12 +1,22 @@
-import { useRef } from "react";
-import { Splide, SplideSlide } from "@splidejs/react-splide";
-import type { Splide as SplideInstance } from "@splidejs/splide";
-
+import { useRef, useEffect } from "react";
+import { Splide, SplideSlide, SplideRefType } from "@splidejs/react-splide";
 import MovieItem from "./MovieItem";
 import type { ActiveMoviesProps } from "../../../types";
 
 function Movies({ activeMovies }: ActiveMoviesProps) {
-  const splideRef = useRef<SplideInstance | null>(null);
+  const splideRef = useRef<SplideRefType | null>(null);
+
+  useEffect(() => {
+    if (splideRef.current) {
+      const splide = splideRef.current; // Access the Splide instance
+      if (splide) {
+        splide.on("move", (newIndex: number, prevIndex: number) => {
+          console.log(`Slider moved from index ${prevIndex} to ${newIndex}`);
+          // Perform actions based on the new slide index, e.g., update UI
+        });
+      }
+    }
+  }, []); // Empty dependency array means this runs once on mount
   return (
     <Splide
       ref={splideRef}
