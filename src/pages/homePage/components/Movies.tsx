@@ -1,10 +1,15 @@
+import { useRef } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
+import type { Splide as SplideInstance } from "@splidejs/splide";
+
 import MovieItem from "./MovieItem";
 import type { ActiveMoviesProps } from "../../../types";
 
 function Movies({ activeMovies }: ActiveMoviesProps) {
+  const splideRef = useRef<SplideInstance | null>(null);
   return (
     <Splide
+      ref={splideRef}
       options={{
         type: "slide",
         perPage: 1,
@@ -24,7 +29,7 @@ function Movies({ activeMovies }: ActiveMoviesProps) {
           </div>
         )}
       </SplideSlide>
-      {activeMovies && activeMovies.length > 11 && (
+      {activeMovies && activeMovies.length > 12 && (
         <SplideSlide>
           {activeMovies && (
             <div className="grid grid-cols-4 gap-7 !px-5 ">
@@ -37,7 +42,7 @@ function Movies({ activeMovies }: ActiveMoviesProps) {
           )}
         </SplideSlide>
       )}
-      {activeMovies && activeMovies.length > 23 && (
+      {activeMovies && activeMovies.length > 24 && (
         <SplideSlide>
           {activeMovies && (
             <div className="grid grid-cols-4 gap-7 !px-5 ">
@@ -50,7 +55,7 @@ function Movies({ activeMovies }: ActiveMoviesProps) {
           )}
         </SplideSlide>
       )}
-      {activeMovies && activeMovies.length > 35 && (
+      {activeMovies && activeMovies.length > 36 && (
         <SplideSlide>
           {activeMovies && (
             <div className="grid grid-cols-4 gap-7 !px-5 ">
@@ -63,7 +68,7 @@ function Movies({ activeMovies }: ActiveMoviesProps) {
           )}
         </SplideSlide>
       )}
-      {activeMovies && activeMovies.length > 47 && (
+      {activeMovies && activeMovies.length > 48 && (
         <SplideSlide>
           {activeMovies && (
             <div className="grid grid-cols-4 gap-7 !px-5 ">
@@ -76,7 +81,7 @@ function Movies({ activeMovies }: ActiveMoviesProps) {
           )}
         </SplideSlide>
       )}
-      {activeMovies && activeMovies.length > 59 && (
+      {activeMovies && activeMovies.length > 60 && (
         <SplideSlide>
           {activeMovies && (
             <div className="grid grid-cols-4 gap-7 !px-5 ">
@@ -90,7 +95,7 @@ function Movies({ activeMovies }: ActiveMoviesProps) {
         </SplideSlide>
       )}
 
-      {activeMovies && activeMovies.length > 71 && (
+      {activeMovies && activeMovies.length > 72 && (
         <SplideSlide>
           {activeMovies && (
             <div className="grid grid-cols-4 gap-7 !px-5 ">
@@ -104,7 +109,7 @@ function Movies({ activeMovies }: ActiveMoviesProps) {
         </SplideSlide>
       )}
 
-      {activeMovies && activeMovies.length > 83 && (
+      {activeMovies && activeMovies.length > 84 && (
         <SplideSlide>
           {activeMovies && (
             <div className="grid grid-cols-4 gap-7 !px-5 ">
@@ -117,7 +122,7 @@ function Movies({ activeMovies }: ActiveMoviesProps) {
           )}
         </SplideSlide>
       )}
-      {activeMovies && activeMovies.length > 93 && (
+      {activeMovies && activeMovies.length > 96 && (
         <SplideSlide>
           {activeMovies && (
             <div className="grid grid-cols-4 gap-7 !px-5">
