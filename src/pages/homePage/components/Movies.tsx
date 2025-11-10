@@ -117,7 +117,7 @@ function Movies({ activeMovies }: ActiveMoviesProps) {
           )}
         </SplideSlide>
       )}
-      {activeMovies && activeMovies.length > 95 && (
+      {activeMovies && activeMovies.length > 93 && (
         <SplideSlide>
           {activeMovies && (
             <div className="grid grid-cols-4 gap-7 !px-5">

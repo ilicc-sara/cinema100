@@ -50,7 +50,7 @@ function Auth() {
               Or,
               <Link to="/home">
                 <span className="text-[#fc4747] cursor-pointer">
-                  Log in as guest
+                  &nbsp; Log in as guest
                 </span>
               </Link>
             </p>

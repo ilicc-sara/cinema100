@@ -386,28 +386,28 @@ export const data: singleMovie[] = [
     writers: ["Andrew Kevin Walker"],
     imdbid: "tt0114369",
   },
-  {
-    rank: 20,
-    title: "Seven Samurai",
-    thumbnail:
-      "https://m.media-amazon.com/images/M/MV5BNWQ3OTM4ZGItMWEwZi00MjI5LWI3YzgtNTYwNWRkNmIzMGI5XkEyXkFqcGdeQXVyNDY2MTk1ODk@._V1_UY67_CR1,0,45,67_AL_.jpg",
-    rating: "8.6",
-    id: "top20",
-    year: 1954,
-    image:
-      "https://m.media-amazon.com/images/M/MV5BNWQ3OTM4ZGItMWEwZi00MjI5LWI3YzgtNTYwNWRkNmIzMGI5XkEyXkFqcGdeQXVyNDY2MTk1ODk@._V1_QL75_UY562_CR11,0,380,562_.jpg",
-    description:
-      "Farmers from a village exploited by bandits hire a veteran samurai for protection, who gathers six other samurai to join him. As the samurai teach the peasants how to defend themselves, the village is attacked by an army of bandits.",
-    trailer: "https://www.youtube.com/embed/wJ1TOratCTo",
-    genre: ["Action", "Drama"],
-    director: ["Akira Kurosawa"],
-    writers: [
-      "Akira Kurosawa (screenplay by)",
-      "Shinobu Hashimoto (screenplay by)",
-      "Hideo Oguni (screenplay by)",
-    ],
-    imdbid: "tt0047478",
-  },
+  // {
+  //   rank: 20,
+  //   title: "Seven Samurai",
+  //   thumbnail:
+  //     "https://m.media-amazon.com/images/M/MV5BNWQ3OTM4ZGItMWEwZi00MjI5LWI3YzgtNTYwNWRkNmIzMGI5XkEyXkFqcGdeQXVyNDY2MTk1ODk@._V1_UY67_CR1,0,45,67_AL_.jpg",
+  //   rating: "8.6",
+  //   id: "top20",
+  //   year: 1954,
+  //   image:
+  //     "https://m.media-amazon.com/images/M/MV5BNWQ3OTM4ZGItMWEwZi00MjI5LWI3YzgtNTYwNWRkNmIzMGI5XkEyXkFqcGdeQXVyNDY2MTk1ODk@._V1_QL75_UY562_CR11,0,380,562_.jpg",
+  //   description:
+  //     "Farmers from a village exploited by bandits hire a veteran samurai for protection, who gathers six other samurai to join him. As the samurai teach the peasants how to defend themselves, the village is attacked by an army of bandits.",
+  //   trailer: "https://www.youtube.com/embed/wJ1TOratCTo",
+  //   genre: ["Action", "Drama"],
+  //   director: ["Akira Kurosawa"],
+  //   writers: [
+  //     "Akira Kurosawa (screenplay by)",
+  //     "Shinobu Hashimoto (screenplay by)",
+  //     "Hideo Oguni (screenplay by)",
+  //   ],
+  //   imdbid: "tt0047478",
+  // },
   {
     rank: 21,
     title: "It's a Wonderful Life",
