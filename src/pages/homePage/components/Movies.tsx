@@ -1,25 +1,26 @@
 import { useRef, useEffect } from "react";
-import { Splide, SplideSlide, SplideRefType } from "@splidejs/react-splide";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
 import MovieItem from "./MovieItem";
 import type { ActiveMoviesProps } from "../../../types";
 
 function Movies({ activeMovies }: ActiveMoviesProps) {
-  const splideRef = useRef<SplideRefType | null>(null);
+  const splideRef = useRef<SplideInstance | null>(null);
+  const handleMounted = (splide: SplideInstance) => {
+    splideRef.current = splide;
+  };
 
-  useEffect(() => {
-    if (splideRef.current) {
-      const splide = splideRef.current; // Access the Splide instance
-      if (splide) {
-        splide.on("move", (newIndex: number, prevIndex: number) => {
-          console.log(`Slider moved from index ${prevIndex} to ${newIndex}`);
-          // Perform actions based on the new slide index, e.g., update UI
-        });
-      }
-    }
-  }, []); // Empty dependency array means this runs once on mount
+  // const handleMounted = (splide: SplideInstance) => {
+  //   splideInstance = splide;
+  //   console.log("Splide mounted!", splide);
+  // };
+
+  const handleMoved = (splide: SplideInstance, newIndex: number) => {
+    console.log("Active slide index:", newIndex);
+  };
   return (
     <Splide
-      ref={splideRef}
+      onMounted={handleMounted}
+      onMoved={handleMoved}
       options={{
         type: "slide",
         perPage: 1,
