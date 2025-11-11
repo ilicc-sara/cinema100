@@ -4,23 +4,23 @@ import MovieItem from "./MovieItem";
 import type { ActiveMoviesProps } from "../../../types";
 
 function Movies({ activeMovies }: ActiveMoviesProps) {
-  const splideRef = useRef<SplideInstance | null>(null);
-  const handleMounted = (splide: SplideInstance) => {
-    splideRef.current = splide;
-  };
+  // const splideRef = useRef<SplideInstance | null>(null);
+  // const handleMounted = (splide: SplideInstance) => {
+  //   splideRef.current = splide;
+  // };
 
   // const handleMounted = (splide: SplideInstance) => {
   //   splideInstance = splide;
   //   console.log("Splide mounted!", splide);
   // };
 
-  const handleMoved = (splide: SplideInstance, newIndex: number) => {
-    console.log("Active slide index:", newIndex);
-  };
+  // const handleMoved = (splide: SplideInstance, newIndex: number) => {
+  //   console.log("Active slide index:", newIndex);
+  // };
   return (
     <Splide
-      onMounted={handleMounted}
-      onMoved={handleMoved}
+      // onMounted={handleMounted}
+      // onMoved={handleMoved}
       options={{
         type: "slide",
         perPage: 1,

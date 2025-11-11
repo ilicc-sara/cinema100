@@ -12,15 +12,19 @@ function Home() {
   const [movies, setMovies] = useState<singleMovie[] | null>(null);
   const [activeMovies, setActiveMovies] = useState<singleMovie[] | null>(null);
 
+  const [currentlyTrending, setCurrentlyTrending] = useState<
+    singleMovie[] | null
+  >(null);
+
   const [genres, setGenres] = useState<string[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
   const [search, setSearch] = useState<string>("");
   const [activeGenre, setActiveGenre] = useState<string>("all");
 
-  const currentlyTrending = movies?.filter(
-    (movie) => movie.rank >= 55 && movie.rank < 75
-  );
+  // const currentlyTrending = movies?.filter(
+  //   (movie) => movie.rank >= 55 && movie.rank < 75
+  // );
 
   // useEffect(() => {
   //   const deleteData = () => {
@@ -113,13 +117,13 @@ function Home() {
 
   const selectTrendingData = async () => {
     setLoading(true);
-    let genresArr: string[] = [];
     try {
       const { error, data } = await supabase.from("trendingMovies").select();
 
       console.log("data from trending movies: ", data);
 
       setLoading(false);
+      setCurrentlyTrending(data);
 
       if (error) {
         console.error("Error selecting trending data: ", error.message);
@@ -133,6 +137,7 @@ function Home() {
 
   useEffect(() => {
     selectData();
+    selectTrendingData();
   }, []);
 
   useEffect(() => {
