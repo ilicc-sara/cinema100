@@ -26,7 +26,7 @@ export type MovieItemProps = {
 };
 
 export type TrendingProps = {
-  currentlyTrending: singleMovie[] | undefined;
+  currentlyTrending: singleMovie[] | null;
 };
 
 export type ActiveMoviesProps = {

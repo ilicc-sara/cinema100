@@ -116,7 +116,7 @@ function Home() {
   };
 
   const selectTrendingData = async () => {
-    setLoading(true);
+    // setLoading(true);
     try {
       const { error, data } = await supabase.from("trendingMovies").select();
 
