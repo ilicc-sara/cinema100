@@ -93,7 +93,7 @@ function Home() {
     try {
       const { error, data } = await supabase.from("moviesData").select();
 
-      console.log("data from select data: ", data);
+      // console.log("data from select data: ", data);
       setMovies(data);
       setActiveMovies(data);
       setLoading(false);
@@ -120,7 +120,7 @@ function Home() {
     try {
       const { error, data } = await supabase.from("trendingMovies").select();
 
-      console.log("data from trending movies: ", data);
+      // console.log("data from trending movies: ", data);
 
       setLoading(false);
       setCurrentlyTrending(data);
