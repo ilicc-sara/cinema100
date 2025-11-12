@@ -57,7 +57,7 @@ function useBaseData() {
     fetchData();
   };
 
-  return () => refreshFn();
+  return () => refreshFn;
 }
 
 export default useBaseData;

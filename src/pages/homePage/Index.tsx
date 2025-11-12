@@ -93,7 +93,6 @@ function Home() {
     try {
       const { error, data } = await supabase.from("moviesData").select();
 
-      // console.log("data from select data: ", data);
       setMovies(data);
       setActiveMovies(data);
       setLoading(false);
@@ -116,11 +115,9 @@ function Home() {
   };
 
   const selectTrendingData = async () => {
-    // setLoading(true);
+    setLoading(true);
     try {
       const { error, data } = await supabase.from("trendingMovies").select();
-
-      // console.log("data from trending movies: ", data);
 
       setLoading(false);
       setCurrentlyTrending(data);
@@ -179,10 +176,6 @@ function Home() {
     }
   };
 
-  // function showToast() {
-  //   toast.success("lkdnldkslkdf");
-  // }
-
   return (
     <>
       <section>
@@ -192,12 +185,12 @@ function Home() {
             Currently trending
           </h1>
 
-          {/* <button
-            onClick={() => showToast()}
+          <button
+            onClick={() => refreshFn}
             className="bg-[#fff] !my-5 cursor-pointer rounded"
           >
-            Find Single Movie
-          </button> */}
+            REFRESH
+          </button>
 
           <div className="w-[80%] !mx-auto relative">
             {loading && <div className="loader"></div>}
