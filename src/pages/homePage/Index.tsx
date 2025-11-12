@@ -186,7 +186,7 @@ function Home() {
           </h1>
 
           <button
-            onClick={() => refreshFn}
+            onClick={() => refreshFn()}
             className="bg-[#fff] !my-5 cursor-pointer rounded"
           >
             REFRESH

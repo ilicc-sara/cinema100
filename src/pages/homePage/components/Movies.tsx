@@ -1,13 +1,15 @@
+import { useEffect, useRef } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import { useCallback } from "react";
 import MovieItem from "./MovieItem";
 import type { ActiveMoviesProps } from "../../../types";
 
 function Movies({ activeMovies }: ActiveMoviesProps) {
+  // const slideRef = useRef<HTMLElement | null>(null);
   return (
     <Splide
       options={{
-        type: "loop",
+        type: "slide",
         perPage: 1,
         gap: "1rem",
         autoplay: false,
