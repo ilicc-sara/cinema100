@@ -210,7 +210,18 @@ function Home() {
           <Movies activeMovies={activeMovies} />
         </div>
         <div className="flex !mx-auto w-[fit-content] gap-4">
-          <button className="bg-[#ccc] w-10 h-10 rounded-full">&larr;</button>
+          <button
+            className="bg-[#ccc] w-10 h-10 rounded-full"
+            onClick={() =>
+              setActiveSlide((prev) => {
+                if (prev !== 1) {
+                  return prev - 1;
+                } else return 1;
+              })
+            }
+          >
+            &larr;
+          </button>
           <div className="flex gap-2">
             {slidesAmount.map((_, index) => (
               <button
@@ -224,7 +235,20 @@ function Home() {
               </button>
             ))}
           </div>
-          <button className="bg-[#ccc] w-10 h-10 rounded-full">&rarr;</button>
+          <button
+            className="bg-[#ccc] w-10 h-10 rounded-full"
+            onClick={() =>
+              setActiveSlide((prev) => {
+                if (prev !== 9) {
+                  return prev + 1;
+                } else {
+                  return 9;
+                }
+              })
+            }
+          >
+            &rarr;
+          </button>
         </div>
       </section>
     </>
