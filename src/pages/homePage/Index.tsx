@@ -114,6 +114,12 @@ function Home() {
     }
   };
 
+  console.log(Math.ceil(Number(activeMovies?.length) / 12));
+  console.log(Array(Math.ceil(Number(activeMovies?.length) / 12)).fill(true));
+  const slidesAmount = Array(Math.ceil(Number(activeMovies?.length) / 12)).fill(
+    true
+  );
+
   return (
     <>
       <section className="!mb-10">
@@ -185,18 +191,21 @@ function Home() {
           {loading && <div className="loader"></div>}
           <Movies activeMovies={activeMovies} />
         </div>
-        <div className="flex !mx-auto w-[fit-content] gap-3">
+        <div className="flex !mx-auto w-[fit-content] gap-4">
           <button className="bg-[#ccc] w-10 h-10 rounded-full">&larr;</button>
-          <button className="bg-[#ccc] w-10 h-10 rounded-full">1</button>
-          <button className="bg-[#ccc] w-10 h-10 rounded-full">2</button>
-          <button className="bg-[#ccc] w-10 h-10 rounded-full">3</button>
-          <button className="bg-[#ccc] w-10 h-10 rounded-full">4</button>
-          <button className="bg-[#ccc] w-10 h-10 rounded-full">5</button>
-          <button className="bg-[#ccc] w-10 h-10 rounded-full">6</button>
-          <button className="bg-[#ccc] w-10 h-10 rounded-full">7</button>
-          <button className="bg-[#ccc] w-10 h-10 rounded-full">8</button>
-          <button className="bg-[#ccc] w-10 h-10 rounded-full">9</button>
-          <button className="bg-[#ccc] w-10 h-10 rounded-full">10</button>
+          <div className="flex gap-2">
+            {slidesAmount.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setActiveSlide(index + 1)}
+                className={`bg-[#ccc] w-10 h-10 rounded-full ${
+                  activeSlide === index + 1 ? "bg-[#fc4747]" : ""
+                }`}
+              >
+                {index + 1}
+              </button>
+            ))}
+          </div>
           <button className="bg-[#ccc] w-10 h-10 rounded-full">&rarr;</button>
         </div>
       </section>
