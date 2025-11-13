@@ -118,6 +118,24 @@ function Home() {
     Math.ceil(Number(activeMovies?.length || 0) / 12)
   ).fill(true);
 
+  const selectActiveSlideMovies = async () => {
+    setLoading(true);
+
+    try {
+      const { error, data } = await supabase.from("moviesData").select();
+
+      setLoading(false);
+
+      if (error) {
+        console.error("Error selecting data: ", error.message);
+        setLoading(false);
+      }
+    } catch (error: any) {
+      console.error("Error selecting data: ", error.message);
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {}, []);
 
   return (

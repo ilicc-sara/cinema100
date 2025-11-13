@@ -386,30 +386,8 @@ export const data: singleMovie[] = [
     writers: ["Andrew Kevin Walker"],
     imdbid: "tt0114369",
   },
-  // {
-  //   rank: 20,
-  //   title: "Seven Samurai",
-  //   thumbnail:
-  //     "https://m.media-amazon.com/images/M/MV5BNWQ3OTM4ZGItMWEwZi00MjI5LWI3YzgtNTYwNWRkNmIzMGI5XkEyXkFqcGdeQXVyNDY2MTk1ODk@._V1_UY67_CR1,0,45,67_AL_.jpg",
-  //   rating: "8.6",
-  //   id: "top20",
-  //   year: 1954,
-  //   image:
-  //     "https://m.media-amazon.com/images/M/MV5BNWQ3OTM4ZGItMWEwZi00MjI5LWI3YzgtNTYwNWRkNmIzMGI5XkEyXkFqcGdeQXVyNDY2MTk1ODk@._V1_QL75_UY562_CR11,0,380,562_.jpg",
-  //   description:
-  //     "Farmers from a village exploited by bandits hire a veteran samurai for protection, who gathers six other samurai to join him. As the samurai teach the peasants how to defend themselves, the village is attacked by an army of bandits.",
-  //   trailer: "https://www.youtube.com/embed/wJ1TOratCTo",
-  //   genre: ["Action", "Drama"],
-  //   director: ["Akira Kurosawa"],
-  //   writers: [
-  //     "Akira Kurosawa (screenplay by)",
-  //     "Shinobu Hashimoto (screenplay by)",
-  //     "Hideo Oguni (screenplay by)",
-  //   ],
-  //   imdbid: "tt0047478",
-  // },
   {
-    rank: 21,
+    rank: 20,
     title: "It's a Wonderful Life",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BZjc4NDZhZWMtNGEzYS00ZWU2LThlM2ItNTA0YzQ0OTExMTE2XkEyXkFqcGdeQXVyNjUwMzI2NzU@._V1_UY67_CR0,0,45,67_AL_.jpg",
@@ -431,7 +409,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0038650",
   },
   {
-    rank: 22,
+    rank: 21,
     title: "The Silence of the Lambs",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BNjNhZTk0ZmEtNjJhMi00YzFlLWE1MmEtYzM1M2ZmMGMwMTU4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UY67_CR0,0,45,67_AL_.jpg",
@@ -452,7 +430,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0102926",
   },
   {
-    rank: 23,
+    rank: 22,
     title: "City of God",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BOTMwYjc5ZmItYTFjZC00ZGQ3LTlkNTMtMjZiNTZlMWQzNzI5XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UX45_CR0,0,45,67_AL_.jpg",
@@ -470,7 +448,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0317248",
   },
   {
-    rank: 24,
+    rank: 23,
     title: "Saving Private Ryan",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BZjhkMDM4MWItZTVjOC00ZDRhLThmYTAtM2I5NzBmNmNlMzI1XkEyXkFqcGdeQXVyNDYyMDk5MTU@._V1_UY67_CR0,0,45,67_AL_.jpg",
@@ -488,7 +466,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0120815",
   },
   {
-    rank: 25,
+    rank: 24,
     title: "Life Is Beautiful",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BYmJmM2Q4NmMtYThmNC00ZjRlLWEyZmItZTIwOTBlZDQ3NTQ1XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX45_CR0,0,45,67_AL_.jpg",
@@ -506,7 +484,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0118799",
   },
   {
-    rank: 26,
+    rank: 25,
     title: "Interstellar",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UY67_CR0,0,45,67_AL_.jpg",
@@ -524,7 +502,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0816692",
   },
   {
-    rank: 27,
+    rank: 26,
     title: "The Green Mile",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BMTUxMzQyNjA5MF5BMl5BanBnXkFtZTYwOTU2NTY3._V1_UY67_CR0,0,45,67_AL_.jpg",
@@ -542,7 +520,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0120689",
   },
   {
-    rank: 28,
+    rank: 27,
     title: "Star Wars: Episode IV - A New Hope",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BOTA5NjhiOTAtZWM0ZC00MWNhLThiMzEtZDFkOTk2OTU1ZDJkXkEyXkFqcGdeQXVyMTA4NDI1NTQx._V1_UX45_CR0,0,45,67_AL_.jpg",
@@ -560,7 +538,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0076759",
   },
   {
-    rank: 29,
+    rank: 28,
     title: "Terminator 2: Judgment Day",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BMGU2NzRmZjUtOGUxYS00ZjdjLWEwZWItY2NlM2JhNjkxNTFmXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UY67_CR0,0,45,67_AL_.jpg",
@@ -578,7 +556,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0103064",
   },
   {
-    rank: 30,
+    rank: 29,
     title: "Back to the Future",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BZmU0M2Y1OGUtZjIxNi00ZjBkLTg1MjgtOWIyNThiZWIwYjRiXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX45_CR0,0,45,67_AL_.jpg",
@@ -596,7 +574,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0088763",
   },
   {
-    rank: 31,
+    rank: 30,
     title: "Spirited Away",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BMjlmZmI5MDctNDE2YS00YWE0LWE5ZWItZDBhYWQ0NTcxNWRhXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UY67_CR0,0,45,67_AL_.jpg",
@@ -614,7 +592,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0245429",
   },
   {
-    rank: 32,
+    rank: 31,
     title: "Psycho",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BNTQwNDM1YzItNDAxZC00NWY2LTk0M2UtNDIwNWI5OGUyNWUxXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UY67_CR0,0,45,67_AL_.jpg",
@@ -635,7 +613,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0054215",
   },
   {
-    rank: 33,
+    rank: 32,
     title: "The Pianist",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BOWRiZDIxZjktMTA1NC00MDQ2LWEzMjUtMTliZmY3NjQ3ODJiXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UY67_CR2,0,45,67_AL_.jpg",
@@ -656,7 +634,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0253474",
   },
   {
-    rank: 34,
+    rank: 33,
     title: "Parasite",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BYWZjMjk3ZTItODQ2ZC00NTY5LWE0ZDYtZTI3MjcwN2Q5NTVkXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_UY67_CR0,0,45,67_AL_.jpg",
@@ -674,7 +652,7 @@ export const data: singleMovie[] = [
     imdbid: "tt6751668",
   },
   {
-    rank: 35,
+    rank: 34,
     title: "Léon: The Professional",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BOTgyMWQ0ZWUtN2Q2MS00NmY0LWI3OWMtNjFkMzZlNDZjNTk0XkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_UX45_CR0,0,45,67_AL_.jpg",
@@ -692,7 +670,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0110413",
   },
   {
-    rank: 36,
+    rank: 35,
     title: "The Lion King",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BYTYxNGMyZTYtMjE3MS00MzNjLWFjNmYtMDk3N2FmM2JiM2M1XkEyXkFqcGdeQXVyNjY5NDU4NzI@._V1_UY67_CR0,0,45,67_AL_.jpg",
@@ -714,7 +692,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0110357",
   },
   {
-    rank: 37,
+    rank: 36,
     title: "Gladiator",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BMDliMmNhNDEtODUyOS00MjNlLTgxODEtN2U3NzIxMGVkZTA1L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UY67_CR0,0,45,67_AL_.jpg",
@@ -736,7 +714,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0172495",
   },
   {
-    rank: 38,
+    rank: 37,
     title: "American History X",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BZTJhN2FkYWEtMGI0My00YWM4LWI2MjAtM2UwNjY4MTI2ZTQyXkEyXkFqcGdeQXVyNjc3MjQzNTI@._V1_UY67_CR0,0,45,67_AL_.jpg",
@@ -754,7 +732,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0120586",
   },
   {
-    rank: 39,
+    rank: 38,
     title: "The Departed",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BMTI1MTY2OTIxNV5BMl5BanBnXkFtZTYwNjQ4NjY3._V1_UY67_CR0,0,45,67_AL_.jpg",
@@ -776,7 +754,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0407887",
   },
   {
-    rank: 40,
+    rank: 39,
     title: "The Usual Suspects",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BYTViNjMyNmUtNDFkNC00ZDRlLThmMDUtZDU2YWE4NGI2ZjVmXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX45_CR0,0,45,67_AL_.jpg",
@@ -794,7 +772,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0114814",
   },
   {
-    rank: 41,
+    rank: 40,
     title: "The Prestige",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BMjA4NDI0MTIxNF5BMl5BanBnXkFtZTYwNTM0MzY2._V1_UY67_CR0,0,45,67_AL_.jpg",
@@ -816,7 +794,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0482571",
   },
   {
-    rank: 42,
+    rank: 41,
     title: "Whiplash",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BOTA5NDZlZGUtMjAxOS00YTRkLTkwYmMtYWQ0NWEwZDZiNjEzXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UY67_CR0,0,45,67_AL_.jpg",
@@ -834,7 +812,7 @@ export const data: singleMovie[] = [
     imdbid: "tt2582802",
   },
   {
-    rank: 43,
+    rank: 42,
     title: "Casablanca",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BY2IzZGY2YmEtYzljNS00NTM5LTgwMzUtMzM1NjQ4NGI0OTk0XkEyXkFqcGdeQXVyNDYyMDk5MTU@._V1_UX45_CR0,0,45,67_AL_.jpg",
@@ -856,7 +834,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0034583",
   },
   {
-    rank: 44,
+    rank: 43,
     title: "The Intouchables",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BMTYxNDA3MDQwNl5BMl5BanBnXkFtZTcwNTU4Mzc1Nw@@._V1_UY67_CR0,0,45,67_AL_.jpg",
@@ -878,7 +856,7 @@ export const data: singleMovie[] = [
     imdbid: "tt1675434",
   },
   {
-    rank: 45,
+    rank: 44,
     title: "Harakiri",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BYjBmYTQ1NjItZWU5MS00YjI0LTg2OTYtYmFkN2JkMmNiNWVkXkEyXkFqcGdeQXVyMTMxMTY0OTQ@._V1_UY67_CR2,0,45,67_AL_.jpg",
@@ -899,7 +877,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0056058",
   },
   {
-    rank: 46,
+    rank: 45,
     title: "Grave of the Fireflies",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BZmY2NjUzNDQtNTgxNC00M2Q4LTljOWQtMjNjNDBjNWUxNmJlXkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_UX45_CR0,0,45,67_AL_.jpg",
@@ -917,7 +895,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0095327",
   },
   {
-    rank: 47,
+    rank: 46,
     title: "Modern Times",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BYjJiZjMzYzktNjU0NS00OTkxLWEwYzItYzdhYWJjN2QzMTRlL2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX45_CR0,0,45,67_AL_.jpg",
@@ -934,30 +912,9 @@ export const data: singleMovie[] = [
     writers: ["Charles Chaplin"],
     imdbid: "tt0027977",
   },
-  // {
-  //   rank: 48,
-  //   title: "Once Upon a Time in the West",
-  //   thumbnail:
-  //     "https://m.media-amazon.com/images/M/MV5BODQ3NDExOGYtMzI3Mi00NWRlLTkwNjAtNjc4MDgzZGJiZTA1XkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_UX45_CR0,0,45,67_AL_.jpg",
-  //   rating: "8.4",
-  //   id: "top48",
-  //   year: 1968,
-  //   image:
-  //     "https://m.media-amazon.com/images/M/MV5BODQ3NDExOGYtMzI3Mi00NWRlLTkwNjAtNjc4MDgzZGJiZTA1XkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_QL75_UX380_CR0,3,380,562_.jpg",
-  //   description:
-  //     "A mysterious stranger with a harmonica joins forces with a notorious desperado to protect a beautiful widow from a ruthless assassin working for the railroad.",
-  //   trailer: "https://www.youtube.com/embed/c8CJ6L0I6W8",
-  //   genre: ["Western"],
-  //   director: ["Sergio Leone"],
-  //   writers: [
-  //     "Sergio Donati (screenplay by)",
-  //     "Sergio Leone (screenplay by)",
-  //     "Dario Argento (from a story by)",
-  //   ],
-  //   imdbid: "tt0064116",
-  // },
+
   {
-    rank: 49,
+    rank: 47,
     title: "Rear Window",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BNGUxYWM3M2MtMGM3Mi00ZmRiLWE0NGQtZjE5ODI2OTJhNTU0XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UY67_CR0,0,45,67_AL_.jpg",
@@ -978,7 +935,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0047396",
   },
   {
-    rank: 50,
+    rank: 48,
     title: "Alien",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BOGQzZTBjMjQtOTVmMS00NGE5LWEyYmMtOGQ1ZGZjNmRkYjFhXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_UX45_CR0,0,45,67_AL_.jpg",
@@ -996,7 +953,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0078748",
   },
   {
-    rank: 51,
+    rank: 49,
     title: "City Lights",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BY2I4MmM1N2EtM2YzOS00OWUzLTkzYzctNDc5NDg2N2IyODJmXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UX45_CR0,0,45,67_AL_.jpg",
@@ -1018,7 +975,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0021749",
   },
   {
-    rank: 52,
+    rank: 50,
     title: "Cinema Paradiso",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BM2FhYjEyYmYtMDI1Yy00YTdlLWI2NWQtYmEzNzAxOGY1NjY2XkEyXkFqcGdeQXVyNTA3NTIyNDg@._V1_UY67_CR0,0,45,67_AL_.jpg",
@@ -1039,7 +996,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0095765",
   },
   {
-    rank: 53,
+    rank: 51,
     title: "Apocalypse Now",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BYmQyNTA1ZGItNjZjMi00NzFlLWEzMWEtNWMwN2Q2MjJhYzEyXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_UX45_CR0,0,45,67_AL_.jpg",
@@ -1061,7 +1018,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0078788",
   },
   {
-    rank: 54,
+    rank: 52,
     title: "Memento",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BZTcyNjk1MjgtOWI3Mi00YzQwLWI5MTktMzY4ZmI2NDAyNzYzXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UY67_CR0,0,45,67_AL_.jpg",
@@ -1082,7 +1039,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0209144",
   },
   {
-    rank: 55,
+    rank: 53,
     title: "Indiana Jones and the Raiders of the Lost Ark",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BNTU2ODkyY2MtMjU1NC00NjE1LWEzYjgtMWQ3MzRhMTE0NDc0XkEyXkFqcGdeQXVyMjM4MzQ4OTQ@._V1_UY67_CR0,0,45,67_AL_.jpg",
@@ -1104,7 +1061,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0082971",
   },
   {
-    rank: 56,
+    rank: 54,
     title: "Django Unchained",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BMjIyNTQ5NjQ1OV5BMl5BanBnXkFtZTcwODg1MDU4OA@@._V1_UY67_CR0,0,45,67_AL_.jpg",
@@ -1122,7 +1079,7 @@ export const data: singleMovie[] = [
     imdbid: "tt1853728",
   },
   {
-    rank: 57,
+    rank: 55,
     title: "WALL·E",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BMjExMTg5OTU0NF5BMl5BanBnXkFtZTcwMjMxMzMzMw@@._V1_UY67_CR0,0,45,67_AL_.jpg",
@@ -1144,7 +1101,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0910970",
   },
   {
-    rank: 58,
+    rank: 56,
     title: "The Lives of Others",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BNmQyNmJjM2ItNTQzYi00ZjMxLWFjMDYtZjUyN2YwZDk5YWQ2XkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_UX45_CR0,0,45,67_AL_.jpg",
@@ -1162,7 +1119,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0405094",
   },
   {
-    rank: 59,
+    rank: 57,
     title: "Sunset Blvd.",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BMTU0NTkyNzYwMF5BMl5BanBnXkFtZTgwMDU0NDk5MTI@._V1_UX45_CR0,0,45,67_AL_.jpg",
@@ -1180,7 +1137,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0043014",
   },
   {
-    rank: 60,
+    rank: 58,
     title: "Paths of Glory",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BOTI5Nzc0OTMtYzBkMS00NjkxLThmM2UtNjM2ODgxN2M5NjNkXkEyXkFqcGdeQXVyNjQ2MjQ5NzM@._V1_UX45_CR0,0,45,67_AL_.jpg",
@@ -1202,7 +1159,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0050825",
   },
   {
-    rank: 61,
+    rank: 59,
     title: "The Shining",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BZWFlYmY2MGEtZjVkYS00YzU4LTg0YjQtYzY1ZGE3NTA5NGQxXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX45_CR0,0,45,67_AL_.jpg",
@@ -1224,7 +1181,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0081505",
   },
   {
-    rank: 62,
+    rank: 60,
     title: "The Great Dictator",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BMmExYWJjNTktNGUyZS00ODhmLTkxYzAtNWIzOGEyMGNiMmUwXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UY67_CR0,0,45,67_AL_.jpg",
@@ -1242,7 +1199,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0032553",
   },
   {
-    rank: 63,
+    rank: 61,
     title: "Avengers: Infinity War",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_UY67_CR0,0,45,67_AL_.jpg",
@@ -1264,7 +1221,7 @@ export const data: singleMovie[] = [
     imdbid: "tt4154756",
   },
   {
-    rank: 64,
+    rank: 62,
     title: "Witness for the Prosecution",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BNDQwODU5OWYtNDcyNi00MDQ1LThiOGMtZDkwNWJiM2Y3MDg0XkEyXkFqcGdeQXVyMDI2NDg0NQ@@._V1_UX45_CR0,0,45,67_AL_.jpg",
@@ -1286,7 +1243,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0051201",
   },
   {
-    rank: 65,
+    rank: 63,
     title: "Aliens",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BZGU2OGY5ZTYtMWNhYy00NjZiLWI0NjUtZmNhY2JhNDRmODU3XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UX45_CR0,0,45,67_AL_.jpg",
@@ -1308,7 +1265,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0090605",
   },
   {
-    rank: 66,
+    rank: 64,
     title: "American Beauty",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BNTBmZWJkNjctNDhiNC00MGE2LWEwOTctZTk5OGVhMWMyNmVhXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UY67_CR0,0,45,67_AL_.jpg",
@@ -1326,7 +1283,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0169547",
   },
   {
-    rank: 67,
+    rank: 65,
     title: "Spider-Man: Into the Spider-Verse",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BMjMwNDkxMTgzOF5BMl5BanBnXkFtZTgwNTkwNTQ3NjM@._V1_UY67_CR0,0,45,67_AL_.jpg",
@@ -1344,7 +1301,7 @@ export const data: singleMovie[] = [
     imdbid: "tt4633694",
   },
   {
-    rank: 68,
+    rank: 66,
     title:
       "Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb",
     thumbnail:
@@ -1367,7 +1324,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0057012",
   },
   {
-    rank: 69,
+    rank: 67,
     title: "The Dark Knight Rises",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BMTk4ODQzNDY3Ml5BMl5BanBnXkFtZTcwODA0NTM4Nw@@._V1_UY67_CR0,0,45,67_AL_.jpg",
@@ -1389,7 +1346,7 @@ export const data: singleMovie[] = [
     imdbid: "tt1345836",
   },
   {
-    rank: 70,
+    rank: 68,
     title: "Oldboy",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BMTI3NTQyMzU5M15BMl5BanBnXkFtZTcwMTM2MjgyMQ@@._V1_UY67_CR0,0,45,67_AL_.jpg",
@@ -1412,7 +1369,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0364569",
   },
   {
-    rank: 71,
+    rank: 69,
     title: "Joker",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BNGVjNWI4ZGUtNzE0MS00YTJmLWE0ZDctN2ZiYTk2YmI3NTYyXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_UY67_CR0,0,45,67_AL_.jpg",
@@ -1434,7 +1391,7 @@ export const data: singleMovie[] = [
     imdbid: "tt7286456",
   },
   {
-    rank: 72,
+    rank: 70,
     title: "Amadeus",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BNWJlNzUzNGMtYTAwMS00ZjI2LWFmNWQtODcxNWUxODA5YmU1XkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_UX45_CR0,0,45,67_AL_.jpg",
@@ -1455,7 +1412,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0086879",
   },
   {
-    rank: 73,
+    rank: 71,
     title: "Inglourious Basterds",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BOTJiNDEzOWYtMTVjOC00ZjlmLWE0NGMtZmE1OWVmZDQ2OWJhXkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_UY67_CR0,0,45,67_AL_.jpg",
@@ -1473,7 +1430,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0361748",
   },
   {
-    rank: 74,
+    rank: 72,
     title: "Toy Story",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BMDU2ZWJlMjktMTRhMy00ZTA5LWEzNDgtYmNmZTEwZTViZWJkXkEyXkFqcGdeQXVyNDQ2OTk4MzI@._V1_UX45_CR0,0,45,67_AL_.jpg",
@@ -1495,7 +1452,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0114709",
   },
   {
-    rank: 75,
+    rank: 73,
     title: "Coco",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BYjQ5NjM0Y2YtNjZkNC00ZDhkLWJjMWItN2QyNzFkMDE3ZjAxXkEyXkFqcGdeQXVyODIxMzk5NjA@._V1_UY67_CR1,0,45,67_AL_.jpg",
@@ -1517,7 +1474,7 @@ export const data: singleMovie[] = [
     imdbid: "tt2380307",
   },
   {
-    rank: 76,
+    rank: 74,
     title: "Braveheart",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BMzkzMmU0YTYtOWM3My00YzBmLWI0YzctOGYyNTkwMWE5MTJkXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UY67_CR0,0,45,67_AL_.jpg",
@@ -1535,7 +1492,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0112573",
   },
   {
-    rank: 77,
+    rank: 75,
     title: "The Boat",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BNDBjMWUxNTUtNjZiNi00YzJhLTgzNzUtMTRiY2FkZmMzYTNjXkEyXkFqcGdeQXVyMTUzMDUzNTI3._V1_UX45_CR0,0,45,67_AL_.jpg",
@@ -1556,7 +1513,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0082096",
   },
   {
-    rank: 78,
+    rank: 76,
     title: "Avengers: Endgame",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_UY67_CR0,0,45,67_AL_.jpg",
@@ -1578,7 +1535,7 @@ export const data: singleMovie[] = [
     imdbid: "tt4154796",
   },
   {
-    rank: 79,
+    rank: 77,
     title: "Princess Mononoke",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BNGIzY2IzODQtNThmMi00ZDE4LWI5YzAtNzNlZTM1ZjYyYjUyXkEyXkFqcGdeQXVyODEzNjM5OTQ@._V1_UX45_CR0,0,45,67_AL_.jpg",
@@ -1599,7 +1556,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0119698",
   },
   {
-    rank: 80,
+    rank: 78,
     title: "Top Gun: Maverick",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BZWYzOGEwNTgtNWU3NS00ZTQ0LWJkODUtMmVhMjIwMjA1ZmQwXkEyXkFqcGdeQXVyMjkwOTAyMDU@._V1_UY67_CR0,0,45,67_AL_.jpg",
@@ -1621,7 +1578,7 @@ export const data: singleMovie[] = [
     imdbid: "tt1745960",
   },
   {
-    rank: 81,
+    rank: 79,
     title: "Once Upon a Time in America",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BMGFkNWI4MTMtNGQ0OC00MWVmLTk3MTktOGYxN2Y2YWVkZWE2XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX45_CR0,0,45,67_AL_.jpg",
@@ -1643,7 +1600,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0087843",
   },
   {
-    rank: 82,
+    rank: 80,
     title: "Good Will Hunting",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BOTI0MzcxMTYtZDVkMy00NjY1LTgyMTYtZmUxN2M3NmQ2NWJhXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX45_CR0,0,45,67_AL_.jpg",
@@ -1661,7 +1618,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0119217",
   },
   {
-    rank: 83,
+    rank: 81,
     title: "Your Name.",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BODRmZDVmNzUtZDA4ZC00NjhkLWI2M2UtN2M0ZDIzNDcxYThjL2ltYWdlXkEyXkFqcGdeQXVyNTk0MzMzODA@._V1_UY67_CR0,0,45,67_AL_.jpg",
@@ -1682,7 +1639,7 @@ export const data: singleMovie[] = [
     imdbid: "tt5311514",
   },
   {
-    rank: 84,
+    rank: 82,
     title: "Requiem for a Dream",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BOTdiNzJlOWUtNWMwNS00NmFlLWI0YTEtZmI3YjIzZWUyY2Y3XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX45_CR0,0,45,67_AL_.jpg",
@@ -1703,7 +1660,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0180093",
   },
   {
-    rank: 85,
+    rank: 83,
     title: "Toy Story 3",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BMTgxOTY4Mjc0MF5BMl5BanBnXkFtZTcwNTA4MDQyMw@@._V1_UY67_CR1,0,45,67_AL_.jpg",
@@ -1725,7 +1682,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0435761",
   },
   {
-    rank: 86,
+    rank: 84,
     title: "Singin' in the Rain",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BZDRjNGViMjQtOThlMi00MTA3LThkYzQtNzJkYjBkMGE0YzE1XkEyXkFqcGdeQXVyNDYyMDk5MTU@._V1_UY67_CR0,0,45,67_AL_.jpg",
@@ -1743,7 +1700,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0045152",
   },
   {
-    rank: 87,
+    rank: 85,
     title: "3 Idiots",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BNTkyOGVjMGEtNmQzZi00NzFlLTlhOWQtODYyMDc2ZGJmYzFhXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UY67_CR1,0,45,67_AL_.jpg",
@@ -1764,30 +1721,9 @@ export const data: singleMovie[] = [
     ],
     imdbid: "tt1187043",
   },
-  // {
-  //   rank: 88,
-  //   title: "High and Low",
-  //   thumbnail:
-  //     "https://m.media-amazon.com/images/M/MV5BZGQ1NWZlYjctNDJmOS00MmU2LTg1ODItNmZiM2ZkNzJhNDI0XkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_UY67_CR1,0,45,67_AL_.jpg",
-  //   rating: "8.3",
-  //   id: "top88",
-  //   year: 1963,
-  //   image:
-  //     "https://m.media-amazon.com/images/M/MV5BZGQ1NWZlYjctNDJmOS00MmU2LTg1ODItNmZiM2ZkNzJhNDI0XkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_QL75_UY562_CR9,0,380,562_.jpg",
-  //   description:
-  //     "An executive of a Yokohama shoe company becomes a victim of extortion when his chauffeur's son is kidnapped by mistake and held for ransom.",
-  //   trailer: "https://www.youtube.com/embed/LV3z2Ytxu90",
-  //   genre: ["Crime", "Drama", "Mystery"],
-  //   director: ["Akira Kurosawa"],
-  //   writers: [
-  //     "Hideo Oguni (screenplay)",
-  //     "Ryûzô Kikushima (screenplay)",
-  //     "Eijirô Hisaita (screenplay)",
-  //   ],
-  //   imdbid: "tt0057565",
-  // },
+
   {
-    rank: 89,
+    rank: 86,
     title: "Star Wars: Episode VI - Return of the Jedi",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BOWZlMjFiYzgtMTUzNC00Y2IzLTk1NTMtZmNhMTczNTk0ODk1XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_UX45_CR0,0,45,67_AL_.jpg",
@@ -1808,7 +1744,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0086190",
   },
   {
-    rank: 90,
+    rank: 87,
     title: "2001: A Space Odyssey",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BMmNlYzRiNDctZWNhMi00MzI4LThkZTctMTUzMmZkMmFmNThmXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UY67_CR0,0,45,67_AL_.jpg",
@@ -1829,7 +1765,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0062622",
   },
   {
-    rank: 91,
+    rank: 88,
     title: "Eternal Sunshine of the Spotless Mind",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BMTY4NzcwODg3Nl5BMl5BanBnXkFtZTcwNTEwOTMyMw@@._V1_UY67_CR0,0,45,67_AL_.jpg",
@@ -1851,7 +1787,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0338013",
   },
   {
-    rank: 92,
+    rank: 89,
     title: "Capernaum",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BY2Y3OWNkMTctYzNjYS00NWVkLTg4OWEtY2YxN2I3NDhlYzE0XkEyXkFqcGdeQXVyMTI3ODAyMzE2._V1_UY67_CR1,0,45,67_AL_.jpg",
@@ -1873,7 +1809,7 @@ export const data: singleMovie[] = [
     imdbid: "tt8267604",
   },
   {
-    rank: 93,
+    rank: 90,
     title: "Reservoir Dogs",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BZmExNmEwYWItYmQzOS00YjA5LTk2MjktZjEyZDE1Y2QxNjA1XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX45_CR0,0,45,67_AL_.jpg",
@@ -1894,7 +1830,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0105236",
   },
   {
-    rank: 94,
+    rank: 91,
     title: "The Hunt",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BMTg2NDg3ODg4NF5BMl5BanBnXkFtZTcwNzk3NTc3Nw@@._V1_UY67_CR1,0,45,67_AL_.jpg",
@@ -1912,7 +1848,7 @@ export const data: singleMovie[] = [
     imdbid: "tt2106476",
   },
   {
-    rank: 95,
+    rank: 92,
     title: "Citizen Kane",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BYjBiOTYxZWItMzdiZi00NjlkLWIzZTYtYmFhZjhiMTljOTdkXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UX45_CR0,0,45,67_AL_.jpg",
@@ -1934,7 +1870,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0033467",
   },
   {
-    rank: 96,
+    rank: 93,
     title: "Lawrence of Arabia",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BYWY5ZjhjNGYtZmI2Ny00ODM0LWFkNzgtZmI1YzA2N2MxMzA0XkEyXkFqcGdeQXVyNjUwNzk3NDc@._V1_UY67_CR0,0,45,67_AL_.jpg",
@@ -1952,7 +1888,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0056172",
   },
   {
-    rank: 97,
+    rank: 94,
     title: "M",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BODA4ODk3OTEzMF5BMl5BanBnXkFtZTgwMTQ2ODMwMzE@._V1_UX45_CR0,0,45,67_AL_.jpg",
@@ -1973,26 +1909,9 @@ export const data: singleMovie[] = [
     ],
     imdbid: "tt0022100",
   },
-  // {
-  //   rank: 98,
-  //   title: "Come and See",
-  //   thumbnail:
-  //     "https://m.media-amazon.com/images/M/MV5BNzU3OTI1MjItYTJiZC00NDI0LWFlNGYtOTQ1OTVhNDgwM2U3XkEyXkFqcGdeQXVyNTc2MDU0NDE@._V1_UY67_CR0,0,45,67_AL_.jpg",
-  //   rating: "8.3",
-  //   id: "top98",
-  //   year: 1985,
-  //   image:
-  //     "https://m.media-amazon.com/images/M/MV5BNzU3OTI1MjItYTJiZC00NDI0LWFlNGYtOTQ1OTVhNDgwM2U3XkEyXkFqcGdeQXVyNTc2MDU0NDE@._V1_QL75_UX380_CR0,0,380,562_.jpg",
-  //   description:
-  //     "After finding an old rifle, a young boy joins the Soviet resistance movement against ruthless German forces and experiences the horrors of World War II.",
-  //   trailer: "https://www.youtube.com/embed/UHaSQU-4wss",
-  //   genre: ["Drama", "Thriller", "War"],
-  //   director: ["Elem Klimov"],
-  //   writers: ["Ales Adamovich (story)", "Elem Klimov (screenplay)"],
-  //   imdbid: "tt0091251",
-  // },
+
   {
-    rank: 99,
+    rank: 95,
     title: "North by Northwest",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BZDA3NDExMTUtMDlhOC00MmQ5LWExZGUtYmI1NGVlZWI4OWNiXkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_UX45_CR0,0,45,67_AL_.jpg",
@@ -2010,7 +1929,7 @@ export const data: singleMovie[] = [
     imdbid: "tt0053125",
   },
   {
-    rank: 100,
+    rank: 96,
     title: "Vertigo",
     thumbnail:
       "https://m.media-amazon.com/images/M/MV5BYTE4ODEwZDUtNDFjOC00NjAxLWEzYTQtYTI1NGVmZmFlNjdiL2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_UX45_CR0,0,45,67_AL_.jpg",
