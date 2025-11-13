@@ -114,11 +114,11 @@ function Home() {
     }
   };
 
-  console.log(Math.ceil(Number(activeMovies?.length) / 12));
-  console.log(Array(Math.ceil(Number(activeMovies?.length) / 12)).fill(true));
-  const slidesAmount = Array(Math.ceil(Number(activeMovies?.length) / 12)).fill(
-    true
-  );
+  const slidesAmount = Array(
+    Math.ceil(Number(activeMovies?.length || 0) / 12)
+  ).fill(true);
+
+  useEffect(() => {}, []);
 
   return (
     <>
