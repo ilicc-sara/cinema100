@@ -62,7 +62,6 @@
 
 // export default useBaseData;
 
-import { useEffect } from "react";
 import { data } from "../../data[1]";
 import { supabase } from "../../supabase-client";
 

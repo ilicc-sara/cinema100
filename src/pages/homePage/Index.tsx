@@ -11,6 +11,7 @@ import { ToastContainer, toast } from "react-toastify";
 function Home() {
   const [movies, setMovies] = useState<singleMovie[] | null>(null);
   const [activeMovies, setActiveMovies] = useState<singleMovie[] | null>(null);
+  const [activeSlide, setActiveSlide] = useState<number>(1);
 
   const [currentlyTrending, setCurrentlyTrending] = useState<
     singleMovie[] | null
@@ -21,69 +22,6 @@ function Home() {
 
   const [search, setSearch] = useState<string>("");
   const [activeGenre, setActiveGenre] = useState<string>("all");
-
-  // const currentlyTrending = movies?.filter(
-  //   (movie) => movie.rank >= 55 && movie.rank < 75
-  // );
-
-  // useEffect(() => {
-  //   const deleteData = () => {
-  //     data.forEach(async (item) => {
-  //       if (item.rank >= 55 && item.rank < 75) {
-  //         try {
-  //           const { error } = await supabase
-  //             .from("trendingMovies")
-  //             .delete()
-  //             .eq("rank", item.rank);
-
-  //           if (error) {
-  //             console.error("Error deleting task: ", error.message);
-  //           }
-  //         } catch (error: any) {
-  //           console.error("Error deleting task: ", error.message);
-  //         }
-  //       } else return;
-  //     });
-  //   };
-
-  //   const fetchData = () => {
-  //     data.forEach(async (item) => {
-  //       if (item.rank >= 55 && item.rank < 75) {
-  //         try {
-  //           const { error } = await supabase
-  //             .from("trendingMovies")
-  //             .insert([
-  //               {
-  //                 rank: item.rank,
-  //                 title: item.title,
-  //                 thumbnail: item.thumbnail,
-  //                 rating: item.rating,
-  //                 itemID: item.id,
-  //                 year: item.year,
-  //                 image: item.image,
-  //                 description: item.description,
-  //                 trailer: item.trailer,
-  //                 genre: item.genre.join(","),
-  //                 director: item.director.join(","),
-  //                 writers: item.writers.join(","),
-  //                 imdbid: item.imdbid,
-  //               },
-  //             ])
-  //             .single();
-
-  //           if (error) {
-  //             console.error("Error adding task: ", error.message);
-  //           }
-  //         } catch (error: any) {
-  //           console.error("Error adding task: ", error.message);
-  //         }
-  //       } else return;
-  //     });
-  //   };
-
-  //   deleteData();
-  //   fetchData();
-  // }, []);
 
   const refreshFn = useBaseData();
 
@@ -178,7 +116,7 @@ function Home() {
 
   return (
     <>
-      <section>
+      <section className="!mb-10">
         <ToastContainer position="top-center" />
         <div>
           <h1 className="text-left text-[#e8f0fe] w-[70%] !mx-auto text-2xl font-medium !my-5">
@@ -187,7 +125,7 @@ function Home() {
 
           <button
             onClick={() => refreshFn()}
-            className="bg-[#fff] !my-5 cursor-pointer rounded"
+            className="bg-[#fff] !my-5 cursor-pointer rounded !px-2"
           >
             REFRESH
           </button>
@@ -197,7 +135,7 @@ function Home() {
             <TrendingMovies currentlyTrending={currentlyTrending} />
           </div>
         </div>
-        {/* <button onClick={() => refreshFn()}>Refresh</button> */}
+
         <div className="bg-[#161d2f] w-[80%] !mx-auto rounded-xl !py-3 !px-5 !my-10 flex justify-between items-center">
           <div className="bg-[#bfbfbf] w-[fit-content] flex items-center justify-between !py-1 rounded-lg cursor-pointer active:shadow-[0_0_0_5px_rgb(252,71,71)] ">
             <form onSubmit={handleSumbit}>
@@ -246,6 +184,20 @@ function Home() {
         <div className="w-[80%] !mx-auto relative">
           {loading && <div className="loader"></div>}
           <Movies activeMovies={activeMovies} />
+        </div>
+        <div className="flex !mx-auto w-[fit-content] gap-3">
+          <button className="bg-[#ccc] w-10 h-10 rounded-full">&larr;</button>
+          <button className="bg-[#ccc] w-10 h-10 rounded-full">1</button>
+          <button className="bg-[#ccc] w-10 h-10 rounded-full">2</button>
+          <button className="bg-[#ccc] w-10 h-10 rounded-full">3</button>
+          <button className="bg-[#ccc] w-10 h-10 rounded-full">4</button>
+          <button className="bg-[#ccc] w-10 h-10 rounded-full">5</button>
+          <button className="bg-[#ccc] w-10 h-10 rounded-full">6</button>
+          <button className="bg-[#ccc] w-10 h-10 rounded-full">7</button>
+          <button className="bg-[#ccc] w-10 h-10 rounded-full">8</button>
+          <button className="bg-[#ccc] w-10 h-10 rounded-full">9</button>
+          <button className="bg-[#ccc] w-10 h-10 rounded-full">10</button>
+          <button className="bg-[#ccc] w-10 h-10 rounded-full">&rarr;</button>
         </div>
       </section>
     </>
