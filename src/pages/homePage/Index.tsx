@@ -32,7 +32,7 @@ function Home() {
       const { error, data } = await supabase.from("moviesData").select();
 
       setMovies(data);
-      setActiveMovies(data);
+      // setActiveMovies(data);
       setLoading(false);
 
       if (data) {
@@ -75,19 +75,19 @@ function Home() {
     selectTrendingData();
   }, []);
 
-  useEffect(() => {
-    if (!movies) return;
+  // useEffect(() => {
+  //   if (!movies) return;
 
-    let filteredMoviesTemp = [...movies];
+  //   let filteredMoviesTemp = [...movies];
 
-    if (activeGenre !== "all") {
-      filteredMoviesTemp = filteredMoviesTemp.filter((movie) =>
-        movie.genre.includes(activeGenre)
-      );
-    }
+  //   if (activeGenre !== "all") {
+  //     filteredMoviesTemp = filteredMoviesTemp.filter((movie) =>
+  //       movie.genre.includes(activeGenre)
+  //     );
+  //   }
 
-    setActiveMovies(filteredMoviesTemp);
-  }, [activeGenre]);
+  //   setActiveMovies(filteredMoviesTemp);
+  // }, [activeGenre]);
 
   const handleSumbit = async (e: any) => {
     e.preventDefault();
@@ -114,18 +114,9 @@ function Home() {
     }
   };
 
-  const slidesAmount = Array(
-    Math.ceil(Number(activeMovies?.length || 0) / 12)
-  ).fill(true);
-
-  //   const { data, error } = await supabase
-  //   .from('instruments')
-  //   .select('name, section_id')
-  //   .eq('name', 'violin')    // Correct
-  // const { data, error } = await supabase
-  //   .from('instruments')
-  //   .eq('name', 'violin')    // Incorrect
-  //   .select('name, section_id')
+  const slidesAmount = Array(Math.ceil(Number(movies?.length || 0) / 12)).fill(
+    true
+  );
 
   const selectActiveSlideMovies = async (
     rangeIndex1: number,
@@ -142,6 +133,7 @@ function Home() {
       // .eq("rank", 12);
 
       console.log(data);
+      setActiveMovies(data);
 
       setLoading(false);
 
@@ -156,8 +148,8 @@ function Home() {
   };
 
   useEffect(() => {
-    selectActiveSlideMovies(activeSlide, activeSlide * 12 - 1);
-  }, []);
+    selectActiveSlideMovies((activeSlide - 1) * 12, activeSlide * 12 - 1);
+  }, [activeSlide]);
 
   return (
     <>

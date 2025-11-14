@@ -402,3 +402,5 @@ return { ...prev, search: e.target.value };
     //   )}
     // </Splide>
 ```
+
+ <Movies activeMovies={activeMovies} />
