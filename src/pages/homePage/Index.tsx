@@ -156,7 +156,7 @@ function Home() {
   };
 
   useEffect(() => {
-    selectActiveSlideMovies(0, 11);
+    selectActiveSlideMovies(activeSlide, activeSlide * 12 - 1);
   }, []);
 
   return (
