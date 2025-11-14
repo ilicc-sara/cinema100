@@ -118,11 +118,30 @@ function Home() {
     Math.ceil(Number(activeMovies?.length || 0) / 12)
   ).fill(true);
 
-  const selectActiveSlideMovies = async () => {
+  //   const { data, error } = await supabase
+  //   .from('instruments')
+  //   .select('name, section_id')
+  //   .eq('name', 'violin')    // Correct
+  // const { data, error } = await supabase
+  //   .from('instruments')
+  //   .eq('name', 'violin')    // Incorrect
+  //   .select('name, section_id')
+
+  const selectActiveSlideMovies = async (
+    rangeIndex1: number,
+    rangeIndex2: number
+  ) => {
     setLoading(true);
 
     try {
-      const { error, data } = await supabase.from("moviesData").select();
+      const { error, data } = await supabase
+        .from("moviesData")
+        .select()
+        .range(rangeIndex1, rangeIndex2);
+      // .range(12, 23);
+      // .eq("rank", 12);
+
+      console.log(data);
 
       setLoading(false);
 
@@ -136,7 +155,9 @@ function Home() {
     }
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    selectActiveSlideMovies(0, 11);
+  }, []);
 
   return (
     <>
