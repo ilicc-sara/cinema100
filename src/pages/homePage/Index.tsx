@@ -129,10 +129,7 @@ function Home() {
         .from("moviesData")
         .select()
         .range(rangeIndex1, rangeIndex2);
-      // .range(12, 23);
-      // .eq("rank", 12);
 
-      console.log(data);
       setActiveMovies(data);
 
       setLoading(false);
@@ -160,12 +157,12 @@ function Home() {
             Currently trending
           </h1>
 
-          <button
+          {/* <button
             onClick={() => refreshFn()}
             className="bg-[#fff] !my-5 cursor-pointer rounded !px-2"
           >
-            REFRESH
-          </button>
+            Refresh Movies
+          </button> */}
 
           <div className="w-[80%] !mx-auto relative">
             {loading && <div className="loader"></div>}
@@ -218,11 +215,11 @@ function Home() {
         <h1 className="text-left text-[#e8f0fe] w-[80%] !mx-auto text-2xl font-medium !mb-5">
           Top 100
         </h1>
-        <div className="w-[80%] !mx-auto relative">
+        <div className="w-[80%] !mx-auto !my-5 relative">
           {loading && <div className="loader"></div>}
           <Movies activeMovies={activeMovies} />
         </div>
-        <div className="flex !mx-auto w-[fit-content] gap-4">
+        <div className="flex !mx-auto w-[fit-content] gap-4 !my-10">
           <button
             className="bg-[#ccc] w-10 h-10 rounded-full"
             onClick={() =>
