@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { data } from "../../data[1]";
 import { supabase } from "../../supabase-client";
 import useBaseData from "./useBaseData";
-import type { Filters, singleMovie } from "../../types";
+import type { singleMovie } from "../../types";
 import TrendingMovies from "./components/TrendingMovies";
 import Movies from "./components/Movies";
 import "react-toastify/dist/ReactToastify.css";
@@ -15,9 +14,6 @@ function Home() {
   const [activeMovies2, setActiveMovies2] = useState<singleMovie[] | null>(
     null
   );
-
-  console.log("active movies", activeMovies);
-  console.log("active movies 2", activeMovies2);
 
   const [activeSlide, setActiveSlide] = useState<number>(1);
 
@@ -104,9 +100,8 @@ function Home() {
       const { error, data } = await supabase
         .from("moviesData")
         .select()
-        .ilike("title", `%${search}%`);
-
-      console.log("single movie", data?.length);
+        .ilike("title", `%${search}%`)
+        .limit(12);
 
       if (data?.length === 0) {
         setSearch("");
@@ -121,6 +116,7 @@ function Home() {
     } catch (error: any) {
       console.error("Error finding single movie: ", error.message);
     }
+    setSearch("");
   };
 
   const slidesAmount = Array(Math.ceil(Number(movies?.length || 0) / 12)).fill(
@@ -152,8 +148,8 @@ function Home() {
       console.error("Error selecting data: ", error.message);
       setLoading(false);
     }
+    setSearch("");
   };
-
   useEffect(() => {
     selectActiveSlideMovies((activeSlide - 1) * 12, activeSlide * 12 - 1);
   }, [activeSlide]);
