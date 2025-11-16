@@ -167,13 +167,6 @@ function Home() {
             Currently trending
           </h1>
 
-          {/* <button
-            onClick={() => refreshFn()}
-            className="bg-[#fff] !my-5 cursor-pointer rounded !px-2"
-          >
-            Refresh Movies
-          </button> */}
-
           <div className="w-[80%] !mx-auto relative">
             {loading && <div className="loader"></div>}
             <TrendingMovies currentlyTrending={currentlyTrending} />
@@ -222,9 +215,18 @@ function Home() {
             </svg>
           </div>
         </div>
-        <h1 className="text-left text-[#e8f0fe] w-[80%] !mx-auto text-2xl font-medium !mb-5">
-          Top 100
-        </h1>
+        <div className="flex w-[80%] !mx-auto !my-5 relative justify-between items-center">
+          <h1 className="text-left text-[#e8f0fe]  text-2xl font-medium !mb-5">
+            Top 100
+          </h1>
+          <button
+            onClick={() => refreshFn()}
+            className="bg-[#161d2f] text-[#e8f0fe] !my-5 cursor-pointer rounded !px-2"
+          >
+            Refresh Movies
+          </button>
+        </div>
+
         <div className="w-[80%] !mx-auto !my-5 relative">
           {loading && <div className="loader"></div>}
           <Movies activeMovies={activeMovies} />
