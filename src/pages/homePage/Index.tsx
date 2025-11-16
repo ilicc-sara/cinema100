@@ -10,7 +10,15 @@ import { ToastContainer, toast } from "react-toastify";
 
 function Home() {
   const [movies, setMovies] = useState<singleMovie[] | null>(null);
+
   const [activeMovies, setActiveMovies] = useState<singleMovie[] | null>(null);
+  const [activeMovies2, setActiveMovies2] = useState<singleMovie[] | null>(
+    null
+  );
+
+  console.log("active movies", activeMovies);
+  console.log("active movies 2", activeMovies2);
+
   const [activeSlide, setActiveSlide] = useState<number>(1);
 
   const [currentlyTrending, setCurrentlyTrending] = useState<
@@ -32,7 +40,6 @@ function Home() {
       const { error, data } = await supabase.from("moviesData").select();
 
       setMovies(data);
-      // setActiveMovies(data);
       setLoading(false);
 
       if (data) {
@@ -75,19 +82,21 @@ function Home() {
     selectTrendingData();
   }, []);
 
-  // useEffect(() => {
-  //   if (!movies) return;
+  useEffect(() => {
+    if (!activeMovies) return;
 
-  //   let filteredMoviesTemp = [...movies];
+    let filteredMoviesTemp = [...activeMovies];
+    console.log("filtered movies", filteredMoviesTemp);
 
-  //   if (activeGenre !== "all") {
-  //     filteredMoviesTemp = filteredMoviesTemp.filter((movie) =>
-  //       movie.genre.includes(activeGenre)
-  //     );
-  //   }
-
-  //   setActiveMovies(filteredMoviesTemp);
-  // }, [activeGenre]);
+    if (activeGenre !== "all") {
+      filteredMoviesTemp = filteredMoviesTemp.filter((movie) =>
+        movie.genre.includes(activeGenre)
+      );
+      setActiveMovies(filteredMoviesTemp);
+    } else {
+      setActiveMovies(activeMovies2);
+    }
+  }, [activeGenre]);
 
   const handleSumbit = async (e: any) => {
     e.preventDefault();
@@ -131,6 +140,7 @@ function Home() {
         .range(rangeIndex1, rangeIndex2);
 
       setActiveMovies(data);
+      setActiveMovies2(data);
 
       setLoading(false);
 
