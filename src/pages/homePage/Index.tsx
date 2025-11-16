@@ -221,7 +221,7 @@ function Home() {
         </div>
         <div className="flex !mx-auto w-[fit-content] gap-4 !my-10">
           <button
-            className="bg-[#ccc] w-10 h-10 rounded-full"
+            className="bg-[#ccc] w-10 h-10 rounded-full text-center cursor-pointer hover:scale-[1.1] transition duration-300  flex items-center justify-center"
             onClick={() =>
               setActiveSlide((prev) => {
                 if (prev !== 1) {
@@ -230,14 +230,14 @@ function Home() {
               })
             }
           >
-            &larr;
+            <i className="bxrds  bx-arrow-left text-xl"></i>
           </button>
           <div className="flex gap-2">
             {slidesAmount.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setActiveSlide(index + 1)}
-                className={`bg-[#ccc] w-10 h-10 rounded-full ${
+                className={`bg-[#ccc] w-10 h-10 rounded-full cursor-pointer hover:scale-[1.1] transition duration-300 ${
                   activeSlide === index + 1 ? "bg-[#fc4747]" : ""
                 }`}
               >
@@ -246,7 +246,7 @@ function Home() {
             ))}
           </div>
           <button
-            className="bg-[#ccc] w-10 h-10 rounded-full"
+            className="bg-[#ccc] w-10 h-10 rounded-full text-center cursor-pointer hover:scale-[1.1] transition duration-300  flex items-center justify-center"
             onClick={() =>
               setActiveSlide((prev) => {
                 if (prev !== 9) {
@@ -257,7 +257,7 @@ function Home() {
               })
             }
           >
-            &rarr;
+            <i className="bxrds  bx-arrow-right text-xl"></i>
           </button>
         </div>
       </section>
