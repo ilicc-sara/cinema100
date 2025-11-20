@@ -43,6 +43,7 @@ function Home() {
           genresArr.push(...element.genre.split(","));
         }
         setGenres([...new Set(genresArr)]);
+        // staviti u bazu tabelu
       }
 
       if (error) {
@@ -93,6 +94,7 @@ function Home() {
       setActiveMovies(activeMovies2);
     }
   }, [activeGenre]);
+  // pogledati kako da napravim upit ka bazi za odredjeni zanr, npr iz tabele movies daj mi filmove koji su drama
 
   const handleSumbit = async (e: any) => {
     e.preventDefault();
@@ -122,6 +124,7 @@ function Home() {
   const slidesAmount = Array(Math.ceil(Number(movies?.length || 0) / 12)).fill(
     true
   );
+  // pogledati count supabase
 
   const selectActiveSlideMovies = async (
     rangeIndex1: number,

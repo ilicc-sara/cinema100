@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import Button from "../../UI/Button";
 import Input from "../../UI/Input";
 
-function Auth() {
+function AuthLogIn() {
   const [logIn, setLogIn] = useState<boolean>(true);
 
   const [name, setName] = useState<string>("");
@@ -11,6 +11,7 @@ function Auth() {
 
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  // napraviti dve posebne stranice za log in i sign up
   return (
     <section className="min-h-screen !mt-[5%]">
       <div className="w-[fit-content] !mx-auto flex justify-center items-center gap-2">
@@ -48,7 +49,7 @@ function Auth() {
             </p>
             <p className="text-[#e8f0fe]">
               Or,
-              <Link to="/home">
+              <Link to="/">
                 <span className="text-[#fc4747] cursor-pointer">
                   &nbsp; Log in as guest
                 </span>
@@ -107,4 +108,4 @@ function Auth() {
   );
 }
 
-export default Auth;
+export default AuthLogIn;
