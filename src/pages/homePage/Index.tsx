@@ -21,7 +21,7 @@ function Home() {
     singleMovie[] | null
   >(null);
 
-  const [genres, setGenres] = useState<string[]>([]);
+  const [genres, setGenres] = useState<string[] | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
   const [search, setSearch] = useState<string>("");
@@ -31,20 +31,12 @@ function Home() {
 
   const selectData = async () => {
     setLoading(true);
-    let genresArr: string[] = [];
+
     try {
       const { error, data } = await supabase.from("moviesData").select();
 
       setMovies(data);
       setLoading(false);
-
-      if (data) {
-        for (const element of data) {
-          genresArr.push(...element.genre.split(","));
-        }
-        setGenres([...new Set(genresArr)]);
-        // staviti u bazu tabelu
-      }
 
       if (error) {
         console.error("Error selecting data: ", error.message);
@@ -74,9 +66,28 @@ function Home() {
     }
   };
 
+  const selectGenres = async () => {
+    setLoading(true);
+    try {
+      const { error, data } = await supabase.from("genres").select();
+
+      setLoading(false);
+      setGenres(data);
+
+      if (error) {
+        console.error("Error selecting genres: ", error.message);
+        setLoading(false);
+      }
+    } catch (error: any) {
+      console.error("Error selecting genres: ", error.message);
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
     selectData();
     selectTrendingData();
+    selectGenres();
   }, []);
 
   useEffect(() => {
@@ -157,6 +168,8 @@ function Home() {
     selectActiveSlideMovies((activeSlide - 1) * 12, activeSlide * 12 - 1);
   }, [activeSlide]);
 
+  console.log(genres);
+
   return (
     <>
       <section className="!mb-10">
@@ -195,12 +208,13 @@ function Home() {
               className="bg-[#bfbfbf] rounded"
             >
               <option value="all">All</option>
-              {genres.map((genre, index) => (
-                <option key={index} value={genre}>
-                  {" "}
-                  {genre}{" "}
-                </option>
-              ))}
+              {genres &&
+                genres.map((genre, index) => (
+                  <option key={index} value={genre}>
+                    {" "}
+                    {genre}{" "}
+                  </option>
+                ))}
             </select>
             <i className="bxr  bxs-bookmark"></i>
             <svg
