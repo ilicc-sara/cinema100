@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../../supabase-client";
 import useBaseData from "./useBaseData";
-import type { singleMovie } from "../../types";
+import type { singleMovie, Genres } from "../../types";
 import TrendingMovies from "./components/TrendingMovies";
 import Movies from "./components/Movies";
 import "react-toastify/dist/ReactToastify.css";
@@ -21,7 +21,7 @@ function Home() {
     singleMovie[] | null
   >(null);
 
-  const [genres, setGenres] = useState<string[] | null>(null);
+  const [genres, setGenres] = useState<Genres[] | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
   const [search, setSearch] = useState<string>("");
@@ -210,9 +210,9 @@ function Home() {
               <option value="all">All</option>
               {genres &&
                 genres.map((genre, index) => (
-                  <option key={index} value={genre}>
+                  <option key={index} value={genre.genre}>
                     {" "}
-                    {genre}{" "}
+                    {genre.genre}{" "}
                   </option>
                 ))}
             </select>

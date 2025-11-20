@@ -32,3 +32,9 @@ export type TrendingProps = {
 export type ActiveMoviesProps = {
   activeMovies: singleMovie[] | null;
 };
+
+export type Genres = {
+  id: number;
+  created_at: string;
+  genre: string;
+};
