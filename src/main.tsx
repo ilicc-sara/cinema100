@@ -3,7 +3,6 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import "./App.css";
 import { Provider } from "react-redux";
-import { store } from "./redux/store.tsx";
 import AuthLogIn from "./pages/authPage/IndexLogIn.tsx";
 import AuthSignUp from "./pages/authPage/IndexSignUp.tsx";
 import Home from "./pages/homePage/Index.tsx";
@@ -41,8 +40,6 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <Provider store={store}>
-      <RouterProvider router={router} />
-    </Provider>
+    <RouterProvider router={router} />
   </StrictMode>
 );
