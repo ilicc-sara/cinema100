@@ -45,6 +45,27 @@ function Home() {
     }
   };
 
+  const selectCountData = async () => {
+    setLoading(true);
+
+    try {
+      const { error, count } = await supabase
+        .from("moviesData")
+        .select("*", { count: "exact" });
+      console.log("izbrojani podaci", count);
+
+      setLoading(false);
+
+      if (error) {
+        console.error("Error counting selected data: ", error.message);
+        setLoading(false);
+      }
+    } catch (error: any) {
+      console.error("Error counting selected data: ", error.message);
+      setLoading(false);
+    }
+  };
+
   const selectTrendingData = async () => {
     setLoading(true);
     try {
@@ -83,6 +104,7 @@ function Home() {
 
   useEffect(() => {
     selectData();
+    selectCountData();
     selectTrendingData();
     selectGenres();
   }, []);
