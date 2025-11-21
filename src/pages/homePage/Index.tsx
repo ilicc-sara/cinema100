@@ -11,9 +11,6 @@ function Home() {
   const [movies, setMovies] = useState<singleMovie[] | null>(null);
 
   const [activeMovies, setActiveMovies] = useState<singleMovie[] | null>(null);
-  const [activeMovies2, setActiveMovies2] = useState<singleMovie[] | null>(
-    null
-  );
 
   const [activeSlide, setActiveSlide] = useState<number>(1);
 
@@ -90,21 +87,21 @@ function Home() {
     selectGenres();
   }, []);
 
-  useEffect(() => {
-    if (!activeMovies) return;
+  // useEffect(() => {
+  //   if (!activeMovies) return;
 
-    let filteredMoviesTemp = [...activeMovies];
-    console.log("filtered movies", filteredMoviesTemp);
+  //   let filteredMoviesTemp = [...activeMovies];
+  //   console.log("filtered movies", filteredMoviesTemp);
 
-    if (activeGenre !== "all") {
-      filteredMoviesTemp = filteredMoviesTemp.filter((movie) =>
-        movie.genre.includes(activeGenre)
-      );
-      setActiveMovies(filteredMoviesTemp);
-    } else {
-      setActiveMovies(activeMovies2);
-    }
-  }, [activeGenre]);
+  //   if (activeGenre !== "all") {
+  //     filteredMoviesTemp = filteredMoviesTemp.filter((movie) =>
+  //       movie.genre.includes(activeGenre)
+  //     );
+  //     setActiveMovies(filteredMoviesTemp);
+  //   } else {
+  //     setActiveMovies();
+  //   }
+  // }, [activeGenre]);
   // pogledati kako da napravim upit ka bazi za odredjeni zanr, npr iz tabele movies daj mi filmove koji su drama
 
   const handleSumbit = async (e: any) => {
@@ -150,7 +147,6 @@ function Home() {
         .range(rangeIndex1, rangeIndex2);
 
       setActiveMovies(data);
-      setActiveMovies2(data);
 
       setLoading(false);
 
@@ -167,8 +163,6 @@ function Home() {
   useEffect(() => {
     selectActiveSlideMovies((activeSlide - 1) * 12, activeSlide * 12 - 1);
   }, [activeSlide]);
-
-  console.log(genres);
 
   return (
     <>
