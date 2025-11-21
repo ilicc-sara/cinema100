@@ -10,6 +10,8 @@ import { ToastContainer, toast } from "react-toastify";
 function Home() {
   const [movies, setMovies] = useState<singleMovie[] | null>(null);
 
+  const [slidesAmount, setSlidesAmount] = useState<string[] | null>(null);
+
   const [activeMovies, setActiveMovies] = useState<singleMovie[] | null>(null);
 
   const [activeSlide, setActiveSlide] = useState<number>(1);
@@ -53,6 +55,11 @@ function Home() {
         .from("moviesData")
         .select("*", { count: "exact" });
       console.log("izbrojani podaci", count);
+
+      if (count) {
+        const slidesCount = Array(Math.ceil(count / 12)).fill("");
+        setSlidesAmount(slidesCount);
+      }
 
       setLoading(false);
 
@@ -151,9 +158,6 @@ function Home() {
     setSearch("");
   };
 
-  const slidesAmount = Array(Math.ceil(Number(movies?.length || 0) / 12)).fill(
-    true
-  );
   // pogledati count supabase
 
   const selectActiveSlideMovies = async (
@@ -274,17 +278,18 @@ function Home() {
             <i className="bxrds  bx-arrow-left text-xl"></i>
           </button>
           <div className="flex gap-2">
-            {slidesAmount.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setActiveSlide(index + 1)}
-                className={`bg-[#ccc] w-10 h-10 rounded-full cursor-pointer hover:scale-[1.1] transition duration-300 ${
-                  activeSlide === index + 1 ? "bg-[#fc4747]" : ""
-                }`}
-              >
-                {index + 1}
-              </button>
-            ))}
+            {slidesAmount &&
+              slidesAmount.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveSlide(index + 1)}
+                  className={`bg-[#ccc] w-10 h-10 rounded-full cursor-pointer hover:scale-[1.1] transition duration-300 ${
+                    activeSlide === index + 1 ? "bg-[#fc4747]" : ""
+                  }`}
+                >
+                  {index + 1}
+                </button>
+              ))}
           </div>
           <button
             className="bg-[#ccc] w-10 h-10 rounded-full text-center cursor-pointer hover:scale-[1.1] transition duration-300  flex items-center justify-center"
