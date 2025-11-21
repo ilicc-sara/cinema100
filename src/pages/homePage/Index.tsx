@@ -8,8 +8,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 
 function Home() {
-  const [movies, setMovies] = useState<singleMovie[] | null>(null);
-
   const [slidesAmount, setSlidesAmount] = useState<string[] | null>(null);
 
   const [activeMovies, setActiveMovies] = useState<singleMovie[] | null>(null);
@@ -27,25 +25,6 @@ function Home() {
   const [activeGenre, setActiveGenre] = useState<string>("all");
 
   const refreshFn = useBaseData();
-
-  const selectData = async () => {
-    setLoading(true);
-
-    try {
-      const { error, data } = await supabase.from("moviesData").select();
-
-      setMovies(data);
-      setLoading(false);
-
-      if (error) {
-        console.error("Error selecting data: ", error.message);
-        setLoading(false);
-      }
-    } catch (error: any) {
-      console.error("Error selecting data: ", error.message);
-      setLoading(false);
-    }
-  };
 
   const selectCountData = async () => {
     setLoading(true);
@@ -110,7 +89,6 @@ function Home() {
   };
 
   useEffect(() => {
-    selectData();
     selectCountData();
     selectTrendingData();
     selectGenres();
@@ -158,8 +136,6 @@ function Home() {
     setSearch("");
   };
 
-  // pogledati count supabase
-
   const selectActiveSlideMovies = async (
     rangeIndex1: number,
     rangeIndex2: number
@@ -186,6 +162,7 @@ function Home() {
     }
     setSearch("");
   };
+
   useEffect(() => {
     selectActiveSlideMovies((activeSlide - 1) * 12, activeSlide * 12 - 1);
   }, [activeSlide]);

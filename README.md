@@ -469,3 +469,25 @@ return { ...prev, search: e.target.value };
 
 // export default useBaseData;
 ```
+
+selecting all movies data
+
+```const selectData = async () => {
+   setLoading(true);
+
+   try {
+     const { error, data } = await supabase.from("moviesData").select();
+
+     setMovies(data);
+     setLoading(false);
+
+     if (error) {
+       console.error("Error selecting data: ", error.message);
+       setLoading(false);
+     }
+   } catch (error: any) {
+     console.error("Error selecting data: ", error.message);
+     setLoading(false);
+   }
+ };
+```
