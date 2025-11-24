@@ -2,7 +2,7 @@ import { Link } from "react-router";
 
 function Nav() {
   return (
-    <nav className="bg-[#161d2f] flex justify-between items-center !px-20 !py-3">
+    <nav className="bg-brand-midnight flex justify-between items-center !px-20 !py-3">
       <div className="w-[fit-content] flex justify-center items-center gap-2">
         <img className="w-10 h-10" src="logo.png" />
         <h1 className="text-white font-medium text-xl">cinema 100</h1>
