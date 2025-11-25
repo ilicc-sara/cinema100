@@ -6,23 +6,16 @@ type SliderButtonType = {
   handleClick: () => void;
 };
 
-type SliderButtonProps = {
-  sliderButtonProps: SliderButtonType;
-};
-
-function SliderButton({ sliderButtonProps }: SliderButtonProps) {
+function SliderButton({ index, activeSlide, handleClick }: SliderButtonType) {
   return (
     <button
-      key={sliderButtonProps.index}
-      // onClick={() => setActiveSlide(index + 1)}
-      onClick={() => sliderButtonProps.handleClick}
+      key={index}
+      onClick={() => handleClick()}
       className={`bg-[#ccc] tablet:w-10 tablet:h-10 max-tablet:w-7 max-tablet:h-7 rounded-full cursor-pointer hover:scale-[1.1] transition duration-300 ${
-        sliderButtonProps.activeSlide === sliderButtonProps.index + 1
-          ? "bg-[#fc4747]"
-          : ""
+        activeSlide === index + 1 ? "bg-[#fc4747]" : ""
       }`}
     >
-      {sliderButtonProps.index + 1}
+      {index + 1}
     </button>
   );
 }

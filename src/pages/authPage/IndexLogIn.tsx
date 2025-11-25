@@ -30,7 +30,7 @@ function AuthLogIn() {
           handleOnChange={(e) => setPassword(e.target.value)}
         />
 
-        <Button>Log In</Button>
+        <Button variation="auth-button">Log In</Button>
 
         <div className="flex flex-col gap-2">
           <p className="text-[#e8f0fe]">

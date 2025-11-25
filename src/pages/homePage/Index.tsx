@@ -7,6 +7,7 @@ import Movies from "./components/Movies";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import SliderButton from "../../UI/SliderButton";
+import Button from "../../UI/Button";
 
 function Home() {
   const [slidesAmount, setSlidesAmount] = useState<string[] | null>(null);
@@ -243,9 +244,9 @@ function Home() {
           <Movies activeMovies={activeMovies} />
         </div>
         <div className="flex !mx-auto w-[fit-content] gap-4 !my-10">
-          <button
-            className="bg-[#ccc] tablet:w-10 tablet:h-10 max-tablet:w-7 max-tablet:h-7 rounded-full text-center cursor-pointer hover:scale-[1.1] transition duration-300  flex items-center justify-center"
-            onClick={() =>
+          <Button
+            variation="arr-button"
+            handleClick={() =>
               setActiveSlide((prev) => {
                 if (prev !== 1) {
                   return prev - 1;
@@ -254,29 +255,20 @@ function Home() {
             }
           >
             <i className="bxrds  bx-arrow-left text-xl"></i>
-          </button>
+          </Button>
           <div className="flex gap-1">
             {slidesAmount &&
               slidesAmount.map((_, index) => (
-                // <button
-                //   key={index}
-                //   onClick={() => setActiveSlide(index + 1)}
-                //   className={`bg-[#ccc] tablet:w-10 tablet:h-10 max-tablet:w-7 max-tablet:h-7 rounded-full cursor-pointer hover:scale-[1.1] transition duration-300 ${
-                //     activeSlide === index + 1 ? "bg-[#fc4747]" : ""
-                //   }`}
-                // >
-                //   {index + 1}
-                // </button>
                 <SliderButton
                   index={index}
                   activeSlide={activeSlide}
-                  handleClick={setActiveSlide(index + 1)}
+                  handleClick={() => setActiveSlide(index + 1)}
                 />
               ))}
           </div>
-          <button
-            className="bg-[#ccc] tablet:w-10 tablet:h-10 max-tablet:w-7 max-tablet:h-7 rounded-full text-center cursor-pointer hover:scale-[1.1] transition duration-300  flex items-center justify-center"
-            onClick={() =>
+          <Button
+            variation="arr-button"
+            handleClick={() =>
               setActiveSlide((prev) => {
                 if (prev !== 9) {
                   return prev + 1;
@@ -287,7 +279,7 @@ function Home() {
             }
           >
             <i className="bxrds  bx-arrow-right text-xl"></i>
-          </button>
+          </Button>
         </div>
       </section>
     </>
