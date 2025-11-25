@@ -172,7 +172,7 @@ function Home() {
       <section className="!mb-10">
         <ToastContainer position="top-center" />
         <div>
-          <h1 className="text-left text-[#e8f0fe] w-[70%] !mx-auto text-2xl font-medium !my-5">
+          <h1 className="text-left text-[#e8f0fe] w-[70%] !mx-auto mobile:text-2xl max-mobile:text-xl font-medium !my-5">
             Currently trending
           </h1>
 
