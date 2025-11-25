@@ -188,7 +188,7 @@ function Home() {
               <input
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="!pl-2 focus:outline-none focus:ring-0"
+                className="!pl-2 focus:outline-none focus:ring-0 mobile:w-50 smallmobile:w-30 max-smallmobile:w-25"
                 type="text"
                 placeholder="search"
               />
@@ -243,7 +243,7 @@ function Home() {
         </div>
         <div className="flex !mx-auto w-[fit-content] gap-4 !my-10">
           <button
-            className="bg-[#ccc] w-10 h-10 rounded-full text-center cursor-pointer hover:scale-[1.1] transition duration-300  flex items-center justify-center"
+            className="bg-[#ccc] tablet:w-10 tablet:h-10 max-tablet:w-7 max-tablet:h-7 rounded-full text-center cursor-pointer hover:scale-[1.1] transition duration-300  flex items-center justify-center"
             onClick={() =>
               setActiveSlide((prev) => {
                 if (prev !== 1) {
@@ -254,13 +254,13 @@ function Home() {
           >
             <i className="bxrds  bx-arrow-left text-xl"></i>
           </button>
-          <div className="flex gap-2">
+          <div className="flex gap-1">
             {slidesAmount &&
               slidesAmount.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setActiveSlide(index + 1)}
-                  className={`bg-[#ccc] w-10 h-10 rounded-full cursor-pointer hover:scale-[1.1] transition duration-300 ${
+                  className={`bg-[#ccc] tablet:w-10 tablet:h-10 max-tablet:w-7 max-tablet:h-7 rounded-full cursor-pointer hover:scale-[1.1] transition duration-300 ${
                     activeSlide === index + 1 ? "bg-[#fc4747]" : ""
                   }`}
                 >
@@ -269,7 +269,7 @@ function Home() {
               ))}
           </div>
           <button
-            className="bg-[#ccc] w-10 h-10 rounded-full text-center cursor-pointer hover:scale-[1.1] transition duration-300  flex items-center justify-center"
+            className="bg-[#ccc] tablet:w-10 tablet:h-10 max-tablet:w-7 max-tablet:h-7 rounded-full text-center cursor-pointer hover:scale-[1.1] transition duration-300  flex items-center justify-center"
             onClick={() =>
               setActiveSlide((prev) => {
                 if (prev !== 9) {
