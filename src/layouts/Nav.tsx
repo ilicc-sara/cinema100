@@ -13,7 +13,7 @@ function Nav() {
         </h1>
       </div>
 
-      <div className="text-[#e8f0fe] text-lg font-medium flex gap-10">
+      <div className="text-[#e8f0fe] mobile:text-lg max-mobile:text-base font-medium flex gap-10">
         <p>Welcome back, Guest</p>
 
         <Link to="/">
