@@ -6,6 +6,7 @@ import TrendingMovies from "./components/TrendingMovies";
 import Movies from "./components/Movies";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
+import SliderButton from "../../UI/SliderButton";
 
 function Home() {
   const [slidesAmount, setSlidesAmount] = useState<string[] | null>(null);
@@ -188,7 +189,7 @@ function Home() {
               <input
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="!pl-2 focus:outline-none focus:ring-0 mobile:w-50 smallmobile:w-30 max-smallmobile:w-25"
+                className="!pl-2 focus:outline-none focus:ring-0 mobile:w-50 smallmobile:w-25 max-smallmobile:w-20"
                 type="text"
                 placeholder="search"
               />
@@ -257,15 +258,20 @@ function Home() {
           <div className="flex gap-1">
             {slidesAmount &&
               slidesAmount.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setActiveSlide(index + 1)}
-                  className={`bg-[#ccc] tablet:w-10 tablet:h-10 max-tablet:w-7 max-tablet:h-7 rounded-full cursor-pointer hover:scale-[1.1] transition duration-300 ${
-                    activeSlide === index + 1 ? "bg-[#fc4747]" : ""
-                  }`}
-                >
-                  {index + 1}
-                </button>
+                // <button
+                //   key={index}
+                //   onClick={() => setActiveSlide(index + 1)}
+                //   className={`bg-[#ccc] tablet:w-10 tablet:h-10 max-tablet:w-7 max-tablet:h-7 rounded-full cursor-pointer hover:scale-[1.1] transition duration-300 ${
+                //     activeSlide === index + 1 ? "bg-[#fc4747]" : ""
+                //   }`}
+                // >
+                //   {index + 1}
+                // </button>
+                <SliderButton
+                  index={index}
+                  activeSlide={activeSlide}
+                  handleClick={setActiveSlide(index + 1)}
+                />
               ))}
           </div>
           <button
