@@ -96,10 +96,6 @@ function Home() {
     selectGenres();
   }, []);
 
-  // useEffect(() => {}, [activeGenre]);
-
-  // pogledati kako da napravim upit ka bazi za odredjeni zanr, npr iz tabele movies daj mi filmove koji su drama
-
   const handleSumbit = async (e: any) => {
     e.preventDefault();
     try {
@@ -156,6 +152,34 @@ function Home() {
     selectActiveSlideMovies((activeSlide - 1) * 12, activeSlide * 12 - 1);
   }, [activeSlide]);
 
+  useEffect(() => {
+    const findGenreMovies = async () => {
+      setLoading(true);
+      try {
+        const { error, data } = await supabase
+          .from("moviesData")
+          .select()
+          .ilike("genre", `%${activeGenre}%`)
+          .limit(12);
+
+        setActiveMovies(data);
+
+        setLoading(false);
+
+        if (error) {
+          setLoading(false);
+        }
+      } catch (error: any) {
+        setLoading(false);
+      }
+    };
+
+    if (activeGenre !== "all") {
+      findGenreMovies();
+    } else {
+      selectActiveSlideMovies((activeSlide - 1) * 12, activeSlide * 12 - 1);
+    }
+  }, [activeGenre]);
   return (
     <>
       <section className="!mb-10">
