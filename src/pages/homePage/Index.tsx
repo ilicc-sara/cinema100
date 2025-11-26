@@ -96,21 +96,8 @@ function Home() {
     selectGenres();
   }, []);
 
-  // useEffect(() => {
-  //   if (!activeMovies) return;
+  // useEffect(() => {}, [activeGenre]);
 
-  //   let filteredMoviesTemp = [...activeMovies];
-  //   console.log("filtered movies", filteredMoviesTemp);
-
-  //   if (activeGenre !== "all") {
-  //     filteredMoviesTemp = filteredMoviesTemp.filter((movie) =>
-  //       movie.genre.includes(activeGenre)
-  //     );
-  //     setActiveMovies(filteredMoviesTemp);
-  //   } else {
-  //     setActiveMovies();
-  //   }
-  // }, [activeGenre]);
   // pogledati kako da napravim upit ka bazi za odredjeni zanr, npr iz tabele movies daj mi filmove koji su drama
 
   const handleSumbit = async (e: any) => {
