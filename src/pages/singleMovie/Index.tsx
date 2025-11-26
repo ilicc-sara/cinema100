@@ -6,7 +6,7 @@ function SingleMovie() {
 
   return (
     <section>
-      <div className="w-[70%] !mx-auto flex text-[#e8f0fe] text-left justify-between items-center !my-5">
+      <div className="smallLT:w-[70%] tablet:w-[80%] !mx-auto flex text-[#e8f0fe] text-left justify-between items-center !my-5">
         <div>
           <p className="text-xl "> {location.state.title} </p>
           <span> ({location.state.year}) </span>
@@ -30,7 +30,7 @@ function SingleMovie() {
           </div>
         </div>
       </div>
-      <div className="w-[70%] !mx-auto grid grid-cols-[1.1fr_3fr] flex gap-4">
+      <div className="smallLT:w-[70%] tablet:w-[80%] !mx-auto grid grid-cols-[1.1fr_3fr] flex gap-4">
         <img src={location.state.image} className="h-full" />
         <div className="w-full aspect-video overflow-hidden">
           <YouTube
@@ -52,7 +52,7 @@ function SingleMovie() {
           />
         </div>
       </div>
-      <div className="w-[70%] !mx-auto">
+      <div className="smallLT:w-[70%] tablet:w-[80%] !mx-auto">
         <div className=" flex flex-col text-[#e8f0fe] text-left items-start !my-5 gap-4 w-[70%]">
           <p className="text-xl font-medium"> {location.state.genre} </p>
           <p> {location.state.description} </p>
