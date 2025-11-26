@@ -11,19 +11,16 @@ import Button from "../../UI/Button";
 
 function Home() {
   const [slidesAmount, setSlidesAmount] = useState<string[] | null>(null);
-
   const [activeMovies, setActiveMovies] = useState<singleMovie[] | null>(null);
-
   const [activeSlide, setActiveSlide] = useState<number>(1);
 
   // prettier-ignore
   const [currentlyTrending, setCurrentlyTrending] = useState<singleMovie[] | null>(null);
 
+  const [activeGenre, setActiveGenre] = useState<string>("all");
   const [genres, setGenres] = useState<Genres[] | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
-
   const [search, setSearch] = useState<string>("");
-  const [activeGenre, setActiveGenre] = useState<string>("all");
 
   const refreshFn = useBaseData();
 
@@ -38,9 +35,7 @@ function Home() {
         const slidesCount = Array(Math.ceil(count / 12)).fill("");
         setSlidesAmount(slidesCount);
       }
-
       setLoading(false);
-
       if (error) {
         console.error("Error counting selected data: ", error.message);
         setLoading(false);
@@ -55,10 +50,8 @@ function Home() {
     setLoading(true);
     try {
       const { error, data } = await supabase.from("trendingMovies").select();
-
       setLoading(false);
       setCurrentlyTrending(data);
-
       if (error) {
         console.error("Error selecting trending data: ", error.message);
         setLoading(false);
@@ -73,10 +66,8 @@ function Home() {
     setLoading(true);
     try {
       const { error, data } = await supabase.from("genres").select();
-
       setLoading(false);
       setGenres(data);
-
       if (error) {
         console.error("Error selecting genres: ", error.message);
         setLoading(false);
@@ -101,14 +92,12 @@ function Home() {
         .select()
         .ilike("title", `%${search}%`)
         .limit(12);
-
       if (data?.length === 0) {
         setSearch("");
         throw new Error(`No movies with this name: ${search}`);
       } else {
         setActiveMovies(data);
       }
-
       if (error) {
         toast.error(error.message);
       }
@@ -124,17 +113,13 @@ function Home() {
     rangeIndex2: number
   ) => {
     setLoading(true);
-
     try {
       const { error, data } = await supabase
         .from("moviesData")
         .select()
         .range(rangeIndex1, rangeIndex2);
-
       setActiveMovies(data);
-
       setLoading(false);
-
       if (error) {
         console.error("Error selecting data: ", error.message);
         setLoading(false);
