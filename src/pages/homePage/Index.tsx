@@ -13,7 +13,6 @@ function Home() {
   const [slidesAmount, setSlidesAmount] = useState<string[] | null>(null);
 
   const [activeMovies, setActiveMovies] = useState<singleMovie[] | null>(null);
-
   const [activeSlide, setActiveSlide] = useState<number>(1);
 
   const [currentlyTrending, setCurrentlyTrending] = useState<
@@ -116,6 +115,7 @@ function Home() {
       }
     } catch (error: any) {
       console.error("Error finding single movie: ", error.message);
+      toast.error(error.message);
     }
     setSearch("");
   };
@@ -162,7 +162,7 @@ function Home() {
           .limit(12);
 
         setActiveMovies(data);
-
+        setActiveSlide(1);
         setLoading(false);
 
         if (error) {
@@ -179,6 +179,10 @@ function Home() {
       selectActiveSlideMovies((activeSlide - 1) * 12, activeSlide * 12 - 1);
     }
   }, [activeGenre]);
+
+  function activateToast() {
+    toast.error("neki error");
+  }
   return (
     <>
       <section className="!mb-10">
@@ -194,6 +198,9 @@ function Home() {
           </div>
         </div>
 
+        <button className="bg-[#ccc]" onClick={() => activateToast()}>
+          Toast
+        </button>
         <div className="bg-[#161d2f] w-[80%] !mx-auto rounded-xl !py-3 !px-5 !my-10 flex justify-between items-center">
           <div className="bg-[#bfbfbf] w-[fit-content] flex items-center justify-between !py-1 rounded-lg cursor-pointer active:shadow-[0_0_0_5px_rgb(252,71,71)] ">
             <form onSubmit={handleSumbit}>
