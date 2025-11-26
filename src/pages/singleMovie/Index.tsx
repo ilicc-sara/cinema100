@@ -10,9 +10,13 @@ function SingleMovie() {
         <div>
           <p className="text-xl "> {location.state.title} </p>
           <span> ({location.state.year}) </span>
+          <img
+            src={location.state.image}
+            className="h-full min-tablet:hidden "
+          />
         </div>
 
-        <div className="flex gap-5">
+        <div className="flex max-tablet:flex-col gap-5">
           <div>
             <p className="text-xl "> Imdb rating </p>
             <p>
