@@ -35,7 +35,6 @@ function Home() {
       const { error, count } = await supabase
         .from("moviesData")
         .select("*", { count: "exact" });
-      console.log("izbrojani podaci", count);
 
       if (count) {
         const slidesCount = Array(Math.ceil(count / 12)).fill("");
