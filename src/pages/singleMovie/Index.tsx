@@ -6,31 +6,31 @@ function SingleMovie() {
 
   return (
     <section>
-      <div className="smallLT:w-[70%] tablet:w-[80%] max-tablet:w-[85%] !mx-auto flex text-[#e8f0fe] text-left justify-between items-center !my-5">
-        <div>
-          <p className="text-xl "> {location.state.title} </p>
-          <span> ({location.state.year}) </span>
-          <img
-            src={location.state.image}
-            className="h-full min-tablet:hidden "
-          />
-        </div>
-
-        <div className="flex max-tablet:flex-col gap-5">
+      <div className="smallLT:w-[70%] tablet:w-[80%] max-tablet:w-[85%] !mx-auto  !my-5 max-tablet:grid max-tablet:grid-cols-2 max-tablet:gap-4">
+        <img src={location.state.image} className="h-full min-tablet:hidden " />
+        <div className="flex max-tablet:flex-col text-[#e8f0fe] text-left justify-between tablet:items-center max-tablet:items-start">
           <div>
-            <p className="text-xl "> Imdb rating </p>
-            <p>
-              <i className="bxr  bxs-star"></i>{" "}
-              <span className="font-medium"> {location.state.rating} </span> /
-              10
-            </p>
+            <p className="text-xl "> {location.state.title} </p>
+            <span> ({location.state.year}) </span>
           </div>
-          <div>
-            <p className="text-xl "> Rank </p>
-            <p>
-              {" "}
-              <span className="font-medium"> {location.state.rank} </span> / 100{" "}
-            </p>
+
+          <div className="flex max-tablet:flex-col gap-5">
+            <div>
+              <p className="text-xl "> Imdb rating </p>
+              <p>
+                <i className="bxr  bxs-star"></i>{" "}
+                <span className="font-medium"> {location.state.rating} </span> /
+                10
+              </p>
+            </div>
+            <div>
+              <p className="text-xl "> Rank </p>
+              <p>
+                {" "}
+                <span className="font-medium"> {location.state.rank} </span> /
+                100{" "}
+              </p>
+            </div>
           </div>
         </div>
       </div>

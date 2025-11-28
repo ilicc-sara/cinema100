@@ -3,7 +3,7 @@ import { Link } from "react-router";
 function Nav() {
   return (
     <nav className="bg-brand-midnight flex justify-between items-center mobile:!px-20 max-mobile:!px-10 !py-3">
-      <div className="w-[fit-content] flex justify-center items-center mobile:gap-2 max-mobile:gap-1 ">
+      <div className="w-[fit-content] flex justify-center items-center mobile:gap-2 max-mobile:gap-1 xl:bg-red-400 desktop:bg-blue-400 laptop:bg-green-400 smallLT:bg-yellow-400 tablet:bg-fuchsia-400 mobile:bg-pink-400 smallmobile:bg-orange-400">
         <img
           className="mobile:w-10 mobile:h-10 max-mobile:w-9 max-mobile:w-9"
           src="logo.png"
