@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router";
 import Button from "../../UI/Button";
 import Input from "../../UI/Input";
+import { supabase } from "../../supabase-client";
 
 function AuthSignUp() {
   const [name, setName] = useState<string>("");
@@ -11,14 +12,38 @@ function AuthSignUp() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  function addNewUser() {}
+  const addNewUser = async (e: any) => {
+    e.preventDefault();
+    try {
+      const { error } = await supabase
+        .from("users")
+        .insert([
+          {
+            name: name,
+            lastName: lastName,
+            email: email,
+            password: password,
+          },
+        ])
+        .single();
+
+      if (error) {
+        console.error("Error adding user", error.message);
+      }
+    } catch (error: any) {
+      console.error("Error adding user", error.message);
+    }
+  };
   return (
     <section className="min-h-screen !mt-[5%]">
       <div className="w-[fit-content] !mx-auto flex justify-center items-center gap-2">
         <img className="w-12 h-12" src="logo.png" />
         <h1 className="text-white font-medium text-xl">cinema 100</h1>
       </div>
-      <form className="w-104 h-[fit-content] !px-14 !py-9 flex flex-col bg-[#161d2f] !mx-auto items-center gap-5 rounded-xl !my-5">
+      <form
+        onSubmit={addNewUser}
+        className="w-104 h-[fit-content] !px-14 !py-9 flex flex-col bg-[#161d2f] !mx-auto items-center gap-5 rounded-xl !my-5"
+      >
         <h1 className="text-[#e8f0fe] text-3xl self-start">Sign Up</h1>
 
         <Input

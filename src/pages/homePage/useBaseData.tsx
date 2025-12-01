@@ -45,10 +45,10 @@ function useBaseData() {
             .single();
 
           if (error) {
-            console.error("Error adding task: ", error.message);
+            console.error("Error adding movie: ", error.message);
           }
         } catch (error: any) {
-          console.error("Error adding task: ", error.message);
+          console.error("Error adding movie: ", error.message);
         }
       });
     };
