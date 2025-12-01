@@ -10,6 +10,8 @@ function AuthSignUp() {
 
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+
+  function addNewUser() {}
   return (
     <section className="min-h-screen !mt-[5%]">
       <div className="w-[fit-content] !mx-auto flex justify-center items-center gap-2">
