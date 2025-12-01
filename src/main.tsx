@@ -8,6 +8,7 @@ import Home from "./pages/homePage/Index.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import SharedLayout from "./layouts/SharedLayout.tsx";
 import SingleMovie from "./pages/singleMovie/Index.tsx";
+import { AuthContextProvider } from "./context/AuthContext.tsx";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthContextProvider>
+      <RouterProvider router={router} />
+    </AuthContextProvider>
   </StrictMode>
 );

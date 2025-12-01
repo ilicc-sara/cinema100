@@ -362,3 +362,5 @@ selecting all movies data
 ```
 
 xl:bg-red-400 desktop:bg-blue-400 laptop:bg-green-400 smallLT:bg-yellow-400 tablet:bg-fuchsia-400 mobile:bg-pink-400 smallmobile:bg-orange-400
+
+PITAJ U CEMU JE RAZLIKA I IMA LI NEKA BITNA RAZLIKA IZMEDJU TYPE I INTERFACE
