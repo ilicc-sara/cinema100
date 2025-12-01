@@ -4,6 +4,7 @@ import { Link } from "react-router";
 import Button from "../../UI/Button";
 import Input from "../../UI/Input";
 import { supabase } from "../../supabase-client";
+import { useNavigate } from "react-router";
 
 function AuthSignUp() {
   const [name, setName] = useState<string>("");
@@ -11,6 +12,8 @@ function AuthSignUp() {
 
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+
+  const navigate = useNavigate();
 
   const addNewUser = async (e: any) => {
     e.preventDefault();
@@ -29,6 +32,13 @@ function AuthSignUp() {
 
       if (error) {
         console.error("Error adding user", error.message);
+        return;
+      } else {
+        navigate("/login");
+        setName("");
+        setLastName("");
+        setEmail("");
+        setPassword("");
       }
     } catch (error: any) {
       console.error("Error adding user", error.message);
