@@ -1,10 +1,11 @@
-import React from "react";
 import { useState } from "react";
 import { Link } from "react-router";
 import Button from "../../UI/Button";
 import Input from "../../UI/Input";
 import { supabase } from "../../supabase-client";
 import { useNavigate } from "react-router";
+import { UserAuth } from "../../context/AuthContext";
+import { ToastContainer, toast } from "react-toastify";
 
 type inputsType = {
   name: string;
@@ -21,9 +22,15 @@ function AuthSignUp() {
     password: "",
   });
 
+  const [error, setError] = useState<any>();
+  const [loading, setLoading] = useState<boolean>(false);
+
   console.log(inputs);
 
   const navigate = useNavigate();
+
+  const { session, signUpNewUser } = UserAuth();
+  console.log(session);
 
   function handleInputsChange(e: any) {
     setInputs((prev) => {
@@ -36,9 +43,22 @@ function AuthSignUp() {
 
   const addNewUser = async (e: any) => {
     e.preventDefault();
+    setLoading(true);
+    // Signing up new user as authentication
+    try {
+      const result = await signUpNewUser(inputs.email, inputs.password);
+
+      if (result.success) {
+        navigate("/signin");
+      }
+    } catch (error) {
+      setError("an error occured");
+    } finally {
+      setLoading(false);
+    }
+    // Collecting user data in supabase table
     try {
       const { error } = await supabase.from("users").insert([inputs]).single();
-
       if (error) {
         console.error("Error adding user", error.message);
         return;
@@ -57,6 +77,7 @@ function AuthSignUp() {
   };
   return (
     <section className="min-h-screen !mt-[5%]">
+      {loading && <div className="loader"></div>}
       <div className="w-[fit-content] !mx-auto flex justify-center items-center gap-2">
         <img className="w-12 h-12" src="logo.png" />
         <h1 className="text-white font-medium text-xl">cinema 100</h1>
