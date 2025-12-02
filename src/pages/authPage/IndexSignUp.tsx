@@ -25,8 +25,6 @@ function AuthSignUp() {
   const [error, setError] = useState<any>();
   const [loading, setLoading] = useState<boolean>(false);
 
-  console.log(inputs);
-
   const navigate = useNavigate();
 
   const { session, signUpNewUser } = UserAuth();
@@ -53,6 +51,7 @@ function AuthSignUp() {
       }
     } catch (error) {
       setError("an error occured");
+      toast.error("an error occured");
     } finally {
       setLoading(false);
     }
@@ -61,6 +60,8 @@ function AuthSignUp() {
       const { error } = await supabase.from("users").insert([inputs]).single();
       if (error) {
         console.error("Error adding user", error.message);
+        toast.error(error.message);
+        setError(error.message);
         return;
       } else {
         navigate("/login");
@@ -77,6 +78,7 @@ function AuthSignUp() {
   };
   return (
     <section className="min-h-screen !mt-[5%]">
+      <ToastContainer position="top-center" />
       {loading && <div className="loader"></div>}
       <div className="w-[fit-content] !mx-auto flex justify-center items-center gap-2">
         <img className="w-12 h-12" src="logo.png" />
@@ -132,6 +134,7 @@ function AuthSignUp() {
           </p>
         </div>
       </form>
+      {error && <p className="text-red-600 text-center pt-4">{error}</p>}
     </section>
   );
 }

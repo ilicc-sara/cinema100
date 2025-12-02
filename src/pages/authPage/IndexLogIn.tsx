@@ -2,19 +2,56 @@ import { useState } from "react";
 import { Link } from "react-router";
 import Button from "../../UI/Button";
 import Input from "../../UI/Input";
+import { useNavigate } from "react-router";
+import { UserAuth } from "../../context/AuthContext";
+import { ToastContainer, toast } from "react-toastify";
 
 function AuthLogIn() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  // napraviti dve posebne stranice za log in i sign up
+
+  const [error, setError] = useState<any>();
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const navigate = useNavigate();
+
+  const { session, signInUser } = UserAuth();
+  console.log(session);
+
+  const logInUser = async (e: any) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const result = await signInUser(email, password);
+
+      if (result.success) {
+        navigate("/");
+      }
+      if (!result.success) {
+        setError(result.error);
+        toast.error(result.error);
+      }
+    } catch (error: any) {
+      toast.error("error logging in", error);
+      setError(`an error occured ${error}`);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <section className="min-h-screen !mt-[5%]">
+      <ToastContainer position="top-center" />
+      {loading && <div className="loader"></div>}
       <div className="w-[fit-content] !mx-auto flex justify-center items-center gap-2">
         <img className="w-12 h-12" src="logo.png" />
         <h1 className="text-white font-medium text-xl">cinema 100</h1>
       </div>
 
-      <form className="w-104 h-[fit-content] !px-14 !py-9 flex flex-col bg-[#161d2f] !mx-auto items-center gap-5 rounded-xl !my-5">
+      <form
+        onSubmit={logInUser}
+        className="w-104 h-[fit-content] !px-14 !py-9 flex flex-col bg-[#161d2f] !mx-auto items-center gap-5 rounded-xl !my-5"
+      >
         <h1 className="text-[#e8f0fe] text-3xl self-start">Log In</h1>
         <Input
           type="text"
@@ -49,6 +86,7 @@ function AuthLogIn() {
           </p>
         </div>
       </form>
+      {error && <p className="text-red-600 text-center pt-4">{error}</p>}
     </section>
   );
 }
