@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import Button from "../../UI/Button";
 import Input from "../../UI/Input";
@@ -39,8 +39,33 @@ function AuthSignUp() {
     });
   }
 
+  ////////// Provera da li postoji taj mejl u bazi
+  const checkIfUserExists = async (email: string) => {
+    const { error, data } = await supabase
+      .from("users")
+      .select()
+      .eq("email", email)
+      .single();
+
+    // console.log("data", data);
+    // console.log("error", error);
+
+    if (error) {
+      return false;
+    }
+
+    if (data) {
+      return true;
+    }
+  };
+
+  useEffect(() => {
+    checkIfUserExists("sarailic19160@gmail.com");
+  }, []);
+  ///////////////////////////////////////////////////////////////
   const addNewUser = async (e: any) => {
     e.preventDefault();
+
     setLoading(true);
     // Signing up new user as authentication
     try {

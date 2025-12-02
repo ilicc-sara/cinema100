@@ -1,11 +1,32 @@
+import { useState, useEffect } from "react";
 import { UserAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router";
+import { supabase } from "../supabase-client";
 
 function Nav() {
   const { session, signOut } = UserAuth();
   const navigate = useNavigate();
 
-  console.log(session);
+  const [user, setUser] = useState<string>("Guest");
+
+  const checkIfUserExists = async (email: string) => {
+    const { error, data } = await supabase
+      .from("users")
+      .select()
+      .eq("email", email)
+      .single();
+
+    if (data) {
+      setUser(data?.name);
+    }
+    if (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    checkIfUserExists(session?.user?.email);
+  }, []);
 
   const handleSignOut = async () => {
     try {
@@ -28,7 +49,7 @@ function Nav() {
       </div>
 
       <div className="text-[#e8f0fe] mobile:text-lg max-mobile:text-base font-medium flex gap-10">
-        <p>Welcome back, Guest</p>
+        <p>Welcome back, {user}</p>
 
         <div
           onClick={() => handleSignOut()}
