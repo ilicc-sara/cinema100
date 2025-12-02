@@ -4,6 +4,8 @@ import useBaseData from "./customHooks/useBaseData";
 import useCountData from "./customHooks/useCountData";
 import useTrendingData from "./customHooks/useTrendingData";
 import useGenres from "./customHooks/useGenres";
+import useSelectSlide from "./customHooks/useSelectSlide";
+import useFindGenre from "./customHooks/useFindGenre";
 import type { singleMovie, Genres } from "../../types";
 import TrendingMovies from "./components/TrendingMovies";
 import Movies from "./components/Movies";
@@ -27,11 +29,38 @@ function Home() {
 
   const refreshFn = useBaseData();
 
+  // COUNTING MOVIES IN THE BASE AND FORMING SLIDES ACCORDINGLY, SELECTING TRENDING DATA AND SELECTING GENRES
   useEffect(() => {
     useCountData(setLoading, setSlidesAmount);
     useTrendingData(setLoading, setCurrentlyTrending);
     useGenres(setLoading, setGenres);
   }, []);
+
+  // SELECTIGN ACTIVE MOVIES FROM ACTIVE SLIDE
+  useEffect(() => {
+    useSelectSlide(
+      setLoading,
+      setActiveMovies,
+      setSearch,
+      (activeSlide - 1) * 12,
+      activeSlide * 12 - 1
+    );
+  }, [activeSlide]);
+
+  // FINDING MOVIES ACCORDING TO SELECTED GENRE OR ELSE (if activated "all") RETURNING TO SLIDE 1
+  useEffect(() => {
+    if (activeGenre !== "all") {
+      useFindGenre(setLoading, activeGenre, setActiveMovies, setActiveSlide);
+    } else {
+      useSelectSlide(
+        setLoading,
+        setActiveMovies,
+        setSearch,
+        (activeSlide - 1) * 12,
+        activeSlide * 12 - 1
+      );
+    }
+  }, [activeGenre]);
 
   const handleSumbit = async (e: any) => {
     e.preventDefault();
@@ -56,62 +85,6 @@ function Home() {
     }
     setSearch("");
   };
-
-  const selectActiveSlideMovies = async (
-    rangeIndex1: number,
-    rangeIndex2: number
-  ) => {
-    setLoading(true);
-    try {
-      const { error, data } = await supabase
-        .from("moviesData")
-        .select()
-        .range(rangeIndex1, rangeIndex2);
-      setActiveMovies(data);
-      setLoading(false);
-      if (error) {
-        console.error("Error selecting data: ", error.message);
-        setLoading(false);
-      }
-    } catch (error: any) {
-      console.error("Error selecting data: ", error.message);
-      setLoading(false);
-    }
-    setSearch("");
-  };
-
-  useEffect(() => {
-    selectActiveSlideMovies((activeSlide - 1) * 12, activeSlide * 12 - 1);
-  }, [activeSlide]);
-
-  useEffect(() => {
-    const findGenreMovies = async () => {
-      setLoading(true);
-      try {
-        const { error, data } = await supabase
-          .from("moviesData")
-          .select()
-          .ilike("genre", `%${activeGenre}%`)
-          .limit(12);
-
-        setActiveMovies(data);
-        setActiveSlide(1);
-        setLoading(false);
-
-        if (error) {
-          setLoading(false);
-        }
-      } catch (error: any) {
-        setLoading(false);
-      }
-    };
-
-    if (activeGenre !== "all") {
-      findGenreMovies();
-    } else {
-      selectActiveSlideMovies((activeSlide - 1) * 12, activeSlide * 12 - 1);
-    }
-  }, [activeGenre]);
 
   return (
     <>
