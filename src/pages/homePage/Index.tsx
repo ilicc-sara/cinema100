@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../../supabase-client";
 import useBaseData from "./customHooks/useBaseData";
+import useCountData from "./customHooks/useCountData";
 import type { singleMovie, Genres } from "../../types";
 import TrendingMovies from "./components/TrendingMovies";
 import Movies from "./components/Movies";
@@ -23,28 +24,6 @@ function Home() {
   const [search, setSearch] = useState<string>("");
 
   const refreshFn = useBaseData();
-
-  const selectCountData = async () => {
-    setLoading(true);
-    try {
-      const { error, count } = await supabase
-        .from("moviesData")
-        .select("*", { count: "exact" });
-
-      if (count) {
-        const slidesCount = Array(Math.ceil(count / 12)).fill("");
-        setSlidesAmount(slidesCount);
-      }
-      setLoading(false);
-      if (error) {
-        console.error("Error counting selected data: ", error.message);
-        setLoading(false);
-      }
-    } catch (error: any) {
-      console.error("Error counting selected data: ", error.message);
-      setLoading(false);
-    }
-  };
 
   const selectTrendingData = async () => {
     setLoading(true);
@@ -79,7 +58,7 @@ function Home() {
   };
 
   useEffect(() => {
-    selectCountData();
+    useCountData(setLoading, setSlidesAmount);
     selectTrendingData();
     selectGenres();
   }, []);

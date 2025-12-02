@@ -373,3 +373,29 @@ PITAJ U CEMU JE RAZLIKA I IMA LI NEKA BITNA RAZLIKA IZMEDJU TYPE I INTERFACE
 // console.error("an error occured");
 // }
 // };
+
+COUNTING DATA
+
+```
+  // const selectCountData = async () => {
+  //   setLoading(true);
+  //   try {
+  //     const { error, count } = await supabase
+  //       .from("moviesData")
+  //       .select("*", { count: "exact" });
+
+  //     if (count) {
+  //       const slidesCount = Array(Math.ceil(count / 12)).fill("");
+  //       setSlidesAmount(slidesCount);
+  //     }
+  //     setLoading(false);
+  //     if (error) {
+  //       console.error("Error counting selected data: ", error.message);
+  //       setLoading(false);
+  //     }
+  //   } catch (error: any) {
+  //     console.error("Error counting selected data: ", error.message);
+  //     setLoading(false);
+  //   }
+  // };
+```
