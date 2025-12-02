@@ -25,7 +25,7 @@ function AuthLogIn() {
       const result = await signInUser(email, password);
 
       if (result.success) {
-        navigate("/");
+        navigate("/home");
       }
       if (!result.success) {
         setError(result.error);
@@ -78,7 +78,7 @@ function AuthLogIn() {
           </p>
           <p className="text-[#e8f0fe]">
             Or,
-            <Link to="/">
+            <Link to="/home">
               <span className="text-[#fc4747] cursor-pointer">
                 &nbsp; Log in as guest
               </span>

@@ -1,5 +1,5 @@
-import { data } from "../../data[1]";
-import { supabase } from "../../supabase-client";
+import { data } from "../../../data[1]";
+import { supabase } from "../../../supabase-client";
 
 function useBaseData() {
   const refreshFn = async () => {
