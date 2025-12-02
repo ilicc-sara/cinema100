@@ -399,3 +399,43 @@ COUNTING DATA
   //   }
   // };
 ```
+
+SELECTING TRENDING DATA FROM SUPABASE
+
+```
+// const selectTrendingData = async () => {
+  //   setLoading(true);
+  //   try {
+  //     const { error, data } = await supabase.from("trendingMovies").select();
+  //     setLoading(false);
+  //     setCurrentlyTrending(data);
+  //     if (error) {
+  //       console.error("Error selecting trending data: ", error.message);
+  //       setLoading(false);
+  //     }
+  //   } catch (error: any) {
+  //     console.error("Error selecting trending data: ", error.message);
+  //     setLoading(false);
+  //   }
+  // };
+```
+
+SELECTING GENRES FROM SUPABASE
+
+```
+// const selectGenres = async () => {
+  //   setLoading(true);
+  //   try {
+  //     const { error, data } = await supabase.from("genres").select();
+  //     setLoading(false);
+  //     setGenres(data);
+  //     if (error) {
+  //       console.error("Error selecting genres: ", error.message);
+  //       setLoading(false);
+  //     }
+  //   } catch (error: any) {
+  //     console.error("Error selecting genres: ", error.message);
+  //     setLoading(false);
+  //   }
+  // };
+```

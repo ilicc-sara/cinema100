@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { supabase } from "../../supabase-client";
 import useBaseData from "./customHooks/useBaseData";
 import useCountData from "./customHooks/useCountData";
+import useTrendingData from "./customHooks/useTrendingData";
+import useGenres from "./customHooks/useGenres";
 import type { singleMovie, Genres } from "../../types";
 import TrendingMovies from "./components/TrendingMovies";
 import Movies from "./components/Movies";
@@ -25,42 +27,10 @@ function Home() {
 
   const refreshFn = useBaseData();
 
-  const selectTrendingData = async () => {
-    setLoading(true);
-    try {
-      const { error, data } = await supabase.from("trendingMovies").select();
-      setLoading(false);
-      setCurrentlyTrending(data);
-      if (error) {
-        console.error("Error selecting trending data: ", error.message);
-        setLoading(false);
-      }
-    } catch (error: any) {
-      console.error("Error selecting trending data: ", error.message);
-      setLoading(false);
-    }
-  };
-
-  const selectGenres = async () => {
-    setLoading(true);
-    try {
-      const { error, data } = await supabase.from("genres").select();
-      setLoading(false);
-      setGenres(data);
-      if (error) {
-        console.error("Error selecting genres: ", error.message);
-        setLoading(false);
-      }
-    } catch (error: any) {
-      console.error("Error selecting genres: ", error.message);
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
     useCountData(setLoading, setSlidesAmount);
-    selectTrendingData();
-    selectGenres();
+    useTrendingData(setLoading, setCurrentlyTrending);
+    useGenres(setLoading, setGenres);
   }, []);
 
   const handleSumbit = async (e: any) => {
