@@ -6,39 +6,50 @@ import Input from "../../UI/Input";
 import { supabase } from "../../supabase-client";
 import { useNavigate } from "react-router";
 
-function AuthSignUp() {
-  const [name, setName] = useState<string>("");
-  const [lastName, setLastName] = useState<string>("");
+type inputsType = {
+  name: string;
+  lastName: string;
+  email: string;
+  password: string;
+};
 
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+function AuthSignUp() {
+  const [inputs, setInputs] = useState<inputsType>({
+    name: "",
+    lastName: "",
+    email: "",
+    password: "",
+  });
+
+  console.log(inputs);
 
   const navigate = useNavigate();
+
+  function handleInputsChange(e: any) {
+    setInputs((prev) => {
+      return {
+        ...prev,
+        [e.target.name]: e.target.value,
+      };
+    });
+  }
 
   const addNewUser = async (e: any) => {
     e.preventDefault();
     try {
-      const { error } = await supabase
-        .from("users")
-        .insert([
-          {
-            name: name,
-            lastName: lastName,
-            email: email,
-            password: password,
-          },
-        ])
-        .single();
+      const { error } = await supabase.from("users").insert([inputs]).single();
 
       if (error) {
         console.error("Error adding user", error.message);
         return;
       } else {
         navigate("/login");
-        setName("");
-        setLastName("");
-        setEmail("");
-        setPassword("");
+        setInputs({
+          name: "",
+          lastName: "",
+          email: "",
+          password: "",
+        });
       }
     } catch (error: any) {
       console.error("Error adding user", error.message);
@@ -58,29 +69,33 @@ function AuthSignUp() {
 
         <Input
           type="text"
+          name="name"
           placeholder="Name"
-          value={name}
-          handleOnChange={(e) => setName(e.target.value)}
+          value={inputs.name}
+          handleOnChange={(e) => handleInputsChange(e)}
         />
         <Input
           type="text"
+          name="lastName"
           placeholder="Last Name"
-          value={lastName}
-          handleOnChange={(e) => setLastName(e.target.value)}
+          value={inputs.lastName}
+          handleOnChange={(e) => handleInputsChange(e)}
         />
 
         <Input
           type="text"
+          name="email"
           placeholder="Email"
-          value={email}
-          handleOnChange={(e) => setEmail(e.target.value)}
+          value={inputs.email}
+          handleOnChange={(e) => handleInputsChange(e)}
         />
 
         <Input
           type="password"
+          name="password"
           placeholder="Password"
-          value={password}
-          handleOnChange={(e) => setPassword(e.target.value)}
+          value={inputs.password}
+          handleOnChange={(e) => handleInputsChange(e)}
         />
 
         <Button variation="auth-button">Sign Up</Button>
