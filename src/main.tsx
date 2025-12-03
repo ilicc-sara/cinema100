@@ -47,7 +47,8 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/home/:movieId",
+        // kada bih ja dodala samo movies bez home, to znaci da otvaram link na novoj stranici, a ovako otvaram taj link preko home
+        path: "/home/movie/:movieId",
         element: <SingleMovie />,
       },
     ],

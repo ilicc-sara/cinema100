@@ -83,14 +83,14 @@ function SingleMovie() {
       </div>
       <div className="smallLT:w-[70%] tablet:w-[80%] max-tablet:w-[85%] !mx-auto">
         <div className=" flex flex-col text-[#e8f0fe] text-left items-start !my-5 gap-4 w-[70%]">
-          <p className="text-xl font-medium"> {movie?.genre} </p>
+          <p className="text-xl font-medium"> {movie?.genre}</p>
           <p> {movie?.description} </p>
           <hr className="w-full border-t border-[#fff] flex-1 mx-4" />
           <p className="text-xl font-medium"> Director </p>
-          <p> {movie?.director.replace(",", ", ")} </p>
+          <p> {movie?.director} </p>
           <hr className="w-full border-t border-[#fff] flex-1 mx-4" />
           <p className="text-xl font-medium"> Writers </p>
-          <p> {movie?.writers.replace(",", ", ")} </p>
+          <p> {movie?.writers} </p>
         </div>
       </div>
     </section>
