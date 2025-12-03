@@ -41,32 +41,26 @@ function AuthSignUp() {
 
   ////////// Provera da li postoji taj mejl u bazi
   const checkIfUserExists = async (email: string) => {
-    const { error, data } = await supabase
+    const { data } = await supabase
       .from("users")
       .select()
       .eq("email", email)
-      .single();
+      .maybeSingle();
 
-    console.log("data", data);
-    console.log("error", error);
-
-    if (error) {
-      return false;
-    }
-
-    if (data) {
-      return true;
-    }
+    console.log(!!data);
+    return !!data;
   };
 
-  useEffect(() => {
-    checkIfUserExists("sarailic19160@gmail.com");
-  }, []);
+  ///////////////////////////////////////////////////////////////
+  // useEffect(() => {
+  //   checkIfUserExists("sarailic19160@gmail.com");
+  // }, []);
   ///////////////////////////////////////////////////////////////
   const addNewUser = async (e: any) => {
     e.preventDefault();
 
     setLoading(true);
+
     // Signing up new user as authentication
     try {
       const result = await signUpNewUser(inputs.email, inputs.password);
