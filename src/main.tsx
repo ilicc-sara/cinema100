@@ -11,7 +11,16 @@ import SharedLayout from "./layouts/SharedLayout.tsx";
 import SingleMovie from "./pages/singleMovie/Index.tsx";
 import { AuthContextProvider } from "./context/AuthContext.tsx";
 import { Navigate } from "react-router-dom";
+// u "/" rutu proveriti postoji li access_token u local storage
+// ako ne postoji redirect na login
+// ako postoji ,
 
+// 1. pogledati postoji li user u stejtu
+// 2. ako postoji redirect na homepage
+// 3. ako ne postoji, dohvatiti ga na osnovu tokena
+// 4. staviti ga u stejt i mogu koristiti kontext
+// 5. redirect na homepage
+// ako sam dosla na homepage znaci da sam ulogovana
 const router = createBrowserRouter([
   {
     path: "/",
@@ -19,7 +28,6 @@ const router = createBrowserRouter([
   },
   {
     path: "/login",
-
     element: <AuthLogIn />,
   },
   {
@@ -39,7 +47,7 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/home/:movieId",
+        path: "/movie/:movieId",
         element: <SingleMovie />,
       },
     ],

@@ -47,8 +47,8 @@ function AuthSignUp() {
       .eq("email", email)
       .single();
 
-    // console.log("data", data);
-    // console.log("error", error);
+    console.log("data", data);
+    console.log("error", error);
 
     if (error) {
       return false;

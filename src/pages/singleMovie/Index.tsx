@@ -3,6 +3,8 @@ import YouTube from "react-youtube";
 
 function SingleMovie() {
   const location = useLocation();
+  // useParams uzmem id filma jer ga imam u url
+  // dohvatiti film na osnovu toga id
 
   return (
     <section>
