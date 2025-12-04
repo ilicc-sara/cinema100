@@ -2,33 +2,15 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import YouTube from "react-youtube";
 import type { singleMovie } from "../../types";
-import { supabase } from "../../supabase-client";
+import useSingleMovie from "./customHooks/useGetSingleMovie";
 
 function SingleMovie() {
   const [movie, setMovie] = useState<null | singleMovie>(null);
 
   const params = useParams();
 
-  const getMovie = async () => {
-    try {
-      const { error, data } = await supabase
-        .from("moviesData")
-        .select()
-        .eq("imdbid", params.movieId)
-        .single();
-
-      setMovie(data);
-
-      if (error) {
-        console.error("Error finding single movie: ", error.message);
-      }
-    } catch (error: any) {
-      console.error("Error finding single movie: ", error.message);
-    }
-  };
-
   useEffect(() => {
-    getMovie();
+    useSingleMovie(setMovie, params.movieId);
   }, []);
 
   return (
