@@ -494,3 +494,23 @@ SET ACTIVE MOVIES ACCORDING TO THE ACTIVE GENRE OR ELSE RETURN TO SLIDE 1
     // };
 // findGenreMovies();
 ```
+
+///////////////////////////////////////////////////////////////////////////////
+////////// Provera da li postoji taj mejl u bazi
+const checkIfUserExists = async (email: string) => {
+const { data } = await supabase
+.from("users")
+.select()
+.eq("email", email)
+.maybeSingle();
+
+    console.log(!!data);
+    return !!data;
+
+};
+
+///////////////////////////////////////////////////////////////
+// useEffect(() => {
+// checkIfUserExists("moj mejl");
+// }, []);
+///////////////////////////////////////////////////////////////

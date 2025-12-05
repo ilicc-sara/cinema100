@@ -39,23 +39,6 @@ function AuthSignUp() {
     });
   }
 
-  ////////// Provera da li postoji taj mejl u bazi
-  const checkIfUserExists = async (email: string) => {
-    const { data } = await supabase
-      .from("users")
-      .select()
-      .eq("email", email)
-      .maybeSingle();
-
-    console.log(!!data);
-    return !!data;
-  };
-
-  ///////////////////////////////////////////////////////////////
-  // useEffect(() => {
-  //   checkIfUserExists("sarailic19160@gmail.com");
-  // }, []);
-  ///////////////////////////////////////////////////////////////
   const addNewUser = async (e: any) => {
     e.preventDefault();
 
