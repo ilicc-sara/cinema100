@@ -15,8 +15,8 @@ import SliderButton from "../../UI/SliderButton";
 import Button from "../../UI/Button";
 
 function Home() {
-  const [slidesAmount, setSlidesAmount] = useState<string[] | null>(null);
   const [activeMovies, setActiveMovies] = useState<singleMovie[] | null>(null);
+  const [slidesAmount, setSlidesAmount] = useState<string[] | null>(null);
   const [activeSlide, setActiveSlide] = useState<number>(1);
 
   // prettier-ignore
@@ -61,6 +61,12 @@ function Home() {
       );
     }
   }, [activeGenre]);
+
+  useEffect(() => {
+    localStorage.getItem("acces_token");
+  }, []);
+
+  console.log(localStorage);
 
   const handleSumbit = async (e: any) => {
     e.preventDefault();

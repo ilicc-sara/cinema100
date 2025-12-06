@@ -24,11 +24,40 @@ import { Navigate } from "react-router-dom";
 // 5. redirect na homepage
 // ako sam dosla na homepage znaci da sam ulogovana
 
+// const router = createBrowserRouter([
+//   // {
+//   //   path: "/",
+//   //   element: <Navigate to="/login" replace />,
+//   // },
+//   {
+//     path: "/login",
+//     element: <AuthLogIn />,
+//   },
+//   {
+//     path: "/signup",
+//     element: <AuthSignUp />,
+//   },
+
+//   {
+//     element: (
+//       <PrivateRoute>
+//         <SharedLayout />
+//       </PrivateRoute>
+//     ),
+//     children: [
+//       {
+//         path: "/",
+//         element: <Home />,
+//       },
+//       {
+//         path: "/movie/:movieId",
+//         element: <SingleMovie />,
+//       },
+//     ],
+//   },
+// ]);
+
 const router = createBrowserRouter([
-  // {
-  //   path: "/",
-  //   element: <Navigate to="/login" replace />,
-  // },
   {
     path: "/login",
     element: <AuthLogIn />,
@@ -39,11 +68,8 @@ const router = createBrowserRouter([
   },
 
   {
-    element: (
-      <PrivateRoute>
-        <SharedLayout />
-      </PrivateRoute>
-    ),
+    element: <SharedLayout />,
+
     children: [
       {
         path: "/",
