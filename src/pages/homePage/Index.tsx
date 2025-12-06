@@ -31,14 +31,14 @@ function Home() {
 
   const refreshFn = useBaseData();
 
-  const { session, signOut } = UserAuth();
+  // const { session, signOut } = UserAuth();
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   useEffect(() => {
-    if (!session) {
-      navigate("/login");
-    }
+    const token = localStorage;
+
+    console.log(token);
   }, []);
 
   // COUNTING MOVIES IN THE BASE AND FORMING SLIDES ACCORDINGLY, SELECTING TRENDING DATA AND SELECTING GENRES
