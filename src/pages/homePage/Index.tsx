@@ -86,9 +86,9 @@ function Home() {
     setSearch("");
   };
 
-  // useEffect(() => {
-  //   console.log(localStorage);
-  // }, []);
+  useEffect(() => {
+    console.log("local storage from home", localStorage);
+  }, []);
 
   return (
     <>

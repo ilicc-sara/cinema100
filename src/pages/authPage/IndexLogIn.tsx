@@ -16,7 +16,7 @@ function AuthLogIn() {
   const navigate = useNavigate();
 
   const { session, signInUser } = UserAuth();
-  // console.log(session);
+  console.log(session);
 
   // useEffect(() => {
   //   console.log(localStorage.access_token);
@@ -29,7 +29,7 @@ function AuthLogIn() {
       const result = await signInUser(email, password);
 
       if (result.success) {
-        navigate("/home");
+        navigate("/");
       }
       if (!result.success) {
         setError(result.error);
@@ -82,7 +82,7 @@ function AuthLogIn() {
           </p>
           <p className="text-[#e8f0fe]">
             Or,
-            <Link to="/home">
+            <Link to="/">
               <span className="text-[#fc4747] cursor-pointer">
                 &nbsp; Log in as guest
               </span>

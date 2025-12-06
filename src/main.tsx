@@ -11,6 +11,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import SharedLayout from "./layouts/SharedLayout.tsx";
 import SingleMovie from "./pages/singleMovie/Index.tsx";
 import { AuthContextProvider } from "./context/AuthContext.tsx";
+import { UserAuth } from "./context/AuthContext.tsx";
 import { Navigate } from "react-router-dom";
 // u "/" rutu proveriti postoji li access_token u local storage
 // ako ne postoji redirect na login
@@ -22,11 +23,12 @@ import { Navigate } from "react-router-dom";
 // 4. staviti ga u stejt i mogu koristiti kontext
 // 5. redirect na homepage
 // ako sam dosla na homepage znaci da sam ulogovana
+
 const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Navigate to="/login" replace />,
-  },
+  // {
+  //   path: "/",
+  //   element: <Navigate to="/login" replace />,
+  // },
   {
     path: "/login",
     element: <AuthLogIn />,
@@ -44,11 +46,11 @@ const router = createBrowserRouter([
     ),
     children: [
       {
-        path: "/home",
+        path: "/",
         element: <Home />,
       },
       {
-        path: "/home/movie/:movieId",
+        path: "/movie/:movieId",
         element: <SingleMovie />,
       },
     ],
@@ -57,7 +59,7 @@ const router = createBrowserRouter([
 
 // const [localStorageState, setLocalStorageState] = useState<any>();
 
-console.log("local storage from main", localStorage);
+// console.log("local storage from main", localStorage);
 
 // useEffect(() => {
 //   setLocalStorageState(localStorage);

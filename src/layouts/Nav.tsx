@@ -5,6 +5,7 @@ import { supabase } from "../supabase-client";
 
 function Nav() {
   const { session, signOut } = UserAuth();
+  console.log(session);
   const navigate = useNavigate();
 
   const [user, setUser] = useState<string>("Guest");
