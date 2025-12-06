@@ -13,6 +13,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import SliderButton from "../../UI/SliderButton";
 import Button from "../../UI/Button";
+import { UserAuth } from "../../context/AuthContext";
+import { useNavigate } from "react-router";
 
 function Home() {
   const [activeMovies, setActiveMovies] = useState<singleMovie[] | null>(null);
@@ -28,6 +30,16 @@ function Home() {
   const [search, setSearch] = useState<string>("");
 
   const refreshFn = useBaseData();
+
+  const { session, signOut } = UserAuth();
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!session) {
+      navigate("/login");
+    }
+  }, []);
 
   // COUNTING MOVIES IN THE BASE AND FORMING SLIDES ACCORDINGLY, SELECTING TRENDING DATA AND SELECTING GENRES
   useEffect(() => {
@@ -62,12 +74,6 @@ function Home() {
     }
   }, [activeGenre]);
 
-  useEffect(() => {
-    localStorage.getItem("acces_token");
-  }, []);
-
-  console.log(localStorage);
-
   const handleSumbit = async (e: any) => {
     e.preventDefault();
     try {
@@ -91,10 +97,6 @@ function Home() {
     }
     setSearch("");
   };
-
-  useEffect(() => {
-    console.log("local storage from home", localStorage);
-  }, []);
 
   return (
     <>
