@@ -1,5 +1,6 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import { useState, useEffect } from "react";
 import "./index.css";
 import "./App.css";
 import AuthLogIn from "./pages/authPage/IndexLogIn.tsx";
@@ -53,6 +54,14 @@ const router = createBrowserRouter([
     ],
   },
 ]);
+
+// const [localStorageState, setLocalStorageState] = useState<any>();
+
+console.log("local storage from main", localStorage);
+
+// useEffect(() => {
+//   setLocalStorageState(localStorage);
+// }, []);
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

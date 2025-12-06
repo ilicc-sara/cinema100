@@ -86,6 +86,10 @@ function Home() {
     setSearch("");
   };
 
+  // useEffect(() => {
+  //   console.log(localStorage);
+  // }, []);
+
   return (
     <>
       <section className="!mb-10">

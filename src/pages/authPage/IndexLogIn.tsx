@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import Button from "../../UI/Button";
 import Input from "../../UI/Input";
@@ -16,7 +16,11 @@ function AuthLogIn() {
   const navigate = useNavigate();
 
   const { session, signInUser } = UserAuth();
-  console.log(session);
+  // console.log(session);
+
+  // useEffect(() => {
+  //   console.log(localStorage.access_token);
+  // }, []);
 
   const logInUser = async (e: any) => {
     e.preventDefault();
