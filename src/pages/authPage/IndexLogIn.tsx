@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router";
 import Button from "../../UI/Button";
 import Input from "../../UI/Input";
 import { useNavigate } from "react-router";
-import { UserAuth } from "../../context/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
 import { supabase } from "../../supabase-client";
 
@@ -15,8 +14,6 @@ function AuthLogIn() {
   const [loading, setLoading] = useState<boolean>(false);
 
   const navigate = useNavigate();
-
-  const { session } = UserAuth();
 
   // Sign In
   const signInUser = async (email: string, password: string) => {

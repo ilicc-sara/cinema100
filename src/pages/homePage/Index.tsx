@@ -13,7 +13,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import SliderButton from "../../UI/SliderButton";
 import Button from "../../UI/Button";
-import { UserAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router";
 
 function Home() {
@@ -31,14 +30,12 @@ function Home() {
 
   const refreshFn = useBaseData();
 
-  // const { session, signOut } = UserAuth();
-
   const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem("sb-yyocycmzxqjdvkwqlpzd-auth-token");
     if (token) {
-      console.log("ima tokena");
+      return;
     } else {
       console.error();
       navigate("/login");

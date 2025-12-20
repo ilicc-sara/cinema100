@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import Button from "../../UI/Button";
 import Input from "../../UI/Input";
@@ -27,8 +27,31 @@ function AuthSignUp() {
 
   const navigate = useNavigate();
 
-  const { session, signUpNewUser } = UserAuth();
-  console.log(session);
+  const { setSession } = UserAuth();
+
+  // Sign Up
+  const signUpNewUser = async (email: string, password: string) => {
+    const { data, error } = await supabase.auth.signUp({
+      email: email,
+      password: password,
+    });
+
+    if (error) {
+      console.log("There was a problem signing up:", error);
+      return { success: false, error };
+    }
+    return { success: true, data };
+  };
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+    });
+
+    supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+  }, []);
 
   function handleInputsChange(e: any) {
     setInputs((prev) => {
