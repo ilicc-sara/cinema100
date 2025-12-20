@@ -525,3 +525,44 @@ const { data } = await supabase
     }
   }, []);
 ```
+
+```// console.log(user);
+  // console.log(session?.user?.email);
+
+  // const checkIfUserExists = async (email: string) => {
+  //   const { error, data } = await supabase
+  //     .from("users")
+  //     .select()
+  //     .eq("email", email)
+  //     .single();
+
+  //   if (data) {
+  //     setUser(data?.name);
+  //   }
+  //   if (error) {
+  //     console.error(error);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   checkIfUserExists("sarailic19160@gmail.com");
+  // }, []);
+
+  // useEffect(() => {
+  //   const findUser = async () => {
+  //     const { error, data } = await supabase
+  //       .from("users")
+  //       .select()
+  //       .eq("email", session?.user?.email)
+  //       .single();
+
+  //     setUser(data.name);
+
+  //     if (error) {
+  //       console.error(error);
+  //     }
+  //   };
+
+  //   findUser();
+  // }, [session]);
+```

@@ -1,18 +1,15 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { useState, useEffect } from "react";
 import "./index.css";
 import "./App.css";
 import AuthLogIn from "./pages/authPage/IndexLogIn.tsx";
 import AuthSignUp from "./pages/authPage/IndexSignUp.tsx";
 import Home from "./pages/homePage/Index.tsx";
-import PrivateRoute from "./pages/PrivateRoute.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import SharedLayout from "./layouts/SharedLayout.tsx";
 import SingleMovie from "./pages/singleMovie/Index.tsx";
 import { AuthContextProvider } from "./context/AuthContext.tsx";
-import { UserAuth } from "./context/AuthContext.tsx";
-import { Navigate } from "react-router-dom";
+
 // u "/" rutu proveriti postoji li access_token u local storage
 // ako ne postoji redirect na login
 // ako postoji ,
@@ -82,14 +79,6 @@ const router = createBrowserRouter([
     ],
   },
 ]);
-
-// const [localStorageState, setLocalStorageState] = useState<any>();
-
-// console.log("local storage from main", localStorage);
-
-// useEffect(() => {
-//   setLocalStorageState(localStorage);
-// }, []);
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

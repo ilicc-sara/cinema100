@@ -1,18 +1,14 @@
 import { useState, useEffect } from "react";
-import { UserAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router";
 import { supabase } from "../supabase-client";
 
 function Nav() {
-  const { session } = UserAuth();
-
   const signOut = async () => {
     const { error } = await supabase.auth.signOut();
     if (error) {
       console.error("Error signing out:", error);
     }
   };
-  console.log("nav file session", session);
 
   const navigate = useNavigate();
 
@@ -41,46 +37,6 @@ function Nav() {
       navigate("/login");
     }
   }, []);
-
-  // console.log(user);
-  // console.log(session?.user?.email);
-
-  // const checkIfUserExists = async (email: string) => {
-  //   const { error, data } = await supabase
-  //     .from("users")
-  //     .select()
-  //     .eq("email", email)
-  //     .single();
-
-  //   if (data) {
-  //     setUser(data?.name);
-  //   }
-  //   if (error) {
-  //     console.error(error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   checkIfUserExists("sarailic19160@gmail.com");
-  // }, []);
-
-  // useEffect(() => {
-  //   const findUser = async () => {
-  //     const { error, data } = await supabase
-  //       .from("users")
-  //       .select()
-  //       .eq("email", session?.user?.email)
-  //       .single();
-
-  //     setUser(data.name);
-
-  //     if (error) {
-  //       console.error(error);
-  //     }
-  //   };
-
-  //   findUser();
-  // }, [session]);
 
   const handleSignOut = async () => {
     try {

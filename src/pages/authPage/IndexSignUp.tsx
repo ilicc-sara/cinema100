@@ -1,10 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router";
 import Button from "../../UI/Button";
 import Input from "../../UI/Input";
 import { supabase } from "../../supabase-client";
 import { useNavigate } from "react-router";
-import { UserAuth } from "../../context/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
 
 type inputsType = {
@@ -26,8 +25,6 @@ function AuthSignUp() {
   const [loading, setLoading] = useState<boolean>(false);
 
   const navigate = useNavigate();
-
-  const { setSession } = UserAuth();
 
   // Sign Up
   const signUpNewUser = async (email: string, password: string) => {
