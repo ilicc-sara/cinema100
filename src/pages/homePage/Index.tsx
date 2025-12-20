@@ -35,11 +35,11 @@ function Home() {
 
   // const navigate = useNavigate();
 
-  useEffect(() => {
-    const token = localStorage.getItem("sb-yyocycmzxqjdvkwqlpzd-auth-token");
+  // useEffect(() => {
+  //   const token = localStorage.getItem("sb-yyocycmzxqjdvkwqlpzd-auth-token");
 
-    console.log("finosanin'ofwnlkfwanlkfwnkl", token);
-  }, []);
+  //   console.log("finosanin'ofwnlkfwanlkfwnkl", token);
+  // }, []);
 
   // COUNTING MOVIES IN THE BASE AND FORMING SLIDES ACCORDINGLY, SELECTING TRENDING DATA AND SELECTING GENRES
   useEffect(() => {

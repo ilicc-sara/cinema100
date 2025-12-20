@@ -5,34 +5,56 @@ import { supabase } from "../supabase-client";
 
 function Nav() {
   const { session, signOut } = UserAuth();
-  // console.log(session);
+  console.log(session);
   const navigate = useNavigate();
 
   const [user, setUser] = useState<string>("Guest");
 
-  const checkIfUserExists = async (email: string) => {
-    const { error, data } = await supabase
-      .from("users")
-      .select()
-      .eq("email", email)
-      .single();
+  console.log(user);
+  console.log(session?.user?.email);
 
-    if (data) {
-      setUser(data?.name);
-    }
-    if (error) {
-      console.error(error);
-    }
-  };
+  // const checkIfUserExists = async (email: string) => {
+  //   const { error, data } = await supabase
+  //     .from("users")
+  //     .select()
+  //     .eq("email", email)
+  //     .single();
+
+  //   if (data) {
+  //     setUser(data?.name);
+  //   }
+  //   if (error) {
+  //     console.error(error);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   checkIfUserExists("sarailic19160@gmail.com");
+  // }, []);
 
   useEffect(() => {
-    checkIfUserExists(session?.user?.email);
-  }, []);
+    const findUser = async () => {
+      const { error, data } = await supabase
+        .from("users")
+        .select()
+        .eq("email", session?.user?.email)
+        .single();
+
+      setUser(data.name);
+
+      if (error) {
+        console.error(error);
+      }
+    };
+
+    findUser();
+  }, [session]);
 
   const handleSignOut = async () => {
     try {
       await signOut();
       navigate("/login");
+      setUser("Guest");
     } catch (error) {
       console.error(error);
     }
