@@ -5,13 +5,13 @@ import { supabase } from "../supabase-client";
 
 function Nav() {
   const { session, signOut } = UserAuth();
-  console.log(session);
+  // console.log(session);
   const navigate = useNavigate();
 
   const [user, setUser] = useState<string>("Guest");
 
-  console.log(user);
-  console.log(session?.user?.email);
+  // console.log(user);
+  // console.log(session?.user?.email);
 
   // const checkIfUserExists = async (email: string) => {
   //   const { error, data } = await supabase

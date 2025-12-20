@@ -24,40 +24,11 @@ import { Navigate } from "react-router-dom";
 // 5. redirect na homepage
 // ako sam dosla na homepage znaci da sam ulogovana
 
-// const router = createBrowserRouter([
-//   // {
-//   //   path: "/",
-//   //   element: <Navigate to="/login" replace />,
-//   // },
-//   {
-//     path: "/login",
-//     element: <AuthLogIn />,
-//   },
-//   {
-//     path: "/signup",
-//     element: <AuthSignUp />,
-//   },
-
-//   {
-//     element: (
-//       <PrivateRoute>
-//         <SharedLayout />
-//       </PrivateRoute>
-//     ),
-//     children: [
-//       {
-//         path: "/",
-//         element: <Home />,
-//       },
-//       {
-//         path: "/movie/:movieId",
-//         element: <SingleMovie />,
-//       },
-//     ],
-//   },
-// ]);
-
 const router = createBrowserRouter([
+  // {
+  //   path: "/",
+  //   element: <Navigate to="/login" replace />,
+  // },
   {
     path: "/login",
     element: <AuthLogIn />,
@@ -68,8 +39,11 @@ const router = createBrowserRouter([
   },
 
   {
-    element: <SharedLayout />,
-
+    element: (
+      <PrivateRoute>
+        <SharedLayout />
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "/",
@@ -82,6 +56,32 @@ const router = createBrowserRouter([
     ],
   },
 ]);
+
+// const router = createBrowserRouter([
+//   {
+//     path: "/login",
+//     element: <AuthLogIn />,
+//   },
+//   {
+//     path: "/signup",
+//     element: <AuthSignUp />,
+//   },
+
+//   {
+//     element: <SharedLayout />,
+
+//     children: [
+//       {
+//         path: "/",
+//         element: <Home />,
+//       },
+//       {
+//         path: "/movie/:movieId",
+//         element: <SingleMovie />,
+//       },
+//     ],
+//   },
+// ]);
 
 // const [localStorageState, setLocalStorageState] = useState<any>();
 

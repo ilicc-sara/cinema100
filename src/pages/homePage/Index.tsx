@@ -35,11 +35,15 @@ function Home() {
 
   // const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   const token = localStorage.getItem("sb-yyocycmzxqjdvkwqlpzd-auth-token");
+  useEffect(() => {
+    const token = localStorage.getItem("sb-yyocycmzxqjdvkwqlpzd-auth-token");
 
-  //   console.log("finosanin'ofwnlkfwanlkfwnkl", token);
-  // }, []);
+    if (token) {
+      console.log("EEE", JSON.parse(token));
+    } else {
+      console.error("Nema tokena");
+    }
+  }, []);
 
   // COUNTING MOVIES IN THE BASE AND FORMING SLIDES ACCORDINGLY, SELECTING TRENDING DATA AND SELECTING GENRES
   useEffect(() => {
