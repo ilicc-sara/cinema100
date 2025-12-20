@@ -5,10 +5,35 @@ import { supabase } from "../supabase-client";
 
 function Nav() {
   const { session, signOut } = UserAuth();
-  // console.log(session);
+
   const navigate = useNavigate();
 
   const [user, setUser] = useState<string>("Guest");
+
+  useEffect(() => {
+    const token = localStorage.getItem("sb-yyocycmzxqjdvkwqlpzd-auth-token");
+
+    if (token) {
+      const findUser = async () => {
+        const { error, data } = await supabase
+          .from("users")
+          .select()
+          .eq("email", JSON.parse(token).user.email)
+          .single();
+
+        setUser(data.name);
+
+        if (error) {
+          console.error(error);
+        }
+      };
+
+      findUser();
+    } else {
+      console.error();
+      navigate("/login");
+    }
+  }, []);
 
   // console.log(user);
   // console.log(session?.user?.email);
@@ -32,23 +57,23 @@ function Nav() {
   //   checkIfUserExists("sarailic19160@gmail.com");
   // }, []);
 
-  useEffect(() => {
-    const findUser = async () => {
-      const { error, data } = await supabase
-        .from("users")
-        .select()
-        .eq("email", session?.user?.email)
-        .single();
+  // useEffect(() => {
+  //   const findUser = async () => {
+  //     const { error, data } = await supabase
+  //       .from("users")
+  //       .select()
+  //       .eq("email", session?.user?.email)
+  //       .single();
 
-      setUser(data.name);
+  //     setUser(data.name);
 
-      if (error) {
-        console.error(error);
-      }
-    };
+  //     if (error) {
+  //       console.error(error);
+  //     }
+  //   };
 
-    findUser();
-  }, [session]);
+  //   findUser();
+  // }, [session]);
 
   const handleSignOut = async () => {
     try {
