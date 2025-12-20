@@ -514,3 +514,14 @@ const { data } = await supabase
 // checkIfUserExists("moj mejl");
 // }, []);
 ///////////////////////////////////////////////////////////////
+
+```useEffect(() => {
+    const token = localStorage.getItem("sb-yyocycmzxqjdvkwqlpzd-auth-token");
+
+    if (token) {
+      console.log("EEE", JSON.parse(token));
+    } else {
+      console.error("Nema tokena");
+    }
+  }, []);
+```

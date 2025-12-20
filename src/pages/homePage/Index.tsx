@@ -33,15 +33,15 @@ function Home() {
 
   // const { session, signOut } = UserAuth();
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem("sb-yyocycmzxqjdvkwqlpzd-auth-token");
-
     if (token) {
-      console.log("EEE", JSON.parse(token));
+      console.log("ima tokena");
     } else {
-      console.error("Nema tokena");
+      console.error();
+      navigate("/login");
     }
   }, []);
 

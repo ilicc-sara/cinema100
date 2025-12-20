@@ -4,7 +4,15 @@ import { useNavigate } from "react-router";
 import { supabase } from "../supabase-client";
 
 function Nav() {
-  const { session, signOut } = UserAuth();
+  const { session } = UserAuth();
+
+  const signOut = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      console.error("Error signing out:", error);
+    }
+  };
+  console.log("nav file session", session);
 
   const navigate = useNavigate();
 
@@ -12,7 +20,6 @@ function Nav() {
 
   useEffect(() => {
     const token = localStorage.getItem("sb-yyocycmzxqjdvkwqlpzd-auth-token");
-
     if (token) {
       const findUser = async () => {
         const { error, data } = await supabase

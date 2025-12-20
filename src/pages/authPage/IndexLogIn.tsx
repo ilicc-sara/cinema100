@@ -5,6 +5,7 @@ import Input from "../../UI/Input";
 import { useNavigate } from "react-router";
 import { UserAuth } from "../../context/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
+import { supabase } from "../../supabase-client";
 
 function AuthLogIn() {
   const [email, setEmail] = useState<string>("");
@@ -15,18 +16,33 @@ function AuthLogIn() {
 
   const navigate = useNavigate();
 
-  const { session, signInUser } = UserAuth();
-  console.log(session);
+  const { session } = UserAuth();
 
-  // useEffect(() => {
-  //   console.log(localStorage.access_token);
-  // }, []);
+  // Sign In
+  const signInUser = async (email: string, password: string) => {
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: email,
+        password: password,
+      });
+
+      if (error) {
+        console.error("an error occured:", error);
+        return { success: false, error: error.message };
+      }
+      console.log("sign-in success:", data);
+      return { success: true, data };
+    } catch (error) {
+      console.error("an error occured:", error);
+    }
+  };
 
   const logInUser = async (e: any) => {
     e.preventDefault();
     setLoading(true);
     try {
-      const result = await signInUser(email, password);
+      const result: any | undefined = await signInUser(email, password);
+      console.log("result", result);
 
       if (result.success) {
         navigate("/");
