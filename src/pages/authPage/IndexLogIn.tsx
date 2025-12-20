@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import Button from "../../UI/Button";
 import Input from "../../UI/Input";
 import { useNavigate } from "react-router";
 import { ToastContainer, toast } from "react-toastify";
 import { supabase } from "../../supabase-client";
+import { UserAuth } from "../../context/AuthContext";
 
 function AuthLogIn() {
   const [email, setEmail] = useState<string>("");
@@ -14,6 +15,8 @@ function AuthLogIn() {
   const [loading, setLoading] = useState<boolean>(false);
 
   const navigate = useNavigate();
+
+  const { setSession } = UserAuth();
 
   // Sign In
   const signInUser = async (email: string, password: string) => {
@@ -33,6 +36,16 @@ function AuthLogIn() {
       console.error("an error occured:", error);
     }
   };
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+    });
+
+    supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+  }, []);
 
   const logInUser = async (e: any) => {
     e.preventDefault();

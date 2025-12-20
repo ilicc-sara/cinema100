@@ -14,6 +14,7 @@ import { ToastContainer, toast } from "react-toastify";
 import SliderButton from "../../UI/SliderButton";
 import Button from "../../UI/Button";
 import { useNavigate } from "react-router";
+import { UserAuth } from "../../context/AuthContext";
 
 function Home() {
   const [activeMovies, setActiveMovies] = useState<singleMovie[] | null>(null);
@@ -31,6 +32,9 @@ function Home() {
   const refreshFn = useBaseData();
 
   const navigate = useNavigate();
+
+  const { session } = UserAuth();
+  console.log(session);
 
   useEffect(() => {
     const token = localStorage.getItem("sb-yyocycmzxqjdvkwqlpzd-auth-token");
