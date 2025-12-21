@@ -36,6 +36,7 @@ function AuthLogIn() {
       console.error("an error occured:", error);
     }
   };
+  // poseban folder supabase ili api i u njega staviti sve funkcije cija je uloga samo da poziva supabase
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {

@@ -1,5 +1,11 @@
 import React from "react";
 import { supabase } from "../../../supabase-client";
+// 1. u useCoutData definisi slidesAmount set slides Amount
+// 2. makni loading
+// - prvo stavi svu logiku unutar useEffect a onda vidi mogu li kako osloboditi toga useEffect
+// 3. poziv ka supabase pomeri u poseban fajl (nakon sto napravim da radi)
+// 4. na kraju funkcije return slidesAmount, setSlidesAmount
+// 5. u komponenti treba da mogu napisati const {slidesAmount, setSlidesAmount} = useCountSlidesAmount()
 
 function useCountData(
   setLoading: React.Dispatch<React.SetStateAction<boolean>>,

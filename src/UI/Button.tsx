@@ -6,6 +6,7 @@ type ButtonProps = {
 
 function Button({ children, variation, handleClick }: ButtonProps) {
   if (variation === "auth-button") {
+    // danger button hollow ... nisu specificna
     return (
       <button className="bg-[#fc4747] w-full rounded h-9 text-[#e8f0fe]">
         {children}
