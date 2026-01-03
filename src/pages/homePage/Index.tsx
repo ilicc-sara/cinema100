@@ -18,7 +18,10 @@ import { UserAuth } from "../../context/AuthContext";
 
 function Home() {
   const [activeMovies, setActiveMovies] = useState<singleMovie[] | null>(null);
-  const [slidesAmount, setSlidesAmount] = useState<string[] | null>(null);
+
+  // const [slidesAmount, setSlidesAmount] = useState<string[] | null>(null);
+  const { slidesAmount, fetchCountData } = useCountData();
+
   const [activeSlide, setActiveSlide] = useState<number>(1);
 
   // prettier-ignore
@@ -51,7 +54,8 @@ function Home() {
 
   // COUNTING MOVIES IN THE BASE AND FORMING SLIDES ACCORDINGLY, SELECTING TRENDING DATA AND SELECTING GENRES
   useEffect(() => {
-    useCountData(setLoading, setSlidesAmount);
+    // useCountData(setLoading, setSlidesAmount);
+    fetchCountData();
     useTrendingData(setLoading, setCurrentlyTrending);
     useGenres(setLoading, setGenres);
     // podseti nemanju da mi posalje o custom hookovima
