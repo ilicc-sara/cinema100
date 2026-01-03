@@ -14,11 +14,7 @@ import { ToastContainer, toast } from "react-toastify";
 import SliderButton from "../../UI/SliderButton";
 import Button from "../../UI/Button";
 import { useNavigate } from "react-router";
-
-// pure functions
-// react strict mode
-// pure functions in react
-// why does strict mode calls two times react components
+import { UserAuth } from "../../context/AuthContext";
 
 function Home() {
   const [activeMovies, setActiveMovies] = useState<singleMovie[] | null>(null);
@@ -33,15 +29,20 @@ function Home() {
   const [loading, setLoading] = useState<boolean>(false);
   const [search, setSearch] = useState<string>("");
 
-  // const refreshFn = useBaseData();
+  const { setSession } = UserAuth();
 
   const navigate = useNavigate();
   // const slidesAmount = useSlidesAmount()
   useEffect(() => {
     const token = localStorage.getItem("sb-yyocycmzxqjdvkwqlpzd-auth-token");
     if (token) {
-      return;
-      // if token ono iz log in
+      supabase.auth.getSession().then(({ data: { session } }) => {
+        setSession(session);
+      });
+
+      supabase.auth.onAuthStateChange((_event, session) => {
+        setSession(session);
+      });
     } else {
       console.error();
       navigate("/login");
@@ -106,6 +107,7 @@ function Home() {
     setSearch("");
   };
   console.log("sara");
+
   return (
     <>
       <section className="!mb-10">
@@ -168,12 +170,6 @@ function Home() {
           <h1 className="text-left text-[#e8f0fe]  text-2xl font-medium !mb-5">
             Top 100
           </h1>
-          {/* <button
-            // onClick={() => refreshFn()}
-            className="bg-[#161d2f] text-[#e8f0fe] !my-5 cursor-pointer rounded !px-2"
-          >
-            Refresh Movies
-          </button> */}
         </div>
 
         <div className="w-[80%] !mx-auto !my-5 relative">
