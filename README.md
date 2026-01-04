@@ -566,3 +566,272 @@ const { data } = await supabase
   //   findUser();
   // }, [session]);
 ```
+
+////////////////////////////////////////////////////////////////////////////////
+USE BASE DATA CUSTOM HOOK - RECOLLECTING MOVIES FROM THE SUPABASE - REFRESH
+///
+
+//
+import { data } from "../../../data[1]";
+import { supabase } from "../../../supabase-client";
+
+function useBaseData() {
+const refreshFn = async () => {
+const deleteData = () => {
+data.forEach(async (item) => {
+try {
+const { error } = await supabase
+.from("moviesData")
+.delete()
+.eq("rank", item.rank);
+
+          if (error) {
+            console.error("Error deleting task: ", error.message);
+          }
+        } catch (error: any) {
+          console.error("Error deleting task: ", error.message);
+        }
+      });
+    };
+
+    const fetchData = () => {
+      data.forEach(async (item) => {
+        try {
+          const { error } = await supabase
+            .from("moviesData")
+            .insert([
+              {
+                rank: item.rank,
+                title: item.title,
+                thumbnail: item.thumbnail,
+                rating: item.rating,
+                itemID: item.id,
+                year: item.year,
+                image: item.image,
+                description: item.description,
+                trailer: item.trailer,
+                genre: item.genre.join(","),
+                director: item.director.join(","),
+                writers: item.writers.join(","),
+                imdbid: item.imdbid,
+              },
+            ])
+            .single();
+
+          if (error) {
+            console.error("Error adding movie: ", error.message);
+          }
+        } catch (error: any) {
+          console.error("Error adding movie: ", error.message);
+        }
+      });
+    };
+    deleteData();
+    fetchData();
+
+};
+
+return refreshFn;
+}
+export default useBaseData;
+
+////////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+USE SELECTING SLIDE :
+
+```
+// import React from "react";
+// import { supabase } from "../../../supabase-client";
+// import type { singleMovie } from "../../../types";
+
+// function useSelectSlide(
+//   setLoading: React.Dispatch<React.SetStateAction<boolean>>,
+//   setActiveMovies: React.Dispatch<React.SetStateAction<singleMovie[] | null>>,
+//   setSearch: React.Dispatch<React.SetStateAction<string>>,
+//   rangeIndex1: number,
+//   rangeIndex2: number
+// ) {
+//   const selectActiveSlideMovies = async (
+//     rangeIndex1: number,
+//     rangeIndex2: number
+//   ) => {
+//     setLoading(true);
+//     try {
+//       const { error, data } = await supabase
+//         .from("moviesData")
+//         .select()
+//         .range(rangeIndex1, rangeIndex2);
+//       setActiveMovies(data);
+//       setLoading(false);
+//       if (error) {
+//         console.error("Error selecting data: ", error.message);
+//         setLoading(false);
+//       }
+//     } catch (error: any) {
+//       console.error("Error selecting data: ", error.message);
+//       setLoading(false);
+//     }
+//     setSearch("");
+//   };
+
+//   return selectActiveSlideMovies(rangeIndex1, rangeIndex2);
+// }
+
+// export default useSelectSlide;
+
+// import { useState, useCallback } from "react";
+// import { supabase } from "../../../supabase-client";
+// import type { singleMovie } from "../../../types";
+
+// function useSelectSlide() {
+//   const [activeMovies, setActiveMovies] = useState<singleMovie[] | null>(null);
+
+//   const [error, setError] = useState<string | null>(null);
+
+//   const selectActiveSlideMovies = useCallback(
+//     async (rangeIndex1: number, rangeIndex2: number) => {
+//       setError(null);
+
+//       try {
+//         const { data, error } = await supabase
+//           .from("moviesData")
+//           .select()
+//           .range(rangeIndex1, rangeIndex2);
+
+//         if (error) {
+//           throw error;
+//         }
+
+//         setActiveMovies(data);
+//       } catch (err) {
+//         console.error("Error selecting data:", err);
+//         setError("Failed to load movies for selected slide");
+//       }
+//     },
+//     []
+//   );
+
+//   return {
+//     activeMovies,
+//     setActiveMovies,
+//     error,
+//     selectActiveSlideMovies,
+//   };
+// }
+
+// export default useSelectSlide;
+```
+
+///////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////
+USE COUNT DATA - PREVIOUS CODE :
+//
+
+//
+
+```
+// 1. u useCoutData definisi slidesAmount set slides Amount
+// 2. makni loading
+// - prvo stavi svu logiku unutar useEffect a onda vidi mogu li kako osloboditi toga useEffect
+// 3. poziv ka supabase pomeri u poseban fajl (nakon sto napravim da radi)
+// 4. na kraju funkcije return slidesAmount, setSlidesAmount
+// 5. u komponenti treba da mogu napisati const {slidesAmount, setSlidesAmount} = useCountSlidesAmount()
+
+// function useCountData(
+//   setLoading: React.Dispatch<React.SetStateAction<boolean>>,
+//   setSlidesAmount: React.Dispatch<React.SetStateAction<string[] | null>>
+// ) {
+//   const selectCountData = async () => {
+//     setLoading(true);
+//     try {
+//       const { error, count } = await supabase
+//         .from("moviesData")
+//         .select("*", { count: "exact" });
+
+//       if (count) {
+//         const slidesCount = Array(Math.ceil(count / 12)).fill("");
+//         setSlidesAmount(slidesCount);
+//       }
+//       setLoading(false);
+//       if (error) {
+//         console.error("Error counting selected data: ", error.message);
+//         setLoading(false);
+//       }
+//     } catch (error: any) {
+//       console.error("Error counting selected data: ", error.message);
+//       setLoading(false);
+//     }
+//   };
+
+//   return selectCountData();
+// }
+
+// export default useCountData;
+```
+
+////////////////////////////////////////////////////////////
+USE GENRES PREVOIUS CODE :
+
+//
+
+//
+
+```// function useGenres(
+//   setLoading: React.Dispatch<React.SetStateAction<boolean>>,
+//   setGenres: React.Dispatch<React.SetStateAction<Genres[] | null>>
+// ) {
+//   const selectGenres = async () => {
+//     setLoading(true);
+//     try {
+//       const { error, data } = await supabase.from("genres").select();
+//       setLoading(false);
+//       setGenres(data);
+//       if (error) {
+//         console.error("Error selecting genres: ", error.message);
+//         setLoading(false);
+//       }
+//     } catch (error: any) {
+//       console.error("Error selecting genres: ", error.message);
+//       setLoading(false);
+//     }
+//   };
+
+//   return selectGenres();
+// }
+
+// export default useGenres;
+```
+
+/////////////////////////////////////////////////////////////////////////////////////
+USE TRENDING DATA :
+
+```
+// function useTrendingData(
+//   setLoading: React.Dispatch<React.SetStateAction<boolean>>,
+//   setCurrentlyTrending: React.Dispatch<
+//     React.SetStateAction<singleMovie[] | null>
+//   >
+// ) {
+//   const selectTrendingData = async () => {
+//     setLoading(true);
+//     try {
+//       const { error, data } = await supabase.from("trendingMovies").select();
+//       setLoading(false);
+//       setCurrentlyTrending(data);
+//       if (error) {
+//         console.error("Error selecting trending data: ", error.message);
+//         setLoading(false);
+//       }
+//     } catch (error: any) {
+//       console.error("Error selecting trending data: ", error.message);
+//       setLoading(false);
+//     }
+//   };
+
+//   return selectTrendingData();
+// }
+
+// export default useTrendingData;
+```

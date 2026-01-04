@@ -1,8 +1,6 @@
-import React from "react";
+import { useState } from "react";
 import { supabase } from "../../../supabase-client";
 import type { singleMovie } from "../../../types";
-
-// ne prosledjuj arg u hook nego ih vracaj
 
 function useFindGenre(
   setLoading: React.Dispatch<React.SetStateAction<boolean>>,

@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../../supabase-client";
-import useBaseData from "./customHooks/useBaseData";
 import useCountData from "./customHooks/useCountData";
 import useTrendingData from "./customHooks/useTrendingData";
 import useGenres from "./customHooks/useGenres";
 import useSelectSlide from "./customHooks/useSelectSlide";
 import useFindGenre from "./customHooks/useFindGenre";
-import type { singleMovie, Genres } from "../../types";
 import TrendingMovies from "./components/TrendingMovies";
 import Movies from "./components/Movies";
 import "react-toastify/dist/ReactToastify.css";
@@ -17,8 +15,6 @@ import { useNavigate } from "react-router";
 import { UserAuth } from "../../context/AuthContext";
 
 function Home() {
-  // const [activeMovies, setActiveMovies] = useState<singleMovie[] | null>(null);
-
   const { activeMovies, setActiveMovies, selectActiveSlideMovies } =
     useSelectSlide();
 
@@ -27,7 +23,6 @@ function Home() {
   const { genres, fetchGenres } = useGenres();
 
   const [activeSlide, setActiveSlide] = useState<number>(1);
-
   const [activeGenre, setActiveGenre] = useState<string>("all");
 
   const [loading, setLoading] = useState<boolean>(false);
@@ -67,19 +62,14 @@ function Home() {
   }, [activeSlide, selectActiveSlideMovies]);
 
   // FINDING MOVIES ACCORDING TO SELECTED GENRE OR ELSE (if activated "all") RETURNING TO SLIDE 1
-  // useEffect(() => {
-  //   if (activeGenre !== "all") {
-  //     useFindGenre(setLoading, activeGenre, setActiveMovies, setActiveSlide);
-  //   } else {
-  //     useSelectSlide(
-  //       setLoading,
-  //       setActiveMovies,
-  //       setSearch,
-  //       (activeSlide - 1) * 12,
-  //       activeSlide * 12 - 1
-  //     );
-  //   }
-  // }, [activeGenre]);
+  useEffect(() => {
+    if (activeGenre !== "all") {
+      useFindGenre(setLoading, activeGenre, setActiveMovies, setActiveSlide);
+    } else {
+      selectActiveSlideMovies((activeSlide - 1) * 12, activeSlide * 12 - 1);
+      setSearch("");
+    }
+  }, [activeGenre]);
 
   const handleSumbit = async (e: any) => {
     e.preventDefault();
