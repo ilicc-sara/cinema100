@@ -835,3 +835,48 @@ USE TRENDING DATA :
 
 // export default useTrendingData;
 ```
+
+////////////////////////////////////////////////////////////////
+log in i sign in functionality
+
+```// Sign In
+  const signInUser = async (email: string, password: string) => {
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: email,
+        password: password,
+      });
+
+      if (error) {
+        console.error("an error occured:", error);
+        return { success: false, error: error.message };
+      }
+      console.log("sign-in success:", data);
+      return { success: true, data };
+    } catch (error) {
+      console.error("an error occured:", error);
+    }
+  };
+
+  const logInUser = async (e: any) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const result: any | undefined = await signInUser(email, password);
+      console.log("result", result);
+
+      if (result.success) {
+        navigate("/");
+      }
+      if (!result.success) {
+        setError(result.error);
+        toast.error(result.error);
+      }
+    } catch (error: any) {
+      toast.error("error logging in", error);
+      setError(`an error occured ${error}`);
+    } finally {
+      setLoading(false);
+    }
+  };
+```

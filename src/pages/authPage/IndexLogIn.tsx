@@ -15,42 +15,27 @@ function AuthLogIn() {
 
   const navigate = useNavigate();
 
-  // Sign In
-  const signInUser = async (email: string, password: string) => {
+  const logInUser = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+
     try {
       const { data, error } = await supabase.auth.signInWithPassword({
-        email: email,
-        password: password,
+        email,
+        password,
       });
 
       if (error) {
-        console.error("an error occured:", error);
-        return { success: false, error: error.message };
+        setError(error.message);
+        toast.error(error.message);
+        return;
       }
+
       console.log("sign-in success:", data);
-      return { success: true, data };
-    } catch (error) {
-      console.error("an error occured:", error);
-    }
-  };
-
-  const logInUser = async (e: any) => {
-    e.preventDefault();
-    setLoading(true);
-    try {
-      const result: any | undefined = await signInUser(email, password);
-      console.log("result", result);
-
-      if (result.success) {
-        navigate("/");
-      }
-      if (!result.success) {
-        setError(result.error);
-        toast.error(result.error);
-      }
+      navigate("/");
     } catch (error: any) {
-      toast.error("error logging in", error);
       setError(`an error occured ${error}`);
+      toast.error("error logging in");
     } finally {
       setLoading(false);
     }
