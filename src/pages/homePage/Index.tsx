@@ -17,25 +17,26 @@ import { useNavigate } from "react-router";
 import { UserAuth } from "../../context/AuthContext";
 
 function Home() {
-  const [activeMovies, setActiveMovies] = useState<singleMovie[] | null>(null);
+  // const [activeMovies, setActiveMovies] = useState<singleMovie[] | null>(null);
 
-  // const [slidesAmount, setSlidesAmount] = useState<string[] | null>(null);
+  const { activeMovies, setActiveMovies, selectActiveSlideMovies } =
+    useSelectSlide();
+
   const { slidesAmount, fetchCountData } = useCountData();
+  const { currentlyTrending, fetchTrendingData } = useTrendingData();
+  const { genres, fetchGenres } = useGenres();
 
   const [activeSlide, setActiveSlide] = useState<number>(1);
 
-  // prettier-ignore
-  const [currentlyTrending, setCurrentlyTrending] = useState<singleMovie[] | null>(null);
-
   const [activeGenre, setActiveGenre] = useState<string>("all");
-  const [genres, setGenres] = useState<Genres[] | null>(null);
+
   const [loading, setLoading] = useState<boolean>(false);
   const [search, setSearch] = useState<string>("");
 
   const { setSession } = UserAuth();
 
   const navigate = useNavigate();
-  // const slidesAmount = useSlidesAmount()
+
   useEffect(() => {
     const token = localStorage.getItem("sb-yyocycmzxqjdvkwqlpzd-auth-token");
     if (token) {
@@ -54,38 +55,31 @@ function Home() {
 
   // COUNTING MOVIES IN THE BASE AND FORMING SLIDES ACCORDINGLY, SELECTING TRENDING DATA AND SELECTING GENRES
   useEffect(() => {
-    // useCountData(setLoading, setSlidesAmount);
     fetchCountData();
-    useTrendingData(setLoading, setCurrentlyTrending);
-    useGenres(setLoading, setGenres);
-    // podseti nemanju da mi posalje o custom hookovima
+    fetchTrendingData();
+    fetchGenres();
   }, []);
 
   // SELECTIGN ACTIVE MOVIES FROM ACTIVE SLIDE
   useEffect(() => {
-    useSelectSlide(
-      setLoading,
-      setActiveMovies,
-      setSearch,
-      (activeSlide - 1) * 12,
-      activeSlide * 12 - 1
-    );
-  }, [activeSlide]);
+    selectActiveSlideMovies((activeSlide - 1) * 12, activeSlide * 12 - 1);
+    setSearch("");
+  }, [activeSlide, selectActiveSlideMovies]);
 
   // FINDING MOVIES ACCORDING TO SELECTED GENRE OR ELSE (if activated "all") RETURNING TO SLIDE 1
-  useEffect(() => {
-    if (activeGenre !== "all") {
-      useFindGenre(setLoading, activeGenre, setActiveMovies, setActiveSlide);
-    } else {
-      useSelectSlide(
-        setLoading,
-        setActiveMovies,
-        setSearch,
-        (activeSlide - 1) * 12,
-        activeSlide * 12 - 1
-      );
-    }
-  }, [activeGenre]);
+  // useEffect(() => {
+  //   if (activeGenre !== "all") {
+  //     useFindGenre(setLoading, activeGenre, setActiveMovies, setActiveSlide);
+  //   } else {
+  //     useSelectSlide(
+  //       setLoading,
+  //       setActiveMovies,
+  //       setSearch,
+  //       (activeSlide - 1) * 12,
+  //       activeSlide * 12 - 1
+  //     );
+  //   }
+  // }, [activeGenre]);
 
   const handleSumbit = async (e: any) => {
     e.preventDefault();

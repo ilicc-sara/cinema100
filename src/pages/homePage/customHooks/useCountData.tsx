@@ -1,4 +1,4 @@
-import React from "react";
+import { useState, useCallback } from "react";
 import { supabase } from "../../../supabase-client";
 // 1. u useCoutData definisi slidesAmount set slides Amount
 // 2. makni loading
@@ -38,8 +38,6 @@ import { supabase } from "../../../supabase-client";
 
 // export default useCountData;
 
-import { useState, useCallback } from "react";
-
 function useCountData() {
   const [slidesAmount, setSlidesAmount] = useState<string[] | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -69,7 +67,6 @@ function useCountData() {
 
   return {
     slidesAmount,
-
     error,
     fetchCountData,
   };
