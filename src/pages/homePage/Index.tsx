@@ -13,10 +13,12 @@ import SliderButton from "../../UI/SliderButton";
 import Button from "../../UI/Button";
 import { useNavigate } from "react-router";
 import { UserAuth } from "../../context/AuthContext";
-
+const MAX_SLIDE = 9;
 function Home() {
   const { activeMovies, setActiveMovies, selectActiveSlideMovies } =
     useSelectSlide();
+
+  const [count, setCount] = useState(1);
 
   const { slidesAmount, fetchCountData } = useCountData();
   const { currentlyTrending, fetchTrendingData } = useTrendingData();
@@ -53,12 +55,14 @@ function Home() {
     fetchCountData();
     fetchTrendingData();
     fetchGenres();
+    console.log("prvi use effect");
   }, []);
 
   // SELECTIGN ACTIVE MOVIES FROM ACTIVE SLIDE
   useEffect(() => {
     selectActiveSlideMovies((activeSlide - 1) * 12, activeSlide * 12 - 1);
     setSearch("");
+    console.log("drugi use effect");
   }, [activeSlide, selectActiveSlideMovies]);
 
   // FINDING MOVIES ACCORDING TO SELECTED GENRE OR ELSE (if activated "all") RETURNING TO SLIDE 1
@@ -69,6 +73,7 @@ function Home() {
       selectActiveSlideMovies((activeSlide - 1) * 12, activeSlide * 12 - 1);
       setSearch("");
     }
+    console.log("treci use effect");
   }, [activeGenre]);
 
   const handleSumbit = async (e: any) => {
@@ -94,6 +99,7 @@ function Home() {
     }
     setSearch("");
   };
+
   console.log("sara");
 
   return (
@@ -102,7 +108,7 @@ function Home() {
         <ToastContainer position="top-center" />
         <div>
           <h1 className="text-left text-[#e8f0fe] w-[70%] !mx-auto mobile:text-2xl max-mobile:text-xl font-medium !my-5">
-            Currently trending
+            Currently trending {count + 1}
           </h1>
 
           <div className="w-[80%] !mx-auto relative">
@@ -191,10 +197,10 @@ function Home() {
             variation="arr-button"
             handleClick={() =>
               setActiveSlide((prev) => {
-                if (prev !== 9) {
+                if (prev !== MAX_SLIDE) {
                   return prev + 1;
                 } else {
-                  return 9;
+                  return MAX_SLIDE;
                 }
               })
             }
@@ -208,3 +214,9 @@ function Home() {
 }
 
 export default Home;
+
+// next js i nuxt, astro framework
+// napraviti jos jednu tabelu u supabase
+// u toj tabeli upisati user id i movie id filma koji je kliknut (bookmarked movies)
+// kada user dodje i klikne na bookmark movies - onda uradim dohvati mi za ovog usera sa ovim id-em sve bookmarkovane filmove
+// join tables
