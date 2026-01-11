@@ -13,14 +13,13 @@ import SliderButton from "../../UI/SliderButton";
 import Button from "../../UI/Button";
 import { useNavigate } from "react-router";
 import { UserAuth } from "../../context/AuthContext";
-const MAX_SLIDE = 9;
+
 function Home() {
   const { activeMovies, setActiveMovies, selectActiveSlideMovies } =
     useSelectSlide();
 
-  const [count, setCount] = useState(1);
-
   const { slidesAmount, fetchCountData } = useCountData();
+
   const { currentlyTrending, fetchTrendingData } = useTrendingData();
   const { genres, fetchGenres } = useGenres();
 
@@ -29,6 +28,8 @@ function Home() {
 
   const [loading, setLoading] = useState<boolean>(false);
   const [search, setSearch] = useState<string>("");
+
+  const MAX_SLIDES = slidesAmount?.length;
 
   const { setSession } = UserAuth();
 
@@ -108,7 +109,7 @@ function Home() {
         <ToastContainer position="top-center" />
         <div>
           <h1 className="text-left text-[#e8f0fe] w-[70%] !mx-auto mobile:text-2xl max-mobile:text-xl font-medium !my-5">
-            Currently trending {count + 1}
+            Currently trending
           </h1>
 
           <div className="w-[80%] !mx-auto relative">
@@ -197,10 +198,10 @@ function Home() {
             variation="arr-button"
             handleClick={() =>
               setActiveSlide((prev) => {
-                if (prev !== MAX_SLIDE) {
+                if (prev !== MAX_SLIDES) {
                   return prev + 1;
                 } else {
-                  return MAX_SLIDE;
+                  return MAX_SLIDES;
                 }
               })
             }
