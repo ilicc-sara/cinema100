@@ -38,6 +38,7 @@ function Home() {
   useEffect(() => {
     const token = localStorage.getItem("sb-yyocycmzxqjdvkwqlpzd-auth-token");
     if (token) {
+      console.log(JSON.parse(token).user.id);
       supabase.auth.getSession().then(({ data: { session } }) => {
         setSession(session);
       });
