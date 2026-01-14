@@ -44,27 +44,30 @@ function AuthLogIn() {
     }
   };
 
-  // const guestLogIn = async (e: React.FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
-  //   setLoading(true);
+  const guestLogIn = async (email: string, password: string) => {
+    setLoading(true);
 
-  //   try {
-  //     const {data, error} = await supabase.auth.signInWithPassword({"demouser@gmail.com", "demouser"});
-  //   } catch {
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
 
-  //   }
-  // }
+      if (error) {
+        setError(error.message);
+        toast.error(error.message);
+        return;
+      }
 
-  // const signInAsGuest = async () => {
-  //   const { data, error } = await supabase.auth.signInAnonymously();
-
-  //   if (error) {
-  //     console.error(error.message);
-  //     return;
-  //   }
-
-  //   console.log("Guest session:", data);
-  // };
+      console.log("sign-in success:", data);
+      navigate("/");
+    } catch (error: any) {
+      setError(`an error occured ${error}`);
+      toast.error("error logging in");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <section className="min-h-screen !mt-[5%]">
@@ -105,14 +108,14 @@ function AuthLogIn() {
           </p>
           <p className="text-[#e8f0fe]">
             Or,
-            <Link to="/">
-              <span
-                className="text-[#fc4747] cursor-pointer"
-                // onClick={() => signInAsGuest()}
-              >
-                &nbsp; Log in as guest
-              </span>
-            </Link>
+            {/* <Link to="/"> */}
+            <span
+              onClick={() => guestLogIn(DEMO_USER_MAIL, DEMO_USER_PASSWORD)}
+              className="text-[#fc4747] cursor-pointer"
+            >
+              &nbsp; Log in as guest
+            </span>
+            {/* </Link> */}
           </p>
         </div>
       </form>
