@@ -6,6 +6,9 @@ import { useNavigate } from "react-router";
 import { ToastContainer, toast } from "react-toastify";
 import { supabase } from "../../supabase-client";
 
+const DEMO_USER_MAIL = "demouser@gmail.com";
+const DEMO_USER_PASSWORD = "demouser";
+
 function AuthLogIn() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -40,6 +43,17 @@ function AuthLogIn() {
       setLoading(false);
     }
   };
+
+  // const guestLogIn = async (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   setLoading(true);
+
+  //   try {
+  //     const {data, error} = await supabase.auth.signInWithPassword({"demouser@gmail.com", "demouser"});
+  //   } catch {
+
+  //   }
+  // }
 
   // const signInAsGuest = async () => {
   //   const { data, error } = await supabase.auth.signInAnonymously();

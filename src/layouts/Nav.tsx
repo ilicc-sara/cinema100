@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { supabase } from "../supabase-client";
+import { Link } from "react-router";
 
 function Nav() {
   const signOut = async () => {
@@ -49,15 +50,17 @@ function Nav() {
   };
   return (
     <nav className="bg-brand-midnight flex justify-between items-center mobile:!px-20 max-mobile:!px-10 !py-3">
-      <div className="w-[fit-content] flex justify-center items-center mobile:gap-2 max-mobile:gap-1">
-        <img
-          className="mobile:w-10 mobile:h-10 max-mobile:w-9 max-mobile:w-9"
-          src="logo.png"
-        />
-        <h1 className="text-white font-medium tablet:text-xl mobile:text-lg max-mobile:hidden">
-          cinema 100
-        </h1>
-      </div>
+      <Link to="/">
+        <div className="w-[fit-content] flex justify-center items-center mobile:gap-2 max-mobile:gap-1">
+          <img
+            className="mobile:w-10 mobile:h-10 max-mobile:w-9 max-mobile:w-9"
+            src="logo.png"
+          />
+          <h1 className="text-white font-medium tablet:text-xl mobile:text-lg max-mobile:hidden">
+            cinema 100
+          </h1>
+        </div>
+      </Link>
 
       <div className="text-[#e8f0fe] mobile:text-lg max-mobile:text-base font-medium flex gap-10">
         <p>Welcome back, {user}</p>
