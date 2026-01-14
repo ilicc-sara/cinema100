@@ -41,6 +41,17 @@ function AuthLogIn() {
     }
   };
 
+  // const signInAsGuest = async () => {
+  //   const { data, error } = await supabase.auth.signInAnonymously();
+
+  //   if (error) {
+  //     console.error(error.message);
+  //     return;
+  //   }
+
+  //   console.log("Guest session:", data);
+  // };
+
   return (
     <section className="min-h-screen !mt-[5%]">
       <ToastContainer position="top-center" />
@@ -81,7 +92,10 @@ function AuthLogIn() {
           <p className="text-[#e8f0fe]">
             Or,
             <Link to="/">
-              <span className="text-[#fc4747] cursor-pointer">
+              <span
+                className="text-[#fc4747] cursor-pointer"
+                // onClick={() => signInAsGuest()}
+              >
                 &nbsp; Log in as guest
               </span>
             </Link>

@@ -101,8 +101,6 @@ function Home() {
     setSearch("");
   };
 
-  console.log("sara");
-
   return (
     <>
       <section className="!mb-10">
