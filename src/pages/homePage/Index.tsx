@@ -29,6 +29,8 @@ function Home() {
   const [loading, setLoading] = useState<boolean>(false);
   const [search, setSearch] = useState<string>("");
 
+  const [userId, setUserId] = useState<null | string>(null);
+
   const MAX_SLIDES = slidesAmount?.length;
 
   const { setSession } = UserAuth();
@@ -38,7 +40,8 @@ function Home() {
   useEffect(() => {
     const token = localStorage.getItem("sb-yyocycmzxqjdvkwqlpzd-auth-token");
     if (token) {
-      console.log(JSON.parse(token).user.id);
+      // const userId = JSON.parse(token).user.id;
+      setUserId(JSON.parse(token).user.id);
       supabase.auth.getSession().then(({ data: { session } }) => {
         setSession(session);
       });
@@ -100,6 +103,11 @@ function Home() {
       toast.error(error.message);
     }
     setSearch("");
+  };
+
+  const bookmarkMovie = async (e: any) => {
+    try {
+    } catch {}
   };
 
   return (
@@ -214,9 +222,3 @@ function Home() {
 }
 
 export default Home;
-
-// next js i nuxt, astro framework
-// napraviti jos jednu tabelu u supabase
-// u toj tabeli upisati user id i movie id filma koji je kliknut (bookmarked movies)
-// kada user dodje i klikne na bookmark movies - onda uradim dohvati mi za ovog usera sa ovim id-em sve bookmarkovane filmove
-// join tables

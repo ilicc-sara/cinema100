@@ -880,3 +880,9 @@ log in i sign in functionality
     }
   };
 ```
+
+// next js i nuxt, astro framework
+// napraviti jos jednu tabelu u supabase
+// u toj tabeli upisati user id i movie id filma koji je kliknut (bookmarked movies)
+// kada user dodje i klikne na bookmark movies - onda uradim dohvati mi za ovog usera sa ovim id-em sve bookmarkovane filmove
+// join tables
