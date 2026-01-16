@@ -2,6 +2,9 @@ import { Link } from "react-router";
 import type { MovieItemProps } from "../../../types";
 
 function MovieItem({ item, index, details }: MovieItemProps) {
+  const showMovieDetails = () => {
+    console.log(item);
+  };
   return (
     <article className="text-[#e8f0fe] flex flex-col gap-2 h-full">
       <div className="relative">
@@ -17,7 +20,10 @@ function MovieItem({ item, index, details }: MovieItemProps) {
             </button>
           </Link>
 
-          <button className="absolute top-[10px] right-[10px] z-20 text-[#141414] bg-[#e8f0fe80] hover:text-[#e8f0fe] hover:bg-[#14141480] transition-all duration-200 flex justify-center items-center gap-1 !p-2 rounded-full cursor-pointer">
+          <button
+            onClick={() => showMovieDetails()}
+            className="absolute top-[10px] right-[10px] z-20 text-[#141414] bg-[#e8f0fe80] hover:text-[#e8f0fe] hover:bg-[#14141480] transition-all duration-200 flex justify-center items-center gap-1 !p-2 rounded-full cursor-pointer"
+          >
             <i className="bxr  bx-bookmark"></i>
           </button>
         </div>
