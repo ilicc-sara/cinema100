@@ -15,32 +15,26 @@ import { useNavigate } from "react-router";
 import { UserAuth } from "../../context/AuthContext";
 
 function Home() {
-  const { activeMovies, setActiveMovies, selectActiveSlideMovies } =
-    useSelectSlide();
-
+  // prettier-ignore
+  const { activeMovies, setActiveMovies, selectActiveSlideMovies } = useSelectSlide();
   const { slidesAmount, fetchCountData } = useCountData();
-
   const { currentlyTrending, fetchTrendingData } = useTrendingData();
   const { genres, fetchGenres } = useGenres();
-
   const [activeSlide, setActiveSlide] = useState<number>(1);
   const [activeGenre, setActiveGenre] = useState<string>("all");
 
   const [loading, setLoading] = useState<boolean>(false);
   const [search, setSearch] = useState<string>("");
 
-  const [userId, setUserId] = useState<null | string>(null);
-
   const MAX_SLIDES = slidesAmount?.length;
 
-  const { setSession } = UserAuth();
+  const { setSession, setUserId } = UserAuth();
 
   const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem("sb-yyocycmzxqjdvkwqlpzd-auth-token");
     if (token) {
-      // const userId = JSON.parse(token).user.id;
       setUserId(JSON.parse(token).user.id);
       supabase.auth.getSession().then(({ data: { session } }) => {
         setSession(session);
@@ -60,14 +54,12 @@ function Home() {
     fetchCountData();
     fetchTrendingData();
     fetchGenres();
-    console.log("prvi use effect");
   }, []);
 
   // SELECTIGN ACTIVE MOVIES FROM ACTIVE SLIDE
   useEffect(() => {
     selectActiveSlideMovies((activeSlide - 1) * 12, activeSlide * 12 - 1);
     setSearch("");
-    console.log("drugi use effect");
   }, [activeSlide, selectActiveSlideMovies]);
 
   // FINDING MOVIES ACCORDING TO SELECTED GENRE OR ELSE (if activated "all") RETURNING TO SLIDE 1
@@ -78,7 +70,6 @@ function Home() {
       selectActiveSlideMovies((activeSlide - 1) * 12, activeSlide * 12 - 1);
       setSearch("");
     }
-    console.log("treci use effect");
   }, [activeGenre]);
 
   const handleSumbit = async (e: any) => {
@@ -103,11 +94,6 @@ function Home() {
       toast.error(error.message);
     }
     setSearch("");
-  };
-
-  const bookmarkMovie = async (e: any) => {
-    try {
-    } catch {}
   };
 
   return (

@@ -1,10 +1,19 @@
 import { Link } from "react-router";
 import type { MovieItemProps } from "../../../types";
+import { UserAuth } from "../../../context/AuthContext";
 
 function MovieItem({ item, index, details }: MovieItemProps) {
+  const { userId } = UserAuth();
+
   const showMovieDetails = () => {
     console.log(item);
   };
+
+  const bookmarkMovie = async (userId: string, movieId: string) => {
+    try {
+    } catch {}
+  };
+
   return (
     <article className="text-[#e8f0fe] flex flex-col gap-2 h-full">
       <div className="relative">

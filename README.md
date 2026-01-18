@@ -886,3 +886,5 @@ log in i sign in functionality
 // u toj tabeli upisati user id i movie id filma koji je kliknut (bookmarked movies)
 // kada user dodje i klikne na bookmark movies - onda uradim dohvati mi za ovog usera sa ovim id-em sve bookmarkovane filmove
 // join tables
+
+// const userId = JSON.parse(token).user.id;
