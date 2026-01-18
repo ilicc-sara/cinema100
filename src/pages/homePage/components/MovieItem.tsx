@@ -1,17 +1,28 @@
 import { Link } from "react-router";
 import type { MovieItemProps } from "../../../types";
 import { UserAuth } from "../../../context/AuthContext";
+import { supabase } from "../../../supabase-client";
 
 function MovieItem({ item, index, details }: MovieItemProps) {
   const { userId } = UserAuth();
 
-  const showMovieDetails = () => {
-    console.log(item);
-  };
+  // const showMovieDetails = () => {
+  //   console.log(item);
+  // };
 
-  const bookmarkMovie = async (userId: string, movieId: string) => {
+  const bookmarkMovie = async (userID: string, movieID: string) => {
     try {
-    } catch {}
+      const { data, error } = await supabase
+        .from("bookmarkedMovies")
+        .insert([{ userID: userID, movieID: movieID }])
+        .single();
+
+      console.log(data);
+      // console.error("data can not be saved");
+    } catch (error) {
+      console.error(error);
+    }
+    // console.log(userID, movieID);
   };
 
   return (
@@ -30,7 +41,7 @@ function MovieItem({ item, index, details }: MovieItemProps) {
           </Link>
 
           <button
-            onClick={() => showMovieDetails()}
+            onClick={() => bookmarkMovie(userId ? userId : "", item.imdbid)}
             className="absolute top-[10px] right-[10px] z-20 text-[#141414] bg-[#e8f0fe80] hover:text-[#e8f0fe] hover:bg-[#14141480] transition-all duration-200 flex justify-center items-center gap-1 !p-2 rounded-full cursor-pointer"
           >
             <i className="bxr  bx-bookmark"></i>
