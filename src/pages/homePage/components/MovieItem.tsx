@@ -6,10 +6,26 @@ import { supabase } from "../../../supabase-client";
 function MovieItem({ item, index, details }: MovieItemProps) {
   const { userId } = UserAuth();
 
-  // const showMovieDetails = () => {
-  //   console.log(item);
-  // };
+  const checkIfMovieIsBookmarked = async (userID: string, movieID: string) => {
+    try {
+      const { data, error } = await supabase
+        .from("bookmarkedMovies")
+        .select("id")
+        .eq("movieID", movieID)
+        .eq("userID", userID)
+        .maybeSingle();
 
+      if (error) {
+        console.error(error);
+        return false;
+      }
+      console.log(!!data);
+      return !!data;
+    } catch (error) {
+      console.error(error);
+      return false;
+    }
+  };
   const bookmarkMovie = async (userID: string, movieID: string) => {
     try {
       const { data, error } = await supabase
@@ -18,11 +34,10 @@ function MovieItem({ item, index, details }: MovieItemProps) {
         .single();
 
       console.log(data);
-      // console.error("data can not be saved");
+      console.error("error", "data can not be saved");
     } catch (error) {
       console.error(error);
     }
-    // console.log(userID, movieID);
   };
 
   return (
@@ -41,7 +56,9 @@ function MovieItem({ item, index, details }: MovieItemProps) {
           </Link>
 
           <button
-            onClick={() => bookmarkMovie(userId ? userId : "", item.imdbid)}
+            onClick={() =>
+              checkIfMovieIsBookmarked(userId ? userId : "", item.imdbid)
+            }
             className="absolute top-[10px] right-[10px] z-20 text-[#141414] bg-[#e8f0fe80] hover:text-[#e8f0fe] hover:bg-[#14141480] transition-all duration-200 flex justify-center items-center gap-1 !p-2 rounded-full cursor-pointer"
           >
             <i className="bxr  bx-bookmark"></i>
