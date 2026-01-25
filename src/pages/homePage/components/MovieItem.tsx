@@ -19,7 +19,6 @@ function MovieItem({ item, index, details }: MovieItemProps) {
         console.error(error);
         return false;
       }
-      console.log(!!data);
       return !!data;
     } catch (error) {
       console.error(error);
@@ -27,16 +26,30 @@ function MovieItem({ item, index, details }: MovieItemProps) {
     }
   };
   const bookmarkMovie = async (userID: string, movieID: string) => {
-    try {
-      const { data, error } = await supabase
-        .from("bookmarkedMovies")
-        .insert([{ userID: userID, movieID: movieID }])
-        .single();
+    const isBookmarked = await checkIfMovieIsBookmarked(userID, movieID);
+    if (!isBookmarked) {
+      try {
+        const { data } = await supabase
+          .from("bookmarkedMovies")
+          .insert([{ userID: userID, movieID: movieID }])
+          .single();
 
-      console.log(data);
-      console.error("error", "data can not be saved");
-    } catch (error) {
-      console.error(error);
+        console.log(data);
+        console.error("error", "data can not be saved");
+      } catch (error) {
+        console.error(error);
+      }
+    } else {
+      const { error } = await supabase
+        .from("bookmarkedMovies")
+        .delete()
+        .eq("userID", userID)
+        .eq("movieID", movieID);
+
+      if (error) {
+        console.error("Delete failed", error);
+        return;
+      }
     }
   };
 
@@ -56,9 +69,7 @@ function MovieItem({ item, index, details }: MovieItemProps) {
           </Link>
 
           <button
-            onClick={() =>
-              checkIfMovieIsBookmarked(userId ? userId : "", item.imdbid)
-            }
+            onClick={() => bookmarkMovie(userId ? userId : "", item.imdbid)}
             className="absolute top-[10px] right-[10px] z-20 text-[#141414] bg-[#e8f0fe80] hover:text-[#e8f0fe] hover:bg-[#14141480] transition-all duration-200 flex justify-center items-center gap-1 !p-2 rounded-full cursor-pointer"
           >
             <i className="bxr  bx-bookmark"></i>
