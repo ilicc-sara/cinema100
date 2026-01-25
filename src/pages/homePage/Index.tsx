@@ -28,7 +28,7 @@ function Home() {
 
   const MAX_SLIDES = slidesAmount?.length;
 
-  const { setSession, setUserId } = UserAuth();
+  const { setSession, setUserId, userId } = UserAuth();
 
   const navigate = useNavigate();
 
@@ -96,6 +96,19 @@ function Home() {
     setSearch("");
   };
 
+  const showBookmarkedMovies = async (userID: string) => {
+    try {
+      const { data, error } = await supabase
+        .from("bookmarkedMovies")
+        .select()
+        .eq("userID", userID);
+
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <>
       <section className="!mb-10">
@@ -142,7 +155,10 @@ function Home() {
                   </option>
                 ))}
             </select>
-            <i className="bxr  bxs-bookmark"></i>
+            <i
+              className="bxr  bxs-bookmark"
+              onClick={() => showBookmarkedMovies(userId ? userId : "")}
+            ></i>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="#fc4747"

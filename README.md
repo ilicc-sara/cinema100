@@ -888,3 +888,16 @@ log in i sign in functionality
 // join tables
 
 // const userId = JSON.parse(token).user.id;
+
+const showBookmarkedMovies = async (userID: string) => {
+try {
+const { data, error } = await supabase
+.from("bookmarkedMovies")
+.select()
+.eq("userID", userID);
+
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+
+}
