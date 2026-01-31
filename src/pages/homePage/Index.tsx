@@ -16,7 +16,7 @@ import { UserAuth } from "../../context/AuthContext";
 
 function Home() {
   // prettier-ignore
-  const { activeMovies, setActiveMovies, selectActiveSlideMovies } = useSelectSlide();
+  const { activeMovies, setActiveMovies, selectActiveSlideMovies, bookmarked, setBookmarked } = useSelectSlide();
   const { slidesAmount, fetchCountData } = useCountData();
   const { currentlyTrending, fetchTrendingData } = useTrendingData();
   const { genres, fetchGenres } = useGenres();
@@ -60,6 +60,7 @@ function Home() {
   useEffect(() => {
     selectActiveSlideMovies((activeSlide - 1) * 12, activeSlide * 12 - 1);
     setSearch("");
+    setBookmarked(false);
   }, [activeSlide, selectActiveSlideMovies]);
 
   // FINDING MOVIES ACCORDING TO SELECTED GENRE OR ELSE (if activated "all") RETURNING TO SLIDE 1
@@ -70,6 +71,7 @@ function Home() {
       selectActiveSlideMovies((activeSlide - 1) * 12, activeSlide * 12 - 1);
       setSearch("");
     }
+    setBookmarked(false);
   }, [activeGenre]);
 
   const handleSumbit = async (e: any) => {
@@ -94,6 +96,7 @@ function Home() {
       toast.error(error.message);
     }
     setSearch("");
+    setBookmarked(false);
   };
 
   const showBookmarkedMovies = async (userID: string) => {
@@ -117,6 +120,7 @@ function Home() {
         .in("imdbid", bookmarkedMoviesIds);
 
       setActiveMovies(movies);
+      setBookmarked(true);
 
       if (moviesError) {
         console.error(moviesError, "Could not load bookmarked movies");
@@ -173,12 +177,13 @@ function Home() {
                 ))}
             </select>
             <i
-              className="bxr  bxs-bookmark"
+              className={`bxr bxs-bookmark text-[24px]`}
+              style={{ color: `${bookmarked ? "#fc4747" : "#bfbfbf"}` }}
               onClick={() => showBookmarkedMovies(userId ? userId : "")}
             ></i>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              fill="#fc4747"
+              fill={`${bookmarked ? "#bfbfbf" : "#fc4747"}`}
               width="28"
               height="28"
               onClick={() =>

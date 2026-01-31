@@ -5,6 +5,7 @@ import type { singleMovie } from "../../../types";
 function useSelectSlide() {
   const [activeMovies, setActiveMovies] = useState<singleMovie[] | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [bookmarked, setBookmarked] = useState<boolean>(false);
 
   const selectActiveSlideMovies = useCallback(
     async (rangeIndex1: number, rangeIndex2: number) => {
@@ -19,12 +20,13 @@ function useSelectSlide() {
         if (error) throw error;
 
         setActiveMovies(data);
+        setBookmarked(false);
       } catch (err) {
         console.error(err);
         setError("Failed to load slide movies");
       }
     },
-    []
+    [],
   );
 
   return {
@@ -32,6 +34,8 @@ function useSelectSlide() {
     setActiveMovies,
     error,
     selectActiveSlideMovies,
+    bookmarked,
+    setBookmarked,
   };
 }
 

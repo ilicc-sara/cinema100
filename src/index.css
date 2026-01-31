@@ -31,10 +31,10 @@ body {
   color: rgb(255, 213, 0);
 }
 
-.bxs-bookmark {
+/* .bxs-bookmark {
   color: #bfbfbf;
   font-size: 24px;
-}
+} */
 
 .splide {
   height: fit-content;
@@ -104,7 +104,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: opacity 0.75s, visibility 0.75s;
+  transition:
+    opacity 0.75s,
+    visibility 0.75s;
   z-index: 5;
 }
 
