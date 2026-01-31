@@ -97,17 +97,36 @@ function Home() {
   };
 
   const showBookmarkedMovies = async (userID: string) => {
+    let bookmarkedMoviesIds = [];
     try {
       const { data, error } = await supabase
         .from("bookmarkedMovies")
         .select()
         .eq("userID", userID);
 
+      if (data) {
+        bookmarkedMoviesIds = data.map((movie) => movie.movieID);
+        console.log(bookmarkedMoviesIds);
+      }
+
       console.log(data);
+
+      const { data: movies, error: moviesError } = await supabase
+        .from("moviesData")
+        .select("*")
+        .in("imdbid", bookmarkedMoviesIds);
+
+      console.log("movies", movies);
     } catch (error) {
       console.error(error);
     }
   };
+
+  useEffect(() => {
+    if (userId) {
+      showBookmarkedMovies(userId);
+    }
+  }, []);
 
   return (
     <>
