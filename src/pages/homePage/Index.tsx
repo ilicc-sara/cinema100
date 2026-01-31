@@ -109,6 +109,7 @@ function Home() {
 
       if (data) {
         bookmarkedMoviesIds = data.map((movie) => movie.movieID);
+        console.log(data);
       }
       if (error) {
         console.error(error, "Could not find bookmarked movies");
