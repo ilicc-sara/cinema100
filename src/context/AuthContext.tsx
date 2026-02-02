@@ -17,10 +17,6 @@ type ProviderProps = {
   children: any;
 };
 
-type bookmarkedMovies = {
-  movieID: string;
-};
-
 export const AuthContextProvider = ({ children }: ProviderProps) => {
   const [session, setSession] = useState<SessionType>(undefined);
 

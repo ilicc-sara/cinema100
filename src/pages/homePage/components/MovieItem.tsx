@@ -5,7 +5,7 @@ import { supabase } from "../../../supabase-client";
 import useSelectSlide from "../customHooks/useSelectSlide";
 
 function MovieItem({ item, index, details }: MovieItemProps) {
-  const { userId } = UserAuth();
+  const { userId, bookmarkedMovies, setBookmarkedMovies } = UserAuth();
   // prettier-ignore
   // const { activeMovies, setActiveMovies, selectActiveSlideMovies, bookmarked, setBookmarked } = useSelectSlide();
 
@@ -32,13 +32,15 @@ function MovieItem({ item, index, details }: MovieItemProps) {
     const isBookmarked = await checkIfMovieIsBookmarked(userID, movieID);
     if (!isBookmarked) {
       try {
-        const { data } = await supabase
+        const { data, error } = await supabase
           .from("bookmarkedMovies")
           .insert([{ userID: userID, movieID: movieID }])
           .single();
 
-        console.log(data);
-        console.error("error", "data can not be saved");
+        console.log("data data", data);
+        if (error) {
+          console.error(error, "data can not be saved");
+        }
       } catch (error) {
         console.error(error);
       }
