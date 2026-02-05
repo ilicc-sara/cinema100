@@ -1,5 +1,3 @@
-import React from "react";
-
 type SliderButtonType = {
   index: number;
   activeSlide: number;

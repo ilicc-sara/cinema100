@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { supabase } from "../../../supabase-client";
 import type { singleMovie } from "../../../types";
 
@@ -6,7 +5,7 @@ function useFindGenre(
   setLoading: React.Dispatch<React.SetStateAction<boolean>>,
   activeGenre: string,
   setActiveMovies: React.Dispatch<React.SetStateAction<singleMovie[] | null>>,
-  setActiveSlide: React.Dispatch<React.SetStateAction<number>>
+  setActiveSlide: React.Dispatch<React.SetStateAction<number>>,
 ) {
   const findGenreMovies = async () => {
     setLoading(true);
